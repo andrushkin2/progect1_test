@@ -1,0 +1,734 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML>
+<HEAD>
+<link rel="shortcut icon" href="favicon.ico"></link>
+
+<!-- Put this script tag to the <head> of your page -->
+<script type="text/javascript" src="http://userapi.com/js/api/openapi.js?20"></script>
+
+<script type="text/javascript">
+  VK.init({apiId: 2028978, onlyWidgets: true});
+</script>
+
+<link href="http://stg.odnoklassniki.ru/share/odkl_share.css" rel="stylesheet">
+<script src="http://stg.odnoklassniki.ru/share/odkl_share.js" type="text/javascript" ></script>
+
+<TITLE>Акробатика в Минске, акробатика видео, сальто назад видео, паркур обучение, акробатика фото, акробатика для взрослых, сальто обучение, паркур в Минске, акробатика упражнения, акробатика в Минске, акробатика для начинающих, акробатика самоучитель.</TITLE>
+<meta name="Description" content="Акробатический клуб Сальто, акробатика в Минске">
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1251">
+<link type='text/css' href='/../03.01.2012/orig/css/contact.css' rel='stylesheet' media='screen' />
+<link media="screen" rel="stylesheet" href="/css/contact.css" type="text/css">
+<meta name="verify-v1" content="CP4gOovhhp5MoTAJbVqicL1TYG/GLGHYGGuAzfn+YjI=" >
+<style type="text/css">
+span.auto-style21
+	{font-family:"Verdana","sans-serif";
+	}
+span.auto-style11
+	{}
+.auto-style1 {
+	color: #000000;
+}
+.auto-style2 {
+	text-decoration: none;
+}
+.auto-style3 {
+	color: #000;
+	font-size: 9px;
+}
+.auto-style4 {
+	text-align: center;
+}
+.auto-style6 {
+	text-align: center;
+	font-family: "Times New Roman";
+	color: #FF0000;
+}
+.auto-style5 {
+	font-family: "Times New Roman";
+}
+font {
+	font-size: 12;
+	color: #000;
+}
+#table35 tr .texte p .auto-style3 {
+	color: #F00;
+}
+#table35 tr .texte p .auto-style3 {
+	font-size: 12px;
+	font-family: "Times New Roman", Times, serif;
+}
+</style>
+</HEAD>
+<div id="333" style="position:fixed;left:30%;border:dotted;background-color:#333;border-color:#F00;top:30%;width:600px;height:135px;visibility:hidden">
+	<div id="3331" style="position:static;visibility:hidden">
+    	<p id="99" align="center" style="font-size:28px;color:#FFF">Регистрация возможна с 9.00 до 21.00 </p>
+        <p align="center"><input type="button" value="Назад" onClick="div_hide(3331)" style="font-size:24px"></p>
+    </div>
+    <div id="3332" style="position:relative;top:-128px;visibility:hidden">
+    	<p id="99" align="center" style="font-size:28px;color:#FFF">В данный момент свободных мест для записи нет</p>
+        <p align="center"><input type="button" value="Назад" onClick="div_hide(3332)" style="font-size:24px"></p>
+    </div>
+    <div id="3333" style="position:relative;top:-256px;visibility:hidden">
+    	<p id="99" align="center" style="font-size:28px;color:#FFF">Запись на занятие окончена</p>
+        <p align="center"><input type="button" value="Назад" onClick="div_hide(3333)" style="font-size:24px"></p>
+    </div>
+</div>
+<body bgcolor=#FFFFFF leftmargin=0 topmargin=0 marginwidth=0 marginheight=0>
+<table width=100% cellspacing=0 cellpadding=0 border=0>
+	<tr><td colspan=5 height=40 bgcolor=#999999 nowrap align='center'>
+		<table width="915" cellpadding="0" cellspacing="0" border="0">
+            	<tr>
+                     <td align="right">
+                        <div style="position:relative;visibility:hidden">
+                        <a href="Project1/main.php?num=1"><input type="button" id="5555" style="visibility:hidden"></a>
+                        <?php
+								mysql_connect('localhost','saltoext_salto','5700');
+    							mysql_select_db('saltoext_salto1') or die(mysql_error());
+                                $phones=mysql_query("select id from dBase where record='1' and num='1'");
+                                $val=mysql_num_rows($phones);
+                                mysql_query("UPDATE admin set records ='$val' where name='1'");
+								$avalible="select * from admin where name='1'";
+								$res=mysql_query($avalible);
+								$row=mysql_fetch_array($res);
+								$mest=$row['maxCol']-$row['aboniments']-$row['records'];
+                                $year=$row['year'];
+                                $month=$row['month'];
+                                $day=$row['day'];
+								$tim1=mysql_query("select time from admin where name='1'");
+								$row=mysql_fetch_array($tim1);
+								$t=explode(":",$row['time']);
+								$h=$t[0];
+								$m=$t[1];
+                                echo "<input type=hidden id=5551 value=$mest>";
+                                echo "<input type=hidden id=5552 value=$year>";
+                                echo "<input type=hidden id=5553 value=$month>";
+                                echo "<input type=hidden id=5554 value=$day>";
+                                echo "<input type=hidden id=5557 value=$h>";
+                                echo "<input type=hidden id=5558 value=$m>";
+								echo "<g style=padding-right:10px;color:white;font-size:33px>$mest</g>";
+							?>
+                        	<div style="position:relative;float:right">
+                            	<input type="image" onClick="check();" class="butt" src='img/button.gif' style="cursor:pointer">
+                        	</div
+                        ></div>
+                    </td>
+                </tr></table>
+</td></tr>
+<script type="text/javascript">
+
+function div_hide(id){
+	document.getElementById(id).style.visibility='hidden';
+	document.getElementById(333).style.visibility='hidden';
+}
+
+function check(){
+	$year=document.getElementById(5552).value;
+	$month=document.getElementById(5553).value;
+	$day=document.getElementById(5554).value;
+	$hour=document.getElementById(5557).value;
+	$minute=document.getElementById(5558).value;
+	var date=new Date();
+	//if (date.getHours()<21&&date.getHours()>=9)
+	{
+		if (document.getElementById(5551).value > 0){
+			if (date.getFullYear() < $year){
+				{
+					document.getElementById(5555).click();
+				}
+			}
+			else{
+				if (date.getMonth()+1 < $month && date.getFullYear()==$year){
+					{
+						document.getElementById(5555).click();
+					}
+				}
+				else{
+					if (date.getDate()< $day && date.getMonth()+1== $month && date.getFullYear()==$year){
+						{
+							document.getElementById(5555).click();
+						}
+					}
+					else{
+						if (date.getHours()<($hour-1) && date.getDate()== $day && date.getMonth()+1== $month && date.getFullYear()==$year){
+							document.getElementById(5555).click();
+						}
+						else{
+							if (date.getMinutes()<$minute && date.getHours()==$hour-1 && date.getDate()== $day && date.getMonth()+1== $month && date.getFullYear()==$year)
+								document.getElementById(5555).click();
+							else{
+								document.getElementById(333).style.visibility='visible';
+								document.getElementById(3333).style.visibility='visible';
+							}
+						}
+					}
+				}
+			}
+		}
+		else{
+			document.getElementById(333).style.visibility='visible';
+			document.getElementById(3332).style.visibility='visible';
+		}
+	}
+	//else{
+//		document.getElementById(333).style.visibility='visible';
+//		document.getElementById(3331).style.visibility='visible';
+//	}
+	
+}
+</script>
+	<tr>
+	<td bgcolor=#999999 nowrap>&nbsp;</td>
+	<td width=1 bgcolor=#727272 nowrap></td>
+	<td width=915 valign=top align=center  STYLE="background-repeat: no-repeat; color: #000;">
+
+		<table width=100% cellspacing=0 cellpadding=0 border=0>
+		<tr><td bgcolor=#999999 nowrap height=1></tr>
+		</table>
+
+	  <table width=100% cellspacing=0 cellpadding=0 border=0>
+		<tr><td height=10 width=100%></td></tr>
+		<tr><td bgcolor=#FF0100 height=3 width=100%></td></tr>
+		<tr><td height=25 width=100%></td></tr>
+		<tr><td height=70 width=100% align=left valign=middle>
+			<img border="0" src="../img/logo.jpg" width="544" height="61" align="left"></td></tr>
+		<tr><td>
+			<img src="../img/verh_big.gif" width=915 height=110>	
+		</td></tr>
+		<tr><td height=3 width=100%></td></tr>
+		<tr><td bgcolor=#FF0100 height=3 width=100%></td></tr>
+		<tr><td height=7 width=100%></td></tr>
+		<tr><td bgcolor=#FF0100 height=7 width=100%></td></tr>
+		</table>
+		
+		<table width=915 cellspacing=0 cellpadding=0 border=0>
+		 
+		</table>
+		
+		
+		<table width=100% cellspacing=0 cellpadding=0 border=0>
+		<tr>
+		<td width=0 nowrap></td>
+		<td width=147 valign=top>
+			<table width=100% cellspacing=0 cellpadding=0 border=0 id="table30">
+		<tr>
+		<td width=0 nowrap></td>
+		<td width=147 valign=top><table width=100% cellspacing=3 cellpadding=0 border=0 id="table46">
+		  <tr>
+		    <td>&nbsp;</td>
+		    </tr>
+		  <tr>
+		    <td>&nbsp;<img src="../img/square.gif" alt="" width=9 height=9> Главная<br></td>
+		    </tr>
+		  <tr>
+		    <td>&nbsp;<img src="../img/square.gif" alt="" width=9 height=9>&nbsp;<a class="menu" href="../graffic.html">Расписание</a><br></td>
+		    </tr>
+		  <tr>
+		    <td>&nbsp;<img src="../img/square.gif" alt="" width=9 height=9>&nbsp;<a href="price.html" class="menu">Цены и Акции</a><br></td>
+		    </tr>
+		  <tr>
+		    <td>&nbsp;<img src="../img/square.gif" alt="" width=9 height=9>&nbsp;<a class="menu" href="../element.html">Элементы</a><br></td>
+		    </tr>
+		  <tr>
+		    <td>&nbsp;<img src="../img/square.gif" alt="" width=9 height=9>&nbsp;<a href="../mail.html" class="menu">Контакты</a><br></td>
+		    </tr>
+		  <tr>
+		    <td>&nbsp;<img src="../img/square.gif" alt="" width=9 height=9><a class="menu" href="../prajd.html"><span style="text-decoration: none">&nbsp;</span></a><a href="../compet.html" class="menu">Соревнования</a><br></td>
+		    </tr>
+		  <tr>
+		    <td>&nbsp;<img src="../img/square.gif" alt="" width=9 height=9>&nbsp;<a class="menu" href="../photo.html">Фото</a><br></td>
+		    </tr>
+		  <tr>
+		    <td>&nbsp;</td>
+		    </tr>
+		  </table>
+		  <p class="texte">&nbsp;</p>
+			</p>
+			<p class="texte">&nbsp;</p>
+			<p class="texte">&nbsp;&nbsp;Контакты:<br>
+			<br>
+			<span lang="ru">&nbsp;г.Минск</span><br>
+			<span lang="ru">&nbsp;ул. Калиновского 111</span><br>
+			<span lang="ru">&nbsp;</span><br>
+			&nbsp;(+375 29) 3<span lang="ru">10 20 49</span><br>
+       		&nbsp;(+375 29) <span lang="ru">570 79 40</span></td>
+		</tr>
+		</table>
+
+		  <p class="texte">&nbsp;</td>
+		<td width=0 nowrap></td>
+		<td width=7 bgcolor=#FF0100 nowrap></td>
+		<td width=19 nowrap></td>
+		<td valign=top>
+
+		<p align="center" style="text-align:center">&nbsp;</p>
+		<p align="center" style="text-align:center"><b><span style="color:red">АКРОБАТИКА -- удиви себя, удиви других!</span></b></p>
+		<p align="center" style="text-align:center"><span style="color: #FF0000;">2012- 2013, г.Минск, ул. Калиновского 111</span></p>
+        <p><span lang="ru"><img src="../img/square.gif" width=9 height=9> </span> <span style="font-size: 12.0pt; font-family: 'Times New Roman',serif">О 
+        клубе</span>        
+        <p><span style="font-size: 12.0pt; font-family: 'Times New Roman',serif">Приглашаем на занятия по Акробатике и Прыжкам на Батуте всех желающих в возрасте от 8 до 40 лет. Занятия проходят в двух возрастных группах: 8-14 лет и 15 - 40 лет.</span>                
+        <p><span style="font-size: 12.0pt; font-family: 'Times New Roman',serif">Занятия проводят
+          Мастера Спорта по гимнастике, акробатике и прыжкам на батуте.</span>                
+        <p class="MsoNormal" style="margin-bottom:0cm;margin-bottom:.0001pt;line-height:
+normal"><span lang="ru"><img src="../img/square.gif" width=9 height=9></span> <span style="font-size: 12.0pt; font-family: 'Times New Roman',serif">Новости</span></p>
+        <table width="364" border="1">
+          <tr>
+            <td width="354" align="center"><p class="MsoNormal" style="margin-bottom:0cm;margin-bottom:.0001pt;line-height:
+normal"><span style="color: #FF0000;"><strong>Открываем дополнительный 1 час занятий</strong></span></p>
+              <p class="MsoNormal" style="margin-bottom:0cm;margin-bottom:.0001pt;line-height:
+normal"><span style="color: #FF0000;"><strong>АКЦИЯ!</strong></span><br>
+                <span style="color: #FF0000;"><strong>&quot;СУББОТА в 20.00&quot;!<br>
+                ЦЕНА 30 000 руб<br>
+                  </strong></span><span style="font-family: 'Times New Roman', serif; font-size: 12.0pt"><strong>субботу 17 ноября 2012г.<br>
+                  Только для зарегистрированных через сайт.</strong>Без регистрации на эту тренировку попасть невозможно. Торопись! Количество мест ограничено.</span>ВНИМАНИЕ! <strong>Начало
+                  <script type="text/javascript" src="http://userapi.com/js/api/openapi.js?34"></script>
+              в 20.00</strong> <span style="font-family: 'Times New Roman', serif; font-size: 12.0pt">Только разовая оплата (абонементы не выписываются и выписанные не действуют). </span></p>
+              <p class="MsoNormal" style="margin-bottom:0cm;margin-bottom:.0001pt;line-height:
+normal">	
+					<g style="font-size:26px;font-weight:bold">Мест: </g><g style="font-size:40px;font-weight:bold;color:#F00"><script>document.write(document.getElementById(5551).value);</script></g><g style="visibility:hidden">aaa</g>
+                    <input type="button" value="+1" onClick="check()" style="font-size:42px;color:red;fontWeight:bold">
+				</p>
+				
+				
+				
+				<div id="3332" style="position:fixed;left:30%;border:dotted;background-color:#333;border-color:#F00;top:30%;width:600px;height:135px;visibility:hidden">
+	<div id="33312" style="position:static;visibility:hidden">
+    	<p id="992" align="center" style="font-size:28px;color:#FFF">Регистрация возможна с 9.00 до 21.00 </p>
+        <p align="center"><input type="button" value="Назад" onClick="div_hide2(33312)" style="font-size:24px"></p>
+    </div>
+    <div id="33322" style="position:relative;top:-128px;visibility:hidden">
+    	<p id="992" align="center" style="font-size:28px;color:#FFF">В данный момент свободных мест для записи нет</p>
+        <p align="center"><input type="button" value="Назад" onClick="div_hide2(33322)" style="font-size:24px"></p>
+    </div>
+    <div id="33332" style="position:relative;top:-256px;visibility:hidden">
+    	<p id="992" align="center" style="font-size:28px;color:#FFF">Запись на занятие окончена</p>
+        <p align="center"><input type="button" value="Назад" onClick="div_hide2(33332)" style="font-size:24px"></p>
+    </div>
+</div>
+						
+						
+						<div style="position:relative;visibility:hidden">
+                        <a href="Project1/main.php?num=2"><input type="button" id="55552" style="visibility:hidden"></a>
+                        <?php
+								mysql_connect('localhost','saltoext_salto','5700');
+    							mysql_select_db('saltoext_salto1') or die(mysql_error());
+                                $phones=mysql_query("select id from dBase where record='1' and num='2'");
+                                $val=mysql_num_rows($phones);
+                                mysql_query("UPDATE admin set records ='$val' where name='2'");
+								$avalible="select * from admin where name='2'";
+								$res=mysql_query($avalible);
+								$row=mysql_fetch_array($res);
+								$mest=$row['maxCol']-$row['aboniments']-$row['records'];
+                                $year=$row['year'];
+                                $month=$row['month'];
+                                $day=$row['day'];
+								$tim1=mysql_query("select time from admin where name='2'");
+								$row=mysql_fetch_array($tim1);
+								$t=explode(":",$row['time']);
+								$h=$t[0];
+								$m=$t[1];
+                                echo "<input type=hidden id=55512 value=$mest>";
+                                echo "<input type=hidden id=55522 value=$year>";
+                                echo "<input type=hidden id=55532 value=$month>";
+                                echo "<input type=hidden id=55542 value=$day>";
+                                echo "<input type=hidden id=55572 value=$h>";
+                                echo "<input type=hidden id=55582 value=$m>";
+								echo "<g style=padding-right:10px;color:white;font-size:33px>$mest</g>";
+							?>
+                        	<div style="position:relative;float:right">
+                            	<input type="image" onClick="check();" class="butt" src='img/button.gif' style="cursor:pointer">
+                        	</div
+                        ></div>
+                        
+<script type="text/javascript">
+
+function div_hide2(id){
+	document.getElementById(id).style.visibility='hidden';
+	document.getElementById(3332).style.visibility='hidden';
+}
+
+function check2(){
+	$year=document.getElementById(55522).value;
+	$month=document.getElementById(55532).value;
+	$day=document.getElementById(55542).value;
+	$hour=document.getElementById(55572).value;
+	$minute=document.getElementById(55582).value;
+	var date=new Date();
+	//if (date.getHours()<21&&date.getHours()>=9)
+	{
+		if (document.getElementById(55512).value > 0){
+			if (date.getFullYear() < $year){
+				{
+					document.getElementById(55552).click();
+				}
+			}
+			else{
+				if (date.getMonth()+1 < $month && date.getFullYear()==$year){
+					{
+						document.getElementById(55552).click();
+					}
+				}
+				else{
+					if (date.getDate()< $day && date.getMonth()+1== $month && date.getFullYear()==$year){
+						{
+							document.getElementById(55552).click();
+						}
+					}
+					else{
+						if (date.getHours()<($hour-1) && date.getDate()== $day && date.getMonth()+1== $month && date.getFullYear()==$year){
+							document.getElementById(55552).click();
+						}
+						else{
+							if (date.getMinutes()<$minute && date.getHours()==$hour-1 && date.getDate()== $day && date.getMonth()+1== $month && date.getFullYear()==$year)
+								document.getElementById(55552).click();
+							else{
+								document.getElementById(3332).style.visibility='visible';
+								document.getElementById(33332).style.visibility='visible';
+							}
+						}
+					}
+				}
+			}
+		}
+		else{
+			document.getElementById(3332).style.visibility='visible';
+			document.getElementById(33322).style.visibility='visible';
+		}
+	}
+	//else{
+//		document.getElementById(3332).style.visibility='visible';
+//		document.getElementById(33312).style.visibility='visible';
+//	}
+	
+}
+</script>
+
+<p class="MsoNormal" style="margin-bottom:0cm;margin-bottom:.0001pt;line-height:
+normal">	
+					<g style="font-size:26px;font-weight:bold">Мест: </g><g style="font-size:40px;font-weight:bold;color:#F00"><script>document.write(document.getElementById(55512).value);</script></g><g style="visibility:hidden">aaa</g>
+                    <input type="button" value="+1" onClick="check2()" style="font-size:42px;color:red;fontWeight:bold">
+</p>
+				
+				
+				
+				
+              </td>
+          </tr>
+          </table>
+        <p class="MsoNormal" style="margin-bottom:0cm;margin-bottom:.0001pt;line-height:
+normal"><!-- VK Widget -->
+        </p>
+<div id="vk_groups"></div>
+<script type="text/javascript">
+VK.Widgets.Group("vk_groups", {mode: 2, width: "395", height: "500"}, 6977264);
+</script></p>
+
+		<hr style="background-color: #FF0100" color="#FF0100">
+		
+		<p><u><span style="font-size: 12.0pt; font-family: 'Times New Roman',serif">Мы 
+		  научим вас делать</span></u>: </p>
+        <blockquote>
+          <p class="MsoNormal" style="margin-bottom:0cm;margin-bottom:.0001pt;line-height:
+normal"><span style="font-size: 12.0pt; font-family: 'Times New Roman',serif"><span style="font-size: 10.0pt; font-family: Symbol">&middot;<span style="font:7.0pt &quot;Times New Roman&quot;">&nbsp;</span></span><strong> базовые акробатические элементы: </strong>кувырки,&nbsp;стойку на голове, стойку на руках, колесо</span><span style="font-family: 'Times New Roman', serif; font-size: 12.0pt"> </span></p>
+          <p class="MsoNormal" style="margin-bottom:0cm;margin-bottom:.0001pt;line-height:
+normal"><span style="font-size: 12.0pt; font-family: 'Times New Roman', serif"> <span style="font-size: 12.0pt; font-family: 'Times New Roman',serif"><span style="font-size: 10.0pt; font-family: Symbol">&middot;<span style="font:7.0pt &quot;Times New Roman&quot;">&nbsp;</span></span></span><strong>более сложные элементы: </strong></span><span style="font-size: 12.0pt; font-family: 'Times New Roman',serif">сальто вперед, сальто назад, переворот вперед, рондат, фляк, сальто боком и другие</span></p>
+      </blockquote>
+        <p class="MsoNormal" style="margin-bottom:0cm;margin-bottom:.0001pt;line-height:
+normal"><span style="font-size: 12.0pt; font-family: 'Times New Roman',serif">*C 
+          подростками до 15 лет на первом занятии присутствие родителей 
+          обязательно.</span></p></td>
+		<td width=10 nowrap></td>
+		<td width=326 valign=top>
+			<table width=100% cellspacing=0 cellpadding=0 border=0 height="356">
+			<tr>
+			<td width=300 height=49>
+					<p align="center" style="text-align:center">&nbsp;</p>
+                    <p align="center" style="text-align:center"><b><span style="color:red"></span></b></p>
+                    <p class="MsoNormal" style="margin-bottom:0cm;margin-bottom:.0001pt;line-height:
+normal" align="center"><strong>К<span lang="ru">то сделал лучше? Голосуй!</span> 
+				    <br>
+				    Ноябрь <span lang="ru"> 2012</span></strong>
+			        <p class="MsoNormal" style="margin-bottom:0cm;margin-bottom:.0001pt;line-height:
+normal" align="center"><strong><span lang="ru"> 
+
+<!-- start Вставка нового видео. iframe width="300" height="225" -->
+<iframe width="317" height="238" src="http://www.youtube.com/embed/OUQIBVLFqt4" frameborder="0" allowfullscreen></iframe>  <!-- end Вставка нового видео--> 
+</td>
+			</tr>
+			<tr>
+			<td width=300 bgcolor='#F2F2F2'>
+			<p class="MsoNormal" align="center">
+		
+		<font face="Times New Roman">
+		
+		    <br>
+        </font>Голосуем до 25-го числа. Победитель
+			<a href="http://youtu.be/d579w0zcHqc" target="_blank">прошлого 
+            конкурса </a>- Надежда<span lang="ru">.</span> Поздравляем!</p>
+			<hr style="background-color: #FF0100" color="#FF0100">
+
+
+					<p align="center" style="width:250px;" >
+
+
+<script type="text/javascript">
+function ajax()
+{ }
+
+ajax.prototype =
+{
+	req   : null,
+	timer : null,
+	data  : null,
+	func  : null,
+	wrap  : null,
+	req_stop : function ()
+	{
+		//alert('stop');
+		vote_see();
+		this.req.abort();
+	},
+	reqChange : function ()
+	{
+		if (this.req.readyState == 4)
+		{
+			clearTimeout(this.timer);
+			if (this.req.status == 200)
+			{
+				this.data = '' + this.req.responseText + '';
+				this.req.abort();
+				this.func();
+			}
+			else
+			{
+				//alert('ERR ' + this.req.status + this.req.statusText);
+				vote_see();
+				this.req.abort();
+			}
+		}
+	},
+	reqDoc : function (url)
+	{
+		if (!this.func || !this.wrap)
+		{
+			alert('set func!');
+			return;
+		}
+
+		url += '&ajax=' + Math.random();
+		if (window.XMLHttpRequest)
+		{
+			this.req = new XMLHttpRequest();
+			this.req.onreadystatechange = this.wrap;
+			this.req.open('GET', url, true);
+			this.req.send(null);
+		}
+		else if (window.ActiveXObject)
+		{
+			this.req = new ActiveXObject("Microsoft.XMLHTTP");
+			this.req.onreadystatechange = this.wrap;
+			this.req.open('GET', url, true);
+			this.req.send();
+		}
+		else
+		{
+			//alert('Cannot create request');
+			vote_see();
+			return;
+		}
+
+		this.timer = window.setTimeout("ajax_vote.req_stop()", 15000);
+	}
+}
+
+
+
+function _$(s)
+{
+	return document.getElementById(s);
+}
+
+
+function vote_see()
+{
+	_$('vote_body').style.display    = 'none';
+	_$('vote_results').style.display = '';
+}
+
+
+function vote_do()
+{
+	var num, tmp;
+
+	num = 0;
+	tmp = _$('vote_form').vote;
+	for (var i = 0; i < tmp.length; i++)
+	{
+		if (tmp[i].checked)
+		{
+			num = tmp[i].value;
+		}
+	}
+
+	_$('vote_pic').style.display = '';
+	tmp = _$('vote_form');
+	for (var i = 0; i < tmp.length; i++)
+	{
+		if (tmp[i].type && (tmp[i].type == 'radio' || tmp[i].type == 'submit') )
+		{
+			tmp[i].disabled = true;
+		}
+	}
+
+	ajax_vote = new ajax();
+	ajax_vote.func = function()
+	{
+		if (this.data.indexOf('ok') != 0)
+		{
+			//alert('request error ' + this.data);
+			vote_see();
+			return;
+		}
+
+		_$('vote_results').innerHTML = this.data.substring(2, this.data.length);
+		vote_see();
+	}
+
+	ajax_vote.wrap = function()
+	{
+		ajax_vote.reqChange();
+	}
+
+	ajax_vote.reqDoc('vote.php?num=' + num);
+	return false;
+}
+</script>
+
+<?
+
+require 'votetop.php';
+
+$data = file_exists($cur_file) ? file_get_contents($cur_file) : '';
+$data = unserialize($data);
+if ( empty($data) ) :
+?>
+			<br>
+<? 
+
+else : ?>
+<form method="get" action="" id="vote_form" onSubmit="return vote_do()">
+<table width='270' border='0' cellpadding='0' cellspacing='0' bgcolor='#F2F2F2'>
+
+	<tr>
+		<td id="vote_results" style="display: none">
+		<? print_results($data); ?>
+		</td>
+	</tr>
+
+	<tr>
+		<td id="vote_body">
+
+<table width='270' border='0' cellpadding='0' cellspacing='0' bgcolor='#F2F2F2'>
+	<tr>
+		
+	</tr>
+</table>
+
+		</td>
+	</tr>
+</table>
+</form>
+<hr style="background-color: #FF0100" color="#FF0100">
+
+<!-- start Вставка нового голосование - опрос--> 
+
+<!-- Put this script tag to the <head> of your page -->
+<script type="text/javascript" src="//vk.com/js/api/openapi.js?62"></script>
+
+<script type="text/javascript">
+  VK.init({apiId: 3142811, onlyWidgets: true});
+</script>
+
+<!-- Put this div tag to the place, where the Poll block will be -->
+<div id="vk_poll"></div>
+<script type="text/javascript">
+VK.Widgets.Poll("vk_poll", {width: "300"}, "57240384_a91c5c14b677ef2e35");
+</script>  
+
+
+
+<!-- end Вставка новоге голосование - опрос-->
+		
+			<br>
+
+<? endif;?>
+
+
+	
+			</td>
+			</tr>
+			<tr>
+			<td width=300 align="center">
+				</td>
+			</tr>
+			<tr>
+			<td width=300>&nbsp;
+			</td>
+			</tr>
+			</table>
+		  </td>
+		<td width=20 nowrap></td>
+		</tr>
+	  </table>
+
+		<table width=100% cellspacing=0 cellpadding=0 border=0>
+		<tr><td bgcolor=#FF0100 height=3 width=100%></td></tr>
+	  </table>
+		
+		<table width=100% cellspacing=0 cellpadding=0 border=0>
+		<tr>
+		<td height=60 width=915>
+		<img src="../img/niz_big.gif" width=915 height=60></td>
+		</tr>
+		</table>
+
+		<table width=100% cellspacing=0 cellpadding=0 border=0>
+		<tr><td bgcolor=#FF0100 height=3 width=100%></td></tr>
+		</table>
+
+		<table width=100% cellspacing=0 cellpadding=0 border=0>
+		<tr>
+		<td width=147 height=60 nowrap></td>
+		<td width=7 bgcolor=#FF0100 nowrap></td>
+		<td width=100% align="left" nowrap><font size="1">&nbsp;&nbsp;&nbsp;&nbsp;<a href="./second/dreamteam.html" class="auto-style3">Copyright © 2012, 
+		salto.extreme.by</a></font><br>
+&nbsp;</td>
+		</tr>
+		</table>
+
+		<table width=100% cellspacing=0 cellpadding=0 border=0>
+		<tr><td bgcolor=#999999 nowrap height=1></tr>
+		</table>
+
+	</td>
+	<td width=1  bgcolor=#727272 nowrap></td>
+	<td bgcolor=#999999 nowrap>&nbsp;</td>
+	</tr>
+	<tr><td colspan=5 height=40 bgcolor=#999999 nowrap>&nbsp;</td></tr>
+</table>
+<!--Гугл-Аналитикс-->
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-17989081-1']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+    </script>
+<!--Гугл-Аналитикс-->
+</body>
+</html>

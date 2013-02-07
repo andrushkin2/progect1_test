@@ -7,14 +7,20 @@
         g{font-size: 20px}
         .but{
             font-size: 22px;
+            -webkit-border-radius:35px;
+            -khtml-border-radius: 35px;
             -moz-border-radius: 35px;
             border-radius: 35px;
         }
         table{
-            -moz-border-radius: 15px;
-            border-radius: 15px;
+            -webkit-border-radius:10px;
+            -khtml-border-radius: 10px;
+            -moz-border-radius: 10px;
+            border-radius: 10px;
         }
         select{
+            -webkit-border-radius:10px;
+            -khtml-border-radius: 10px;
             -moz-border-radius: 10px;
             border-radius: 10px;
         }
@@ -74,10 +80,10 @@
                                     </select>
                                 </td>
                                 <td style="border: 0px;padding: 4px">
-                                    <select name="month" style="font-size:20px">
+                                    <select name="month" style="font-size:20px;text-align: center">
                                         <option value=""></option>
-                                        <option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option><option value="6">6</option><option value="7">7</option><option value="8">8</option><option value="9">9</option>
-                                        <option value="10">10</option><option value="11">11</option><option value="12">12</option>
+                                        <option value="1">январь</option><option value="2">февраль</option><option value="3">март</option><option value="4">апрель</option><option value="5">май</option><option value="6">июнь</option><option value="7">июль</option><option value="8">август</option><option value="9">сентябрь</option>
+                                        <option value="10">октябрь</option><option value="11">ноябрь</option><option value="12">декабрь</option>
                                     </select>
                                 </td>
                                 <td style="border: 0px;padding: 4px">
@@ -152,10 +158,10 @@
                                 </select>
                             </td>
                             <td style="border: 0px;padding: 4px">
-                                <select name="xmonth" style="font-size:20px">
+                                <select name="xmonth" style="font-size:20px;text-align: center">
                                     <option value=""></option>
-                                    <option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option><option value="6">6</option><option value="7">7</option><option value="8">8</option><option value="9">9</option>
-                                    <option value="10">10</option><option value="11">11</option><option value="12">12</option>
+                                    <option value="1">январь</option><option value="2">февраль</option><option value="3">март</option><option value="4">апрель</option><option value="5">май</option><option value="6">июнь</option><option value="7">июль</option><option value="8">август</option><option value="9">сентябрь</option>
+                                    <option value="10">октябрь</option><option value="11">ноябрь</option><option value="12">декабрь</option>
                                 </select>
                             </td>
                             <td style="border: 0px;padding: 4px">
@@ -208,21 +214,113 @@
             </tr>
             <tr height="30px"></tr>
             <tr>
+                <td style="border: 0px;padding-left: 20px;padding-right:20px">
+                    <g>Повторить:</g>
+                    <input type="checkbox" name='check' id='check' <?php if($row['rep']!=0) echo "checked" ?> onclick="checke()" />
+                </td>
+            </tr>
+            <tr id="tr" style="display: <?php if($row['rep']!=0) echo "table-row"; else echo "none"?> ">
                 <td style="border: 0px;padding-left: 20px;padding-right: 20px">
-                    <table border="0">
+                    <table border="2" style="width: 423px">
                         <tbody>
-                        <tr>
-                            <td style="border: 0px;padding: 4px">
-                                <g>Повторять: </g>
+                        <tr >
+                            <td style="border: 0px;">
+                                <table border="0">
+                                    <tbody>
+                                    <tr>
+                                        <td style="border: 0px;padding: 4px">
+                                            <g>Каждый день</g>
+                                        </td>
+                                        <td style="border: 0px;padding: 4px">
+                                            <input type="radio" name="repeat" value="1" <?php if($row['rep']==1) echo "checked" ?>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td style="border: 0px;padding: 4px">
+                                            <g>Каждую неделю</g>
+                                        </td>
+                                        <td style="border: 0px;padding: 4px">
+                                            <input type="radio" name="repeat" value="2" <?php if($row['rep']==2) echo "checked" ?>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td style="border: 0px;padding: 4px">
+                                            <g>Каждый месяц</g>
+                                        </td>
+                                        <td style="border: 0px;padding: 4px">
+                                            <input type="radio" name="repeat" value="3" <?php if($row['rep']==3) echo "checked" ?>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td style="border: 0px;padding: 4px">
+                                            <g>Каждый год</g>
+                                        </td>
+                                        <td style="border: 0px;padding: 4px">
+                                            <input type="radio" name="repeat" value="4" <?php if($row['rep']==4) echo "checked" ?>
+                                        </td>
+                                    </tr>
+                                    </tbody>
+                                </table>
                             </td>
-                            <td style="border: 0px;padding: 4px">
-                                <select name="repeat" style="font-size:20px">
-                                    <option value="0" <?php if($row['rep']==0) echo "selected" ?> >Один раз</option>
-                                    <option value="1" <?php if($row['rep']==1) echo "selected" ?> >Каждый день</option>
-                                    <option value="2" <?php if($row['rep']==2) echo "selected" ?>>Каждую неделю</option>
-                                    <option value="3" <?php if($row['rep']==3) echo "selected" ?> >Каждый месяц</option>
-                                    <option value="4" <?php if($row['rep']==4) echo "selected" ?>>Каждый год</option>
-                                </select>
+                        </tr>
+                        <tr height="30px"></tr>
+                        <tr>
+                            <td style="border: 0px;padding-left: 8px;padding-right:20px">
+                                <g>Окончание повторов:</g>
+                            </td>
+                        </tr>
+                        <tr >
+                            <td style="border: 0px;">
+                                <table border="0">
+                                    <tbody>
+                                    <tr>
+                                        <td style="border: 0px;padding: 4px">
+                                            <g>Никогда</g>
+                                        </td>
+                                        <td style="border: 0px;padding: 4px">
+                                            <input type="checkbox" name="never" id="never" onclick="if_never()">  <?php /*if($row['rep']==1) echo "checked" */?>
+                                        </td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+                            </td>
+                        </tr>
+                        <tr id="x_rep">
+                            <td style="border: 0px;">
+                                <table border="0">
+                                    <tbody>
+                                    <tr>
+                                        <td style="border: 0px;padding: 4px">
+                                            <select name="x_rep_date" style="font-size:20px">
+                                                <option value=""></option>
+                                                <option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option><option value="6">6</option><option value="7">7</option><option value="8">8</option><option value="9">9</option>
+                                                <option value="10">10</option><option value="11">11</option><option value="12">12</option><option value="13">13</option><option value="14">14</option><option value="15">15</option><option value="16">16</option><option value="17">17</option><option value="18">18</option><option value="19">19</option>
+                                                <option value="20">20</option><option value="21">21</option><option value="22">22</option><option value="23">23</option><option value="24">24</option><option value="25">25</option><option value="26">26</option><option value="27">27</option><option value="28">28</option><option value="29">29</option>
+                                                <option value="30">30</option><option value="31">31</option>
+                                            </select>
+                                        </td>
+                                        <td style="border: 0px;padding: 4px">
+                                            <select name="x_rep_month" style="font-size:20px;text-align: center">
+                                                <option value=""></option>
+                                                <option value="1">январь</option><option value="2">февраль</option><option value="3">март</option><option value="4">апрель</option><option value="5">май</option><option value="6">июнь</option><option value="7">июль</option><option value="8">август</option><option value="9">сентябрь</option>
+                                                <option value="10">октябрь</option><option value="11">ноябрь</option><option value="12">декабрь</option>
+                                            </select>
+                                        </td>
+                                        <td style="border: 0px;padding: 4px">
+                                            <select name="x_rep_year" style="font-size:20px">
+                                                <option value=""></option>
+                                                <option value="2013">2013</option><option value="2014">2014</option><option value="2015">2015</option><option value="2016">2016</option><option value="2017">2017</option><option value="2018">2018</option><option value="2019">2019</option>
+                                                <option value="2020">2020</option>
+                                            </select>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td style="border: 0px;padding: 4px;text-align: center">Число</td>
+                                        <td style="border: 0px;padding: 4px;text-align: center">Месяц</td>
+                                        <td style="border: 0px;padding: 4px;text-align: center">Год</td>
+                                    </tr>
+                                    </tbody>
+                                </table>
                             </td>
                         </tr>
                         </tbody>
@@ -241,4 +339,18 @@
     </table>
 </form>
 </body>
+<script type="text/javascript">
+    function checke(){
+        if (document.getElementById('check').checked)
+            document.getElementById("tr").style.display="table-row";
+        else
+            document.getElementById("tr").style.display="none";
+    }
+    function if_never(){
+        if (document.getElementById('never').checked)
+            document.getElementById("x_rep").style.display="none";
+        else
+            document.getElementById("x_rep").style.display="table-row";
+    }
+</script>
 </html>

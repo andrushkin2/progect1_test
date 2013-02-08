@@ -42,7 +42,7 @@
 		
 		}
   }
-	$tim=mysql_query("select nextDate,rep,xDate from admin where name='$num'");
+	$tim=mysql_query("select nextDate,rep,xDate,end_rep,never_rep from admin where name='$num'");
 	$row=mysql_fetch_array($tim);
     $xt=explode("-",$row['xDate']);
 	$t=explode("-",$row['nextDate']);
@@ -50,6 +50,7 @@
 			echo "GOOD";
 		else
 			echo "BAD";
+
 	if ($row['rep']==0){
 		$t1 = date("Y-m-d",mktime('0','0','0',$t[1],$t[2],$t[0]));
 		$t2 = date("Y-m-d",mktime('0','0','0',$xt[1],$xt[2],$xt[0]));
@@ -58,37 +59,95 @@
 		else
 			echo "BAD";
 	}
-	if ($row['rep']==1){
-		$t1 = date("Y-m-d",mktime('0','0','0',$t[1],$t[2]+1,$t[0]));
-        $t2 = date("Y-m-d",mktime('0','0','0',$xt[1],$xt[2]+1,$xt[0]));
-		if (mysql_query("UPDATE admin set nextDate='$t1',xDate='$t2' where name='$num'"))
-			echo "GOOD";
-		else
-			echo "BAD";
-	}
-	if ($row['rep']==2){
-		$t1 = date("Y-m-d",mktime('0','0','0',$t[1],$t[2]+7,$t[0]));
-        $t2 = date("Y-m-d",mktime('0','0','0',$xt[1],$xt[2]+7,$xt[0]));
-		if (mysql_query("UPDATE admin set nextDate='$t1',xDate='$t2' where name='$num'"))
-			echo "GOOD";
-		else
-			echo "BAD";
-	}
-	if ($row['rep']==3){
-		$t1 = date("Y-m-d",mktime('0','0','0',$t[1]+1,$t[2],$t[0]));
-        $t2 = date("Y-m-d",mktime('0','0','0',$xt[1]+1,$xt[2],$xt[0]));
-		if (mysql_query("UPDATE admin set nextDate='$t1',xDate='$t2' where name='$num'"))
-			echo "GOOD";
-		else
-			echo "BAD";
-	}
-if ($row['rep']==4){
-    $t1 = date("Y-m-d",mktime('0','0','0',$t[1],$t[2],$t[0]+1));
-    $t2 = date("Y-m-d",mktime('0','0','0',$xt[1],$xt[2],$xt[0]+1));
-    if (mysql_query("UPDATE admin set nextDate='$t1',xDate='$t2' where name='$num'"))
-        echo "GOOD";
+    else{
+        if ($row['never_rep']==1){
+            if ($row['rep']==1){
+                $t1 = date("Y-m-d",mktime('0','0','0',$t[1],$t[2]+1,$t[0]));
+                $t2 = date("Y-m-d",mktime('0','0','0',$xt[1],$xt[2]+1,$xt[0]));
+                if (mysql_query("UPDATE admin set nextDate='$t1',xDate='$t2' where name='$num'"))
+                    echo "GOOD";
+                else
+                    echo "BAD";
+            }
+            if ($row['rep']==2){
+                $t1 = date("Y-m-d",mktime('0','0','0',$t[1],$t[2]+7,$t[0]));
+                $t2 = date("Y-m-d",mktime('0','0','0',$xt[1],$xt[2]+7,$xt[0]));
+                if (mysql_query("UPDATE admin set nextDate='$t1',xDate='$t2' where name='$num'"))
+                    echo "GOOD";
+                else
+                    echo "BAD";
+            }
+            if ($row['rep']==3){
+                $t1 = date("Y-m-d",mktime('0','0','0',$t[1]+1,$t[2],$t[0]));
+                $t2 = date("Y-m-d",mktime('0','0','0',$xt[1]+1,$xt[2],$xt[0]));
+                if (mysql_query("UPDATE admin set nextDate='$t1',xDate='$t2' where name='$num'"))
+                    echo "GOOD";
+                else
+                    echo "BAD";
+            }
+            if ($row['rep']==4){
+                $t1 = date("Y-m-d",mktime('0','0','0',$t[1],$t[2],$t[0]+1));
+                $t2 = date("Y-m-d",mktime('0','0','0',$xt[1],$xt[2],$xt[0]+1));
+                if (mysql_query("UPDATE admin set nextDate='$t1',xDate='$t2' where name='$num'"))
+                    echo "GOOD";
+                else
+                    echo "BAD";
+            }
+        }
+        else{
+            if ($row['rep']==1){
+                $t1 = date("Y-m-d",mktime('0','0','0',$t[1],$t[2]+1,$t[0]));
+                $t2 = date("Y-m-d",mktime('0','0','0',$xt[1],$xt[2]+1,$xt[0]));
+                if (equal_date($t1,$row['end_rep']))
+                    if (mysql_query("UPDATE admin set nextDate='$t1',xDate='$t2' where name='$num'"))
+                        echo "GOOD";
+                    else
+                        echo "BAD";
+            }
+            if ($row['rep']==2){
+                $t1 = date("Y-m-d",mktime('0','0','0',$t[1],$t[2]+7,$t[0]));
+                $t2 = date("Y-m-d",mktime('0','0','0',$xt[1],$xt[2]+7,$xt[0]));
+                if (equal_date($t1,$row['end_rep']))
+                    if (mysql_query("UPDATE admin set nextDate='$t1',xDate='$t2' where name='$num'"))
+                        echo "GOOD";
+                    else
+                        echo "BAD";
+            }
+            if ($row['rep']==3){
+                $t1 = date("Y-m-d",mktime('0','0','0',$t[1]+1,$t[2],$t[0]));
+                $t2 = date("Y-m-d",mktime('0','0','0',$xt[1]+1,$xt[2],$xt[0]));
+                if (equal_date($t1,$row['end_rep']))
+                    if (mysql_query("UPDATE admin set nextDate='$t1',xDate='$t2' where name='$num'"))
+                        echo "GOOD";
+                    else
+                        echo "BAD";
+            }
+            if ($row['rep']==4){
+                $t1 = date("Y-m-d",mktime('0','0','0',$t[1],$t[2],$t[0]+1));
+                $t2 = date("Y-m-d",mktime('0','0','0',$xt[1],$xt[2],$xt[0]+1));
+                if (equal_date($t1,$row['end_rep']))
+                    if (mysql_query("UPDATE admin set nextDate='$t1',xDate='$t2' where name='$num'"))
+                        echo "GOOD";
+                    else
+                        echo "BAD";
+            }
+        }
+    }
+
+function equal_date($next,$end){
+    $next=explode('-',$next);
+    $end=explode('-',$end);
+    if($next[0]<$end[0])
+        return true;
     else
-        echo "BAD";
+        if($next[0]=$end[0] && $next[1]<$end[1])
+            return true;
+        else
+            if ($next[0]=$end[0] && $next[1]=$end[1] && $next[2]<=$end[2])
+                return true;
+            else
+                return false;
+    return false;
 }
   //mysql_close();
 ?>  

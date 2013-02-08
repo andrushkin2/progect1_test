@@ -232,7 +232,7 @@
                                             <g>Каждый день</g>
                                         </td>
                                         <td style="border: 0px;padding: 4px">
-                                            <input type="radio" name="repeat" value="1" <?php if($row['rep']==1) echo "checked" ?>
+                                            <input type="radio" name="repeat" value="1" <?php if($row['rep']==1) echo "checked" ?>>
                                         </td>
                                     </tr>
                                     <tr>
@@ -240,7 +240,7 @@
                                             <g>Каждую неделю</g>
                                         </td>
                                         <td style="border: 0px;padding: 4px">
-                                            <input type="radio" name="repeat" value="2" <?php if($row['rep']==2) echo "checked" ?>
+                                            <input type="radio" name="repeat" value="2" <?php if($row['rep']==2) echo "checked" ?>>
                                         </td>
                                     </tr>
                                     <tr>
@@ -248,7 +248,7 @@
                                             <g>Каждый месяц</g>
                                         </td>
                                         <td style="border: 0px;padding: 4px">
-                                            <input type="radio" name="repeat" value="3" <?php if($row['rep']==3) echo "checked" ?>
+                                            <input type="radio" name="repeat" value="3" <?php if($row['rep']==3) echo "checked" ?>>
                                         </td>
                                     </tr>
                                     <tr>
@@ -256,7 +256,7 @@
                                             <g>Каждый год</g>
                                         </td>
                                         <td style="border: 0px;padding: 4px">
-                                            <input type="radio" name="repeat" value="4" <?php if($row['rep']==4) echo "checked" ?>
+                                            <input type="radio" name="repeat" value="4" <?php if($row['rep']==4) echo "checked" ?>>
                                         </td>
                                     </tr>
                                     </tbody>
@@ -278,14 +278,14 @@
                                             <g>Никогда</g>
                                         </td>
                                         <td style="border: 0px;padding: 4px">
-                                            <input type="checkbox" name="never" id="never" onclick="if_never()">  <?php /*if($row['rep']==1) echo "checked" */?>
+                                            <input type="checkbox" name="never" id="never" onclick="if_never()" <?php if($row['never_rep']==1) echo "checked" ?>>
                                         </td>
                                     </tr>
                                     </tbody>
                                 </table>
                             </td>
                         </tr>
-                        <tr id="x_rep">
+                        <tr id="x_rep" style="display: <?php if($row['never_rep']==1) echo "none"; else echo "table-row"; ?>">
                             <td style="border: 0px;">
                                 <table border="0">
                                     <tbody>

@@ -12,11 +12,21 @@ $xyear=$_POST['xyear'];
 $xhours=$_POST['xhours'];
 $xminutes=$_POST['xminutes'];
 $repeat=$_POST['repeat'];
+$x_rep_date=$_POST['x_rep_date'];
+$x_rep_year=$_POST['x_rep_year'];
+$x_rep_month=$_POST['x_rep_month'];
 $check=$_POST['check'];
+if ($_POST['never'])
+    $never=1;
+else
+    $never=0;
 mysql_connect('localhost','saltoext_salto','5700');
 mysql_select_db('saltoext_salto1') or die(mysql_error());
 if ($kol!="")
     mysql_query("UPDATE admin set maxCol ='$kol' where name='$num'");//tut
+
+
+mysql_query("UPDATE admin set never_rep ='$never' where name='$num'");//tut
 
 
     $flag=true;
@@ -46,7 +56,8 @@ if ($kol!="")
         if (mysql_query($a))
             echo "GOOD a";
     }
-    $date=mysql_query("select year,month,day,Time,xDate,xTime from admin where name='$num'");//tut
+
+    $date=mysql_query("select year,month,day,Time,xDate,xTime,never_rep,end_rep from admin where name='$num'");//tut
     $row=mysql_fetch_array($date);
     $t3 = date("Y-m-d",mktime('0','0','0',$row['month'],$row['day'],$row['year']));
     $t3=explode("-",$t3);
@@ -56,6 +67,16 @@ if ($kol!="")
     if ($minutes!="")
         $tim[1]=$minutes;
     mysql_query("UPDATE admin set Time ='$tim[0]:$tim[1]',day='$t3[2]',month='$t3[1]',year='$t3[0]' where name='$num'");//tut
+
+    $end_rep_all=explode('-',$row['end_rep']);
+if ($x_rep_date!="")
+    $end_rep_all[2]=$x_rep_date;
+if($x_rep_month!="")
+    $end_rep_all[1]=$x_rep_month;
+if ($x_rep_year!="")
+    $end_rep_all[0]=$x_rep_year;
+mysql_query("UPDATE admin set end_rep='$end_rep_all[0]-$end_rep_all[1]-$end_rep_all[2]' where name='$num'");//tut
+
 
     $xdat=explode("-",$row['xDate']);
     $xtim=explode(":",$row['xTime']);
@@ -71,7 +92,7 @@ if ($kol!="")
         $xtim[1]=$xminutes;
     mysql_query("UPDATE admin set xTime ='$xtim[0]:$xtim[1]',xDate='$xdat[0]-$xdat[1]-$xdat[2]' where name='$num'");//tut
 
-    if (!$check){
+    if (!$check){   //если повторять checked=false
         $t = date("Y-m-d",mktime('0','0','0',$row['month'],$row['day'],$row['year']));
         if (mysql_query("UPDATE admin set nextDate='$t' where name='$num'"))
             echo "GOOD";
@@ -79,39 +100,91 @@ if ($kol!="")
             echo "BAD";
         mysql_query("UPDATE admin set rep='0' where name='$num'");
     }
-    else{
-        if ($repeat==1){
-            $t = date("Y-m-d",mktime('0','0','0',$row['month'],$row['day']+1,$row['year']));
-            if (mysql_query("UPDATE admin set nextDate='$t' where name='$num'"))
-                echo "GOOD";
-            else
-                echo "BAD";
-        }
-        if ($repeat==2){
-            $t = date("Y-m-d",mktime('0','0','0',$row['month'],$row['day']+7,$row['year']));
-            if (mysql_query("UPDATE admin set nextDate='$t' where name='$num'"))
-                echo "GOOD";
-            else
-                echo "BAD";
-        }
-        if ($repeat==3){
-            $t = date("Y-m-d",mktime('0','0','0',$row['month']+1,$row['day'],$row['year']));
-            if (mysql_query("UPDATE admin set nextDate='$t' where name='$num'"))
-                echo "GOOD";
-            else
-                echo "BAD";
-        }
-        if ($repeat==4){
-            $t = date("Y-m-d",mktime('0','0','0',$row['month'],$row['day'],$row['year']+1));
-            if (mysql_query("UPDATE admin set nextDate='$t' where name='$num'"))
-                echo "GOOD";
-            else
-                echo "BAD";
-        }
-        mysql_query("UPDATE admin set rep='$repeat' where name='$num'");
+    else{ // если повторять checked=true
+        if ($row['never_rep']==1){ //если окончания повторов нет
+            if ($repeat==1){
+                $t = date("Y-m-d",mktime('0','0','0',$row['month'],$row['day']+1,$row['year']));
+                if (mysql_query("UPDATE admin set nextDate='$t' where name='$num'"))
+                    echo "GOOD";
+                else
+                    echo "BAD";
+            }
+            if ($repeat==2){
+                $t = date("Y-m-d",mktime('0','0','0',$row['month'],$row['day']+7,$row['year']));
+                if (mysql_query("UPDATE admin set nextDate='$t' where name='$num'"))
+                    echo "GOOD";
+                else
+                    echo "BAD";
+            }
+            if ($repeat==3){
+                $t = date("Y-m-d",mktime('0','0','0',$row['month']+1,$row['day'],$row['year']));
+                if (mysql_query("UPDATE admin set nextDate='$t' where name='$num'"))
+                    echo "GOOD";
+                else
+                    echo "BAD";
+            }
+            if ($repeat==4){
+                $t = date("Y-m-d",mktime('0','0','0',$row['month'],$row['day'],$row['year']+1));
+                if (mysql_query("UPDATE admin set nextDate='$t' where name='$num'"))
+                    echo "GOOD";
+                else
+                    echo "BAD";
+            }
+            mysql_query("UPDATE admin set rep='$repeat' where name='$num'");
+        }//если окончания повторов...
+        else{  //если окончание повторов есть
+            if ($repeat==1){
+                $t = date("Y-m-d",mktime('0','0','0',$row['month'],$row['day']+1,$row['year']));
+                if (equal_date($t,'$end_rep_all[0]-$end_rep_all[1]-$end_rep_all[2]'))
+                    if (mysql_query("UPDATE admin set nextDate='$t' where name='$num'"))
+                        echo "GOOD";
+                    else
+                        echo "BAD";
+            }
+            if ($repeat==2){
+                $t = date("Y-m-d",mktime('0','0','0',$row['month'],$row['day']+7,$row['year']));
+                if (equal_date($t,'$end_rep_all[0]-$end_rep_all[1]-$end_rep_all[2]'))
+                    if (mysql_query("UPDATE admin set nextDate='$t' where name='$num'"))
+                        echo "GOOD";
+                    else
+                        echo "BAD";
+            }
+            if ($repeat==3){
+                $t = date("Y-m-d",mktime('0','0','0',$row['month']+1,$row['day'],$row['year']));
+                if (equal_date($t,'$end_rep_all[0]-$end_rep_all[1]-$end_rep_all[2]'))
+                    if (mysql_query("UPDATE admin set nextDate='$t' where name='$num'"))
+                        echo "GOOD";
+                    else
+                        echo "BAD";
+            }
+            if ($repeat==4){
+                $t = date("Y-m-d",mktime('0','0','0',$row['month'],$row['day'],$row['year']+1));
+                if (equal_date($t,'$end_rep_all[0]-$end_rep_all[1]-$end_rep_all[2]'))
+                    if (mysql_query("UPDATE admin set nextDate='$t' where name='$num'"))
+                        echo "GOOD";
+                    else
+                        echo "BAD";
+            }
+            mysql_query("UPDATE admin set rep='$repeat' where name='$num'");
+        } //если окончание повторов...
     }
 
 echo "<form method=GET action=1.php><input type=hidden name=num value=$num><input type=submit id=1 onclick='document.getElementById(1).click();' value=Назад style=font-size:22px></form>";
+function equal_date($next,$end){
+    $next=explode('-',$next);
+    $end=explode('-',$end);
+    if($next[0]<$end[0])
+        return true;
+    else
+        if($next[0]=$end[0] && $next[1]<$end[1])
+            return true;
+        else
+            if ($next[0]=$end[0] && $next[1]=$end[1] && $next[2]<=$end[2])
+                return true;
+            else
+                return false;
+    return false;
+}
 ?>
 <script type="text/javascript">
     document.getElementById(1).click();

@@ -221,7 +221,7 @@
             </tr>
             <tr id="tr" style="display: <?php if($row['rep']!=0) echo "table-row"; else echo "none"?> ">
                 <td style="border: 0px;padding-left: 20px;padding-right: 20px">
-                    <table border="2" style="width: 423px">
+                    <table border="2" style="width: 432px">
                         <tbody>
                         <tr >
                             <td style="border: 0px;">
@@ -290,6 +290,9 @@
                                 <table border="0">
                                     <tbody>
                                     <tr>
+                                        <td style="border: 0px">
+                                            <g>Дата: <?php $t1=explode("-",$row['end_rep']);echo $t1[2]."-".$t1[1]."-".$t1[0]?> </g>
+                                        </td>
                                         <td style="border: 0px;padding: 4px">
                                             <select name="x_rep_date" style="font-size:20px">
                                                 <option value=""></option>
@@ -315,6 +318,7 @@
                                         </td>
                                     </tr>
                                     <tr>
+                                        <td></td>
                                         <td style="border: 0px;padding: 4px;text-align: center">Число</td>
                                         <td style="border: 0px;padding: 4px;text-align: center">Месяц</td>
                                         <td style="border: 0px;padding: 4px;text-align: center">Год</td>

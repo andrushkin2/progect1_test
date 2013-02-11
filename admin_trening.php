@@ -6,16 +6,24 @@
 <body>
 	<form action="checkbox-form.php" method="post" name="form1">
 	<?php
-		$num=$_GET['num'];
+		$num=$_POST['num'];
+        $login=$_POST['login'];
+        $pass=$_POST['pass'];
+        if ($login=="" || $pass=="")
+            echo "<form method='GET' action='1.php' name='f'>
+                        <input type='submit' id='1' style='font-size:22px;visibility: hidden'></form>
+                        <script>document.getElementById(1).click();</script>";
 		echo "<input type=hidden name=num value=$num>";
+        echo "<input type=hidden name=login value=$login>";
+        echo "<input type=hidden name=pass value=$pass>";
 	?>
 	<table align="left">
     <tbody>
     <tr><td>№</td><td><g style="cursor:pointer" onClick="sortt('fam','asc')">Фамилия</g></td><td>Имя</td><td>Год</td><td>Номер телефона</td><td><g style="cursor:pointer" onClick="sortt('avalible','desc')">Пришел</g></td><td>Не пришел</td></tr>
 	<?php
-		$num=$_GET['num'];
-		$sort=$_GET['sort'];
-		$fl=$_GET['fl'];
+		$num=$_POST['num'];
+		$sort=$_POST['sort'];
+		$fl=$_POST['fl'];
 		mysql_connect('localhost','saltoext_salto','5700');
     	mysql_select_db('saltoext_salto1') or die(mysql_error());
 		$avalible="select * from admin where name='$num'";//tut
@@ -55,14 +63,16 @@
     </table>
     </form>
     <?php
-        echo "<form action=admin_trening.php method=GET name=form2><input type=hidden name=num value=$num><input type=hidden name=sort><input type=hidden name=fl></form>";
+        echo "<form action=admin_trening.php method=post name=form2><input type=hidden name=num value=$num>
+        <input type=hidden name=login value=$login><input type=hidden name=pass value=$pass>
+            <input type=hidden name=sort><input type=hidden name=fl></form>";
     ?>
     <br><br>
     <script>for ($i=0;$i<document.getElementById(1000).value;$i++) document.write("<br>")  
     </script>
     <p align="left"><input type="button" id="500" value="Закончить тренировку" style="font-size:16px" onClick="document.getElementById(333).style.visibility='visible';document.getElementById(3331).style.visibility='visible';"></p>
     <div id="333" align="right" style="position:fixed;border:dotted;background-color:#333;border-color:#F00;top:30%;width:400px;height:185px;visibility:hidden">
-	<div id="3331" style="position:static;visibility:hidden">
+	<div id="3331" modal='true' style="position:static;visibility:hidden">
     	<p id="99" align="center" style="font-size:28px;color:#FFF">Вы уверены,что хотите закночить тренировку?</p>
         <p align="center">  
           <input type="button" value="Да" onClick="document.forms['form1'].submit();" style="font-size:24px"> 

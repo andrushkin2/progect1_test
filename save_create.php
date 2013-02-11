@@ -1,3 +1,13 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd"><html>
+<head>
+    <script src="js/jquery.js" type="text/javascript"></script>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <title>Новое событие</title>
+    <style type="text/css">
+        g{font-size: 20px;display: none;color: red}
+    </style>
+</head>
+<body>
 <?php
 $login=$_POST['login'];
 $pass=$_POST['pass'];
@@ -6,7 +16,6 @@ if ($login=="" || $pass=="")
                         <input type='submit' id='1' style='font-size:22px;visibility: hidden'></form>
                         <script>document.getElementById(1).click();</script>";
 $kol=$_POST['kol'];
-$num=$_POST['num'];
 $date=$_POST['date'];
 $month=$_POST['month'];
 $year=$_POST['year'];
@@ -28,9 +37,11 @@ else
     $never=0;
 mysql_connect('localhost','saltoext_salto','5700');
 mysql_select_db('saltoext_salto1') or die(mysql_error());
-if ($kol!="")
-    mysql_query("UPDATE admin set maxCol ='$kol' where name='$num'");//tut
 
+    $a1=mysql_query("insert into admin (maxCol,login,pass,aboniments) values ('$kol','$login','$pass','0')");//tut
+    $num=mysql_insert_id();
+echo "Код для вставки:<br>
+    <textarea cols='50' rows='7'><a href='http://salto.extreme.by/Project1/main.php?num=$num'><input type='button' value='+1' style='font-size:42px;color:red;fontWeight:bold'></a></textarea>";
 
 mysql_query("UPDATE admin set never_rep ='$never' where name='$num'");//tut
 
@@ -101,9 +112,9 @@ mysql_query("UPDATE admin set end_rep='$end_rep_all[0]-$end_rep_all[1]-$end_rep_
     if (!$check){   //если повторять checked=false
         $t = date("Y-m-d",mktime('0','0','0',$row['month'],$row['day'],$row['year']));
         if (mysql_query("UPDATE admin set nextDate='$t' where name='$num'"))
-            echo "GOOD";
+            echo "";
         else
-            echo "BAD";
+            echo "";
         mysql_query("UPDATE admin set rep='0' where name='$num'");
     }
     else{ // если повторять checked=true
@@ -111,30 +122,30 @@ mysql_query("UPDATE admin set end_rep='$end_rep_all[0]-$end_rep_all[1]-$end_rep_
             if ($repeat==1){
                 $t = date("Y-m-d",mktime('0','0','0',$row['month'],$row['day']+1,$row['year']));
                 if (mysql_query("UPDATE admin set nextDate='$t' where name='$num'"))
-                    echo "GOOD";
+                    echo "";
                 else
-                    echo "BAD";
+                    echo "";
             }
             if ($repeat==2){
                 $t = date("Y-m-d",mktime('0','0','0',$row['month'],$row['day']+7,$row['year']));
                 if (mysql_query("UPDATE admin set nextDate='$t' where name='$num'"))
-                    echo "GOOD";
+                    echo "";
                 else
-                    echo "BAD";
+                    echo "";
             }
             if ($repeat==3){
                 $t = date("Y-m-d",mktime('0','0','0',$row['month']+1,$row['day'],$row['year']));
                 if (mysql_query("UPDATE admin set nextDate='$t' where name='$num'"))
-                    echo "GOOD";
+                    echo "";
                 else
-                    echo "BAD";
+                    echo "";
             }
             if ($repeat==4){
                 $t = date("Y-m-d",mktime('0','0','0',$row['month'],$row['day'],$row['year']+1));
                 if (mysql_query("UPDATE admin set nextDate='$t' where name='$num'"))
-                    echo "GOOD";
+                    echo "";
                 else
-                    echo "BAD";
+                    echo "";
             }
             mysql_query("UPDATE admin set rep='$repeat' where name='$num'");
         }//если окончания повторов...
@@ -143,40 +154,39 @@ mysql_query("UPDATE admin set end_rep='$end_rep_all[0]-$end_rep_all[1]-$end_rep_
                 $t = date("Y-m-d",mktime('0','0','0',$row['month'],$row['day']+1,$row['year']));
                 if (equal_date($t,'$end_rep_all[0]-$end_rep_all[1]-$end_rep_all[2]'))
                     if (mysql_query("UPDATE admin set nextDate='$t' where name='$num'"))
-                        echo "GOOD";
+                        echo "";
                     else
-                        echo "BAD";
+                        echo "";
             }
             if ($repeat==2){
                 $t = date("Y-m-d",mktime('0','0','0',$row['month'],$row['day']+7,$row['year']));
                 if (equal_date($t,'$end_rep_all[0]-$end_rep_all[1]-$end_rep_all[2]'))
                     if (mysql_query("UPDATE admin set nextDate='$t' where name='$num'"))
-                        echo "GOOD";
+                        echo "";
                     else
-                        echo "BAD";
+                        echo "";
             }
             if ($repeat==3){
                 $t = date("Y-m-d",mktime('0','0','0',$row['month']+1,$row['day'],$row['year']));
                 if (equal_date($t,'$end_rep_all[0]-$end_rep_all[1]-$end_rep_all[2]'))
                     if (mysql_query("UPDATE admin set nextDate='$t' where name='$num'"))
-                        echo "GOOD";
+                        echo "";
                     else
-                        echo "BAD";
+                        echo "";
             }
             if ($repeat==4){
                 $t = date("Y-m-d",mktime('0','0','0',$row['month'],$row['day'],$row['year']+1));
                 if (equal_date($t,'$end_rep_all[0]-$end_rep_all[1]-$end_rep_all[2]'))
                     if (mysql_query("UPDATE admin set nextDate='$t' where name='$num'"))
-                        echo "GOOD";
+                        echo "";
                     else
-                        echo "BAD";
+                        echo "";
             }
             mysql_query("UPDATE admin set rep='$repeat' where name='$num'");
         } //если окончание повторов...
     }
-
-echo "<form method=post action=adm_page.php><input type=hidden name=login value=$login> <input type=hidden name=pass value=$pass>
-    <input type=submit id=1 onclick='document.getElementById(1).click();' value=Назад style=font-size:22px></form>";
+echo "<br><br><form method=post action=adm_page.php><input type=hidden name=login value=$login> <input type=hidden name=pass value=$pass>
+    <input type=submit id=1 onclick='document.getElementById(1).click();' value='Главное меню' style=font-size:22px></form>";
 function equal_date($next,$end){
     $next=explode('-',$next);
     $end=explode('-',$end);
@@ -194,5 +204,7 @@ function equal_date($next,$end){
 }
 ?>
 <script type="text/javascript">
-    document.getElementById(1).click();
+    //document.getElementById(1).click();
 </script>
+</body>
+</html>

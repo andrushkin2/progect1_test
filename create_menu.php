@@ -1,6 +1,7 @@
 ﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
+    <script src="js/jquery.js" type="text/javascript"></script>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>Администрирование</title>
     <style type="text/css">
@@ -27,20 +28,19 @@
     </style>
 </head>
 <?php
-    $num=$_POST['num'];
+    mysql_connect('localhost','saltoext_salto','5700');
+    mysql_select_db('saltoext_salto1') or die(mysql_error());
     $login=$_POST['login'];
     $pass=$_POST['pass'];
     if ($login=="" || $pass=="")
         echo "<form method='GET' action='1.php' name='f'>
                         <input type='submit' id='1' style='font-size:22px;visibility: hidden'></form>
                         <script>document.getElementById(1).click();</script>";
-    mysql_connect('localhost','saltoext_salto','5700');
-    mysql_select_db('saltoext_salto1') or die(mysql_error());
     $tim1=mysql_query("select * from admin where name='$num'");
     $row=mysql_fetch_array($tim1);
 ?>
 <body>
-<form name="form1" onsubmit="return false" action="change.php" method="POST">
+<form name="form1" onsubmit="return false" action="save_create.php" method="POST">
     <?php
         echo "<input type=hidden name=num value=$num>";
         echo "<input type=hidden name=login value=$login>";
@@ -75,9 +75,6 @@
                     <table border="2">
                         <tbody>
                             <tr>
-                                <td style="border: 0px">
-                                    <g>Дата: <?php echo $row['day']."-".$row['month']."-".$row['year']?> </g>
-                                </td>
                                 <td style="border: 0px;padding: 4px">
                                     <select name="date" style="font-size:20px">
                                         <option value=""></option>
@@ -103,16 +100,12 @@
                                 </td>
                             </tr>
                             <tr>
-                                <td style="border: 0px;padding: 4px;text-align: center"></td>
                                 <td style="border: 0px;padding: 4px;text-align: center">Число</td>
                                 <td style="border: 0px;padding: 4px;text-align: center">Месяц</td>
                                 <td style="border: 0px;padding: 4px;text-align: center">Год</td>
                             </tr>
                             <tr height="10px"></tr>
                             <tr>
-                                <td style="border: 0px;padding: 4px">
-                                    <g>Время: <?php $t=explode(":",$row['Time']);echo $t[0].":".$t[1];?></g>
-                                </td>
                                 <td style="border: 0px;padding: 4px">
                                     <select name="hours" style="font-size:20px">
                                         <option value=""></option>
@@ -134,7 +127,6 @@
                                 </td>
                             </tr>
                             <tr>
-                                <td style="border: 0px;padding: 4px;text-align: center"></td>
                                 <td style="border: 0px;padding: 4px;text-align: center">Часов</td>
                                 <td style="border: 0px;padding: 4px;text-align: center">Минут</td>
                             </tr>
@@ -153,9 +145,6 @@
                     <table border="2">
                         <tbody>
                         <tr>
-                            <td style="border: 0px">
-                                <g>Дата: <?php $t1=explode("-",$row['xDate']);echo $t1[2]."-".$t1[1]."-".$t1[0]?> </g>
-                            </td>
                             <td style="border: 0px;padding: 4px">
                                 <select name="xdate" style="font-size:20px">
                                     <option value=""></option>
@@ -181,16 +170,12 @@
                             </td>
                         </tr>
                         <tr>
-                            <td style="border: 0px;padding: 4px;text-align: center"></td>
                             <td style="border: 0px;padding: 4px;text-align: center">Число</td>
                             <td style="border: 0px;padding: 4px;text-align: center">Месяц</td>
                             <td style="border: 0px;padding: 4px;text-align: center">Год</td>
                         </tr>
                         <tr height="10px"></tr>
                         <tr>
-                            <td style="border: 0px;padding: 4px">
-                                <g>Время: <?php $t=explode(":",$row['xTime']);echo $t[0].":".$t[1];?></g>
-                            </td>
                             <td style="border: 0px;padding: 4px">
                                 <select name="xhours" style="font-size:20px">
                                     <option value=""></option>
@@ -212,7 +197,6 @@
                             </td>
                         </tr>
                         <tr>
-                            <td style="border: 0px;padding: 4px;text-align: center"></td>
                             <td style="border: 0px;padding: 4px;text-align: center">Часов</td>
                             <td style="border: 0px;padding: 4px;text-align: center">Минут</td>
                         </tr>
@@ -298,9 +282,6 @@
                                 <table border="0">
                                     <tbody>
                                     <tr>
-                                        <td style="border: 0px">
-                                            <g>Дата: <?php $t1=explode("-",$row['end_rep']);echo $t1[2]."-".$t1[1]."-".$t1[0]?> </g>
-                                        </td>
                                         <td style="border: 0px;padding: 4px">
                                             <select name="x_rep_date" style="font-size:20px">
                                                 <option value=""></option>
@@ -326,7 +307,6 @@
                                         </td>
                                     </tr>
                                     <tr>
-                                        <td></td>
                                         <td style="border: 0px;padding: 4px;text-align: center">Число</td>
                                         <td style="border: 0px;padding: 4px;text-align: center">Месяц</td>
                                         <td style="border: 0px;padding: 4px;text-align: center">Год</td>
@@ -342,7 +322,7 @@
             <tr height="20px"></tr>
             <tr align="right">
                 <td style="border: 0px;padding-left: 20px;padding-right: 20px">
-                    <input type="button" class="but"  onclick="cancel_back()" value="Отменить"/>
+                    <input type="button" class="but" onclick="cancel_back()" value="Отменить"/>
                     <g style="visibility: hidden">aaa</g>
                     <input type="button" class="but" value="Применить" onclick="document.forms['form1'].submit();"/>
                 </td>
@@ -364,9 +344,9 @@
         else
             document.getElementById("x_rep").style.display="table-row";
     }
-    function cancel_back(){
-        document.forms['form1'].action='adm_page.php';
-        document.forms['form1'].submit();
-    }
+        function cancel_back(){
+            document.forms['form1'].action='adm_page.php';
+            document.forms['form1'].submit();
+        }
 </script>
 </html>

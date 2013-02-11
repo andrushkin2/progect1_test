@@ -47,7 +47,7 @@ if ($login=="" || $pass=="")
                         <g>Тренировка:</g>
                     </td>
                     <td style="border: 0px;padding: 4px">
-                        <form action="" method="get" name='form1' onsubmit="return false">
+                        <form action="" method="post" name='form1' onsubmit="return false">
                             <select name='num'>
                                 <?php
                                 mysql_connect('localhost','saltoext_salto','5700');
@@ -59,6 +59,10 @@ if ($login=="" || $pass=="")
                                 }
                                 ?>
                             </select>
+                            <?php
+                                        echo "<input type=hidden name=login value=$login>";
+                                        echo "<input type=hidden name=pass value=$pass>";
+                            ?>
                         </form>
                     </td>
                 </tr>
@@ -92,6 +96,10 @@ if ($login=="" || $pass=="")
         });
         $('#change').click(function(){
             document.forms['form1'].action='admin_menu1.php';
+            document.forms['form1'].submit();
+        });
+        $('#new_trening').click(function(){
+            document.forms['form1'].action='create_menu.php';
             document.forms['form1'].submit();
         });
     });

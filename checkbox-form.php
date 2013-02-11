@@ -5,6 +5,12 @@
 </head>
 <body>
 <?php
+$login=$_POST['login'];
+$pass=$_POST['pass'];
+if ($login=="" || $pass=="")
+    echo "<form method='GET' action='1.php' name='f'>
+                        <input type='submit' id='1' style='font-size:22px;visibility: hidden'></form>
+                        <script>document.getElementById(1).click();</script>";
 	mysql_connect('localhost','saltoext_salto','5700');
     mysql_select_db('saltoext_salto1') or die(mysql_error());
     $num=$_POST['num'];
@@ -150,6 +156,9 @@ function equal_date($next,$end){
     return false;
 }
   //mysql_close();
+echo "<form name='form14' method=post action=adm_page.php><input type=hidden name=login value=$login> <input type=hidden name=pass value=$pass>
+    <input type=submit id=1 onclick='document.getElementById(1).click();' value=Назад style=font-size:22px></form>
+    <script>document.forms['form14'].submit();</script>";
 ?>  
 
 </body>

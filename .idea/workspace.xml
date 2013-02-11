@@ -3,13 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="24449337-a8ce-4f8d-b7a9-f3f9403b383c" name="Default" comment="">
       <change type="DELETED" beforePath="$PROJECT_DIR$/admin_menu.php" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/adm_page.php" afterPath="$PROJECT_DIR$/adm_page.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/admin_menu1.php" afterPath="$PROJECT_DIR$/admin_menu1.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/admin_trening.php" afterPath="$PROJECT_DIR$/admin_trening.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/change.php" afterPath="$PROJECT_DIR$/change.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/checkbox-form.php" afterPath="$PROJECT_DIR$/checkbox-form.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/index1.html" afterPath="$PROJECT_DIR$/index1.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/save_create.php" afterPath="$PROJECT_DIR$/save_create.php" />
     </list>
     <ignored path="progect1_test.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -72,14 +66,14 @@
       <file leaf-file-name="save_create.php" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/save_create.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="39" column="0" selection-start="1297" selection-end="1297" vertical-scroll-proportion="0.48913044">
+            <state line="73" column="18" selection-start="2295" selection-end="2295" vertical-scroll-proportion="0.8423913">
               <folding>
-                <marker date="1360569711857" expanded="true" signature="526:628" placeholder="..." />
-                <marker date="1360569711857" expanded="true" signature="587:620" placeholder="..." />
-                <marker date="1360569711857" expanded="true" signature="1601:1641" placeholder="..." />
-                <marker date="1360569711857" expanded="true" signature="7208:7417" placeholder="..." />
-                <marker date="1360569711857" expanded="true" signature="7396:7410" placeholder="..." />
-                <marker date="1360569711857" expanded="true" signature="7858:7909" placeholder="..." />
+                <marker date="1360570396429" expanded="true" signature="526:628" placeholder="..." />
+                <marker date="1360570396429" expanded="true" signature="587:620" placeholder="..." />
+                <marker date="1360570396429" expanded="true" signature="1601:1641" placeholder="..." />
+                <marker date="1360570396429" expanded="true" signature="7204:7413" placeholder="..." />
+                <marker date="1360570396429" expanded="true" signature="7392:7406" placeholder="..." />
+                <marker date="1360570396429" expanded="true" signature="7854:7905" placeholder="..." />
               </folding>
             </state>
           </provider>
@@ -488,14 +482,14 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/save_create.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="39" column="0" selection-start="1297" selection-end="1297" vertical-scroll-proportion="0.48913044">
+        <state line="73" column="18" selection-start="2295" selection-end="2295" vertical-scroll-proportion="0.8423913">
           <folding>
-            <marker date="1360569711857" expanded="true" signature="526:628" placeholder="..." />
-            <marker date="1360569711857" expanded="true" signature="587:620" placeholder="..." />
-            <marker date="1360569711857" expanded="true" signature="1601:1641" placeholder="..." />
-            <marker date="1360569711857" expanded="true" signature="7208:7417" placeholder="..." />
-            <marker date="1360569711857" expanded="true" signature="7396:7410" placeholder="..." />
-            <marker date="1360569711857" expanded="true" signature="7858:7909" placeholder="..." />
+            <marker date="1360570396429" expanded="true" signature="526:628" placeholder="..." />
+            <marker date="1360570396429" expanded="true" signature="587:620" placeholder="..." />
+            <marker date="1360570396429" expanded="true" signature="1601:1641" placeholder="..." />
+            <marker date="1360570396429" expanded="true" signature="7204:7413" placeholder="..." />
+            <marker date="1360570396429" expanded="true" signature="7392:7406" placeholder="..." />
+            <marker date="1360570396429" expanded="true" signature="7854:7905" placeholder="..." />
           </folding>
         </state>
       </provider>

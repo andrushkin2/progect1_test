@@ -69,9 +69,9 @@ mysql_query("UPDATE admin set never_rep ='$never' where name='$num'");//tut
     }
     if (!$flag){
         $a.=" where name='$num'";
-        echo $a;
+        //echo $a;
         if (mysql_query($a))
-            echo "GOOD a";
+            echo "";
     }
 
     $date=mysql_query("select year,month,day,Time,xDate,xTime,never_rep,end_rep from admin where name='$num'");//tut

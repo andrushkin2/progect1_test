@@ -15,6 +15,7 @@ if ($login=="" || $pass=="")
     echo "<form method='GET' action='1.php' name='f'>
                         <input type='submit' id='1' style='font-size:22px;visibility: hidden'></form>
                         <script>document.getElementById(1).click();</script>";
+$pass_admin=$_POST['pass_admin'];
 $kol=$_POST['kol'];
 $date=$_POST['date'];
 $month=$_POST['month'];
@@ -37,8 +38,11 @@ else
     $never=0;
 mysql_connect('localhost','saltoext_salto','5700');
 mysql_select_db('saltoext_salto1') or die(mysql_error());
-
-    $a1=mysql_query("insert into admin (maxCol,login,pass,aboniments) values ('$kol','$login','$pass','0')");//tut
+ $re=mysql_query("select * from admin where login='$login' and pass='$pass'");
+$res=mysql_fetch_array($re,MYSQL_ASSOC);
+$org=$res['organization'];
+$url_site=$res['url_site'];
+    $a1=mysql_query("insert into admin (maxCol,login,pass,aboniments,organization,url_site,trening_code) values ('$kol','$login','$pass','0','$org','$url_site','$pass_admin')");//tut
     $num=mysql_insert_id();
 echo "Код для вставки:<br>
     <textarea cols='50' rows='7'><a href='http://salto.extreme.by/Project1/main.php?num=$num'><input type='button' value='+1' style='font-size:42px;color:red;fontWeight:bold'></a></textarea>";

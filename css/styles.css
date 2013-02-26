@@ -1,0 +1,27 @@
+body{
+    height: 100%;
+    width: 100%;
+}
+.blocks_space{
+    height: auto;
+
+    width: 100%;
+    background: #5f9ea0;
+    margin: 50px auto;
+}
+.inline_space{
+
+}
+div{
+    border-radius: 20px;
+    -webkit-border-radius: 20px;
+    -moz-border-radius: 20px;
+
+}
+.but{
+    font-size: 22px !important;
+    -webkit-border-radius:35px !important;
+    -khtml-border-radius: 35px !important;
+    -moz-border-radius: 35px !important;
+    border-radius: 35px !important;
+}

@@ -2,6 +2,8 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <link rel="stylesheet" href="css/styles.css" type="text/css" media="screen" charset="utf-8">
+    <script type="text/javascript" src='js/jquery.js' charset="utf-8"></script>
 <title>Регистрация:ввод номера</title>
 <style type="text/css">
 textarea{resize:none};
@@ -48,6 +50,7 @@ textarea{resize:none};
 	#table35 tr .texte p .auto-style3 {
 	font-size: 12px;
 	font-family: "Times New Roman", Times, serif;
+    }
 }
 </style>
 
@@ -182,11 +185,11 @@ textarea{resize:none};
             							</select>
             							<input type="hidden" id="key1" name="key" value="">
 										<input type="hidden" id="8" name="kode" value="">
-                 						<input type="text" id="4" name="Phone"  size="7" maxlength="7" style="font-size:18px">
+                 						<input type="text" id="4" name="Phone"  size="7" style="font-size:18px">
                                         <?php /*?><input type="submit" id="10" value="Chek" style="visibility:hidden;"><?php */?>
                                         <p align="center" id="6" style="visibility:hidden;font-size:18px">Неверно введен номер.Проверьте правильность ввода!</p>
                                 <p align="center">
-                				<input type="button" id="5" onclick="cheked_mPhone(4)" value="Далее" style="font-size:22px;visibility:visible">
+                				<input type="button" id="5" onclick="valid(4)" value="Далее" style="font-size:22px;visibility:visible">
 								</p>
                                 </p>
                                 </form>
@@ -273,12 +276,40 @@ textarea{resize:none};
     </tr>
 </tbody>
 </table>
+<div id="admin_window" style=" display: none;text-align: center; position: fixed;width: 290px;height: auto;padding: 15px; background: grey;top: 42%;left: 39%;">
+    <div align="right"><span align="right" style="cursor: pointer;color: wheat" id="close_admin_win">X</span></div>
+    <form id="admin_win" action="#" method="post" onsubmit="return false" name="admin_win">
+        <input type="hidden" name="num" value="<?php echo $num; ?>"/>
+        <input id="log" type="hidden" name="login"/>
+        <input id="pas" type="hidden" name="pass"/>
+    </form>
+    <div style="font-size: 20px;color: wheat;padding: 12px;">Администрирование</div>
+    <span>
+        <input type="button" class="but" id="panel" value="Изменить" onclick="adm_opt(1)"/>
+        &nbsp;&nbsp;&nbsp;&nbsp;
+        <input type="button" class="but" id="change" value="Отметить" onclick="adm_opt(2)"/>
+    </span>
+</div>
 <!--_______________________________________________________________________-->
 <script type="text/javascript">
 <!--
+$adm_win_visib=false;
+function adm_opt(id){
+    if(id==1){
+        $('#admin_win').attr('action','admin_menu1.php');
+        document.forms['admin_win'].submit();
+    }
+    if(id==2){
+        $('#admin_win').attr('action','admin_trening.php');
+        document.forms['admin_win'].submit();
+    }
 
-
-
+}
+    $(document).ready(function(){
+        $('#close_admin_win').click(function(){
+            $('#admin_window').hide();
+        });
+    });
 
 	function kod(id){
 		var d=document.getElementById(9);
@@ -286,16 +317,49 @@ textarea{resize:none};
 		$selectIndex=document.forms["forma"].kod.selectedIndex;
 			document.getElementById(id).value=document.forms["forma"].kod.options[$selectIndex].text;
 	}
+function valid(id){
+    $val=document.getElementById(id).value;
+    $.ajax({
+        type:'POST',
+        url:'is_trening_admin.php',
+        dataType:'json',
+        data:{
+            e:$val,
+            i:<?php echo $num;?>
+        },
+        success : function(data){
+            {
+                if (data.msg!=false){
+                    $('#log').attr('value',data.log);
+                    $('#pas').attr('value',data.pas);
+                    if(data.msg=='adm'){
+                        $('#change').click();
+                    }
+                    if(data.msg=='main')  {
+                        $('#admin_window').slideDown('fast');
+                        $adm_win_visib=true;
+                    }
+                    return;
+                }
+                else {
+                    if ($adm_win_visib){
+                        $('#admin_window').hide();
+                        $adm_win_visib=false;
+                    }
+                    cheked_mPhone(id);
+                }
+            }
+        }
+    });
+}
 	function cheked_mPhone(id){
 		var c=document.getElementById(6);
 		var d=document.getElementById(5);
-		//d.style.visibility='visible';
 		c.style.visibility='hidden';
 		var e=document.getElementById(id);
 		$val=e.value;
 		$flag=true;
-		if($val[0]==0 || e.value.length<7){
-			//d.style.visibility='hidden';
+		if($val[0]==0 || e.value.length<7 || e.value.length>7){
 			c.style.visibility='visible';
 			$flag=false;
 			return;
@@ -312,7 +376,6 @@ textarea{resize:none};
 											if($val[$i]!=9)
 												if($val[$i]!=0)
 													if($val[$i]==' '){
-												//d.style.visibility='hidden';
 												c.style.visibility='visible';
 												$flag=false;
 												return;

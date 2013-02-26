@@ -3,6 +3,7 @@
 <head>
     <script src="js/jquery.js" type="text/javascript"></script>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <script src="js/jquery.js" type="text/javascript"></script>
 <title>Администрирование</title>
     <style type="text/css">
         g{font-size: 20px}
@@ -48,6 +49,27 @@
     ?>
     <table align="left" border="2">
         <tbody>
+        <tr>
+            <td style="border: 0px;padding-left: 20px;padding-right: 20px">
+                <table border="2">
+                    <tbody>
+                    <tr>
+                        <td  style="border: 0px;padding: 4px">
+                            <g>Пороль тренера*:</g>
+                        </td>
+                        <td align="left"  style="border: 0px;padding: 4px">
+                            <input type="text" id="pass_admin" onblur="valid()" title="Пример:PasSwo9rd1" name="pass_admin" style="font-size:20px"/>
+                            <div id="error_pass_admin" style="display: none"><small style="color: red">Длина пороля от 7 до 16 символов!</small></div>
+                            <div id="error_pass_admin_empty" style="display: none"><small style="color: red">Пороль не должен быть пустым!</small></div>
+                            <div id="error_pass_admin_lang" style="display: none"><small style="color: red">Только латинские буквы и цифры!</small></div>
+                            <div id="error_pass_admin_equal" style="display: none"><small style="color: red">Данный пороль уже использеутся<br>Вами для другого события</small></div>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+            </td>
+        </tr>
+        <tr height="30px"></tr>
             <tr>
                 <td style="border: 0px;padding-left: 20px;padding-right: 20px">
                     <table>
@@ -324,7 +346,7 @@
                 <td style="border: 0px;padding-left: 20px;padding-right: 20px">
                     <input type="button" class="but" onclick="cancel_back()" value="Отменить"/>
                     <g style="visibility: hidden">aaa</g>
-                    <input type="button" class="but" value="Применить" onclick="document.forms['form1'].submit();"/>
+                    <input type="button" class="but" id="ok" value="Применить"/>
                 </td>
             </tr>
         </tbody>
@@ -332,6 +354,58 @@
 </form>
 </body>
 <script type="text/javascript">
+    $('#pass_admin').focus();
+    var error_str="";
+    $(document).ready(function(){
+        $('#ok').click(function(){
+            if (valid())
+                $.ajax({
+                    type:'POST',
+                    url:'is_equal_pass.php',
+                    dataType:'json',
+                    data:{
+                        l:'<?php echo $login;?>',
+                        p:'<?php echo $pass;?>',
+                        e:$('#pass_admin').val()
+                    },
+                    success : function(data){
+                        {
+                            if (data.msg){
+                                document.forms['form1'].submit();
+                            }
+                            else {
+                                $('#error_pass_admin_equal').slideDown();
+                                $('#pass_admin').focus();
+                                error_str='#error_pass_admin_equal';
+                            }
+                        }
+                    }
+                });
+        });
+    });
+    function valid(){
+        if (error_str!='')
+            $(error_str).hide();
+        if($('#pass_admin').val()==""){
+            $('#error_pass_admin_empty').slideDown('fast');
+            error_str='#error_pass_admin_empty';
+            $('#pass_admin').focus();
+            return false;
+        }
+        if (!(/^[a-zA-Z0-9]*$/.test($('#pass_admin').val()))){
+            $('#error_pass_admin_lang').slideDown('fast');
+            error_str='#error_pass_admin_lang';
+            $('#pass_admin').focus();
+            return false;
+        }
+        if(!($('#pass_admin').val().length>=7 && $('#pass_admin').val().length<=16)){
+            $('#error_pass_admin').slideDown('fast');
+            error_str='#error_pass_admin';
+            $('#pass_admin').focus();
+            return false;
+        }
+        return true;
+    }
     function checke(){
         if (document.getElementById('check').checked)
             document.getElementById("tr").style.display="table-row";

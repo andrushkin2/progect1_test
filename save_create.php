@@ -44,8 +44,16 @@ $org=$res['organization'];
 $url_site=$res['url_site'];
     $a1=mysql_query("insert into admin (maxCol,login,pass,aboniments,organization,url_site,trening_code) values ('$kol','$login','$pass','0','$org','$url_site','$pass_admin')");//tut
     $num=mysql_insert_id();
+$nam="evEnt".$num;
 echo "Код для вставки:<br>
-    <textarea cols='50' rows='7'><a href='http://salto.extreme.by/Project1/main.php?num=$num'><input type='button' value='+1' style='font-size:42px;color:red;fontWeight:bold'></a></textarea>";
+<textarea cols='60' rows='10'>Скопируйте код ниже в тег <head> у себя на странице.
+Если такие уже имеются,то в копировании нет необходимости:
+<script src=\"http://salto.extreme.by/public_js/jquery.js\" type=\"text/javascript\" charset=\"utf-8\"></script>
+<script src=\"http://salto.extreme.by/public_js/logic.js\" type=\"text/javascript\" charset=\"utf-8\"></script>
+
+Скопируйте код ниже в место,где будет размещаться кнопка:
+<div id=\"".$nam."\"><script>logic.init('".$nam."',".$num.")</script></div>
+</textarea>";
 
 mysql_query("UPDATE admin set never_rep ='$never' where name='$num'");//tut
 

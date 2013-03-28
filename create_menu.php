@@ -58,7 +58,7 @@
                         </td>
                         <td align="left"  style="border: 0px;padding: 4px">
                             <input type="text" id="pass_admin" title="Пример: 1234567" name="pass_admin" style="font-size:20px" size="4" maxlength="7"/>
-                            <div><small style="color: red">Пароль 7 цифр. Пример: 1234567</small></div>
+                            <div><small>Пароль 7 цифр. Пример: 1234567</small></div>
                             <div id="error_pass_admin" style="display: none"><small style="color: red">Длина пароля 7 символов!</small></div>
                             <div id="error_pass_admin_empty" style="display: none"><small style="color: red">Пароль не должен быть пустым!</small></div>
                             <div id="error_pass_admin_lang" style="display: none"><small style="color: red">Только цифры!</small></div>
@@ -305,7 +305,7 @@
                                     <tbody>
                                     <tr>
                                         <td style="border: 0px;padding: 4px">
-                                            <select name="x_rep_date" style="font-size:20px">
+                                            <select name="x_rep_date" id="x_rep_date" style="font-size:20px">
                                                 <option value=""></option>
                                                 <option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option><option value="6">6</option><option value="7">7</option><option value="8">8</option><option value="9">9</option>
                                                 <option value="10">10</option><option value="11">11</option><option value="12">12</option><option value="13">13</option><option value="14">14</option><option value="15">15</option><option value="16">16</option><option value="17">17</option><option value="18">18</option><option value="19">19</option>
@@ -314,14 +314,14 @@
                                             </select>
                                         </td>
                                         <td style="border: 0px;padding: 4px">
-                                            <select name="x_rep_month" style="font-size:20px;text-align: center">
+                                            <select name="x_rep_month" id="x_rep_month" style="font-size:20px;text-align: center">
                                                 <option value=""></option>
                                                 <option value="1">январь</option><option value="2">февраль</option><option value="3">март</option><option value="4">апрель</option><option value="5">май</option><option value="6">июнь</option><option value="7">июль</option><option value="8">август</option><option value="9">сентябрь</option>
                                                 <option value="10">октябрь</option><option value="11">ноябрь</option><option value="12">декабрь</option>
                                             </select>
                                         </td>
                                         <td style="border: 0px;padding: 4px">
-                                            <select name="x_rep_year" style="font-size:20px">
+                                            <select name="x_rep_year" id="x_rep_year" style="font-size:20px">
                                                 <option value=""></option>
                                                 <option value="2013">2013</option><option value="2014">2014</option><option value="2015">2015</option><option value="2016">2016</option><option value="2017">2017</option><option value="2018">2018</option><option value="2019">2019</option>
                                                 <option value="2020">2020</option>

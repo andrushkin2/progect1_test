@@ -56,7 +56,7 @@ var create_body=function(parent,id){
     this.info=document.createElement('div');
 
     //info div
-    this.info.setAttribute('style','text-align: center;display: inline-block;padding:0px 10px;float: left');
+    this.info.setAttribute('style','text-align: center;min-width:64px;display: inline-block;padding:0px 10px;float: left');
     //week div
     this.week=document.createElement('div');
     this.week.setAttribute('style','font-size: 12px;color:white');
@@ -73,7 +73,7 @@ var create_body=function(parent,id){
     this.info.appendChild(this.date);
     //number
     this.number=document.createElement('div');
-    this.number.setAttribute('style','font-size: 43px;margin-top: -11px;color:black');
+    this.number.setAttribute('style','font-size: 43px;margin-top: -11px;color:white');
     this.number.setAttribute('t','number');
     /*this.text2=document.createTextNode('45');
     this.number.appendChild(this.text2);*/

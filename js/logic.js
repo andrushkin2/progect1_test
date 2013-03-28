@@ -40,9 +40,9 @@ var logic={
                 var height=self.first.clientHeight;
                 var width=self.first.clientWidth;
                 self.but.style.height=height+"px";
-                self.but.style.width=height+"px";
+                self.but.style.width=width/2+"px";
                 self.button.style.height=height+"px";
-                self.button.style.width=height+"px";
+                self.button.style.width=width/2+"px";
             }
         );
     }
@@ -51,7 +51,7 @@ var create_body=function(parent,id){
     self=this;
     this.body=document.getElementById(parent);
     this.first=document.createElement('div');
-    this.first.setAttribute('style','background: #84c225;min-width: 150px;display: inline-block;-webkit-border-radius:20px;' +
+    this.first.setAttribute('style','background: rgb(132,194,37);min-width: 150px;display: inline-block;-webkit-border-radius:20px;' +
         '-khtml-border-radius: 20px;-moz-border-radius: 20px;border-radius: 20px;');
     this.info=document.createElement('div');
 
@@ -59,28 +59,28 @@ var create_body=function(parent,id){
     this.info.setAttribute('style','text-align: center;display: inline-block;padding:0px 10px;float: left');
     //week div
     this.week=document.createElement('div');
-    this.week.setAttribute('style','font-size: 16px;color:yellow;font-family: Electrolize, Arial');
+    this.week.setAttribute('style','font-size: 12px;color:white');
     this.week.setAttribute('t','week');
     /*this.text=document.createTextNode('day of week');
     this.week.appendChild(this.text);*/
     this.info.appendChild(this.week);
     //date
     this.date=document.createElement('div');
-    this.date.setAttribute('style','font-size: 16px;margin-top: -2px;;color:white;font-family: Electrolize, Arial');
+    this.date.setAttribute('style','font-size: 12px;margin-top: -2px;;color:white');
     this.date.setAttribute('t','date');
     /*this.text1=document.createTextNode('date');
     this.date.appendChild(this.text1);*/
     this.info.appendChild(this.date);
     //number
     this.number=document.createElement('div');
-    this.number.setAttribute('style','font-size: 50px;margin-top: -9px;color:yellow;font-family: Electrolize, Arial');
+    this.number.setAttribute('style','font-size: 43px;margin-top: -11px;color:black');
     this.number.setAttribute('t','number');
     /*this.text2=document.createTextNode('45');
     this.number.appendChild(this.text2);*/
     this.info.appendChild(this.number);
     //count
     this.count=document.createElement('div');
-    this.count.setAttribute('style','font-size: 16px;margin-top: -9px;color:white;font-family: Electrolize, Arial');
+    this.count.setAttribute('style','font-size: 12px;margin-top: -14px;color:white');
     this.count.setAttribute('t','count');
     this.text3=document.createTextNode('мест');
     this.count.appendChild(this.text3);
@@ -93,10 +93,10 @@ var create_body=function(parent,id){
     //button
     this.button=document.createElement('input');
     this.button.setAttribute('type','button');
-    this.button.setAttribute('style','font-size: 68px;background: red;color: white;padding: 0px;margin: 0px;' +
+    this.button.setAttribute('style','font-size: 48px;background: rgb(218,37,29);color: white;padding: 0px;margin: 0px;' +
             '-webkit-border-radius:20px;-khtml-border-radius: 20px;-moz-border-radius: 20px;border-radius: 20px');
     this.button.setAttribute('value','+1');
-    this.button.setAttribute('onclick',"document.location.href='http://salto.extreme.by/Project1/main.php?num="+id+"'");
+    this.button.setAttribute('onclick',"document.location.href='http://salto.extreme.by/Project1/?num="+id+"&url="+document.location.href+"'");
     this.but.appendChild(this.button);
     this.first.appendChild(this.but);
 

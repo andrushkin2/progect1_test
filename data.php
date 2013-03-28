@@ -9,7 +9,7 @@ if (!$row)
 else{
     $ost=$row['maxCol']-$row['records'];
     $date=$row['day']."-".$row['month']."-".$row['year'];
-    $t = date("l",mktime('0','0','0',$row['month'],$row['day']+1,$row['year']));
+    $t = date("l",mktime('0','0','0',$row['month'],$row['day'],$row['year']));
     $return['msg']=true;
 }
 echo $_GET['callback'] . '(' . "{'col' : '".$ost."','date' : '".$date."','day' : '".$t."','msg' : '".$return['msg']."'}" .')';

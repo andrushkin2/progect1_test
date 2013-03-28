@@ -1,8 +1,8 @@
 ﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <script src="js/jquery.js" type="text/javascript"></script>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>Администрирование</title>
     <style type="text/css">
         g{font-size: 20px}
@@ -28,19 +28,22 @@
     </style>
 </head>
 <?php
-    mysql_connect('localhost','saltoext_salto','5700');
-    mysql_select_db('saltoext_salto1') or die(mysql_error());
+    $num=$_POST['num'];
     $login=$_POST['login'];
     $pass=$_POST['pass'];
     if ($login=="" || $pass=="")
         echo "<form method='GET' action='1.php' name='f'>
                         <input type='submit' id='1' style='font-size:22px;visibility: hidden'></form>
                         <script>document.getElementById(1).click();</script>";
+    mysql_connect('localhost','saltoext_salto','5700');
+    mysql_select_db('saltoext_salto1') or die(mysql_error());
     $tim1=mysql_query("select * from admin where name='$num'");
     $row=mysql_fetch_array($tim1);
 ?>
+
 <body>
-<form name="form1" onsubmit="return false" action="save_create.php" method="POST">
+
+<form name="form1" onsubmit="return false" action="change.php" method="POST">
     <?php
         echo "<input type=hidden name=num value=$num>";
         echo "<input type=hidden name=login value=$login>";
@@ -57,7 +60,7 @@
                             <g>Пароль администратора:</g>
                         </td>
                         <td align="left"  style="border: 0px;padding: 4px">
-                            <input type="text" id="pass_admin" title="Пример: 1234567" name="pass_admin" style="font-size:20px" size="4" maxlength="7"/>
+                            <input type="text" id="pass_admin" title="Пример: 1234567" name="pass_admin" style="font-size:20px" size="4" maxlength="7" value="<?php echo $row['trening_code'] ?>"/>
                             <div><small style="color: red">Пароль 7 цифр. Пример: 1234567</small></div>
                             <div id="error_pass_admin" style="display: none"><small style="color: red">Длина пароля 7 символов!</small></div>
                             <div id="error_pass_admin_empty" style="display: none"><small style="color: red">Пароль не должен быть пустым!</small></div>
@@ -70,6 +73,7 @@
             </td>
         </tr>
         <tr height="30px"></tr>
+        <tr>
             <tr>
                 <td style="border: 0px;padding-left: 20px;padding-right: 20px">
                     <table>
@@ -97,8 +101,11 @@
                     <table border="2">
                         <tbody>
                             <tr>
+                                <td style="border: 0px">
+                                    <g>Дата: <?php echo $row['day']."-".$row['month']."-".$row['year']?> </g>
+                                </td>
                                 <td style="border: 0px;padding: 4px">
-                                    <select name="date" id="date" style="font-size:20px">
+                                    <select id="date" name="date" style="font-size:20px" value="<?php echo $row['day'] ?>">
                                         <option value=""></option>
                                         <option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option><option value="6">6</option><option value="7">7</option><option value="8">8</option><option value="9">9</option>
                                         <option value="10">10</option><option value="11">11</option><option value="12">12</option><option value="13">13</option><option value="14">14</option><option value="15">15</option><option value="16">16</option><option value="17">17</option><option value="18">18</option><option value="19">19</option>
@@ -107,14 +114,14 @@
                                     </select>
                                 </td>
                                 <td style="border: 0px;padding: 4px">
-                                    <select name="month" id="month" style="font-size:20px;text-align: center">
+                                    <select id="month" name="month" style="font-size:20px;text-align: center" value="<?php echo $row['month'] ?>">
                                         <option value=""></option>
                                         <option value="1">январь</option><option value="2">февраль</option><option value="3">март</option><option value="4">апрель</option><option value="5">май</option><option value="6">июнь</option><option value="7">июль</option><option value="8">август</option><option value="9">сентябрь</option>
                                         <option value="10">октябрь</option><option value="11">ноябрь</option><option value="12">декабрь</option>
                                     </select>
                                 </td>
                                 <td style="border: 0px;padding: 4px">
-                                    <select name="year" id="year" style="font-size:20px">
+                                    <select id="year" name="year" style="font-size:20px" value="<?php echo $row['year'] ?>">
                                         <option value=""></option>
                                         <option value="2013">2013</option><option value="2014">2014</option><option value="2015">2015</option><option value="2016">2016</option><option value="2017">2017</option><option value="2018">2018</option><option value="2019">2019</option>
                                         <option value="2020">2020</option>
@@ -122,6 +129,7 @@
                                 </td>
                             </tr>
                             <tr>
+                                <td style="border: 0px;padding: 4px;text-align: center"></td>
                                 <td style="border: 0px;padding: 4px;text-align: center">Число</td>
                                 <td style="border: 0px;padding: 4px;text-align: center">Месяц</td>
                                 <td style="border: 0px;padding: 4px;text-align: center">Год</td>
@@ -129,7 +137,10 @@
                             <tr height="10px"></tr>
                             <tr>
                                 <td style="border: 0px;padding: 4px">
-                                    <select name="hours" id="hours" style="font-size:20px">
+                                    <g>Время: <?php $t=explode(":",$row['Time']);echo $t[0].":".$t[1];?></g>
+                                </td>
+                                <td style="border: 0px;padding: 4px">
+                                    <select id="hours" name="hours" style="font-size:20px" value="<?php echo $t[0] ?>">
                                         <option value=""></option>
                                         <option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option><option value="6">6</option><option value="7">7</option><option value="8">8</option><option value="9">9</option>
                                         <option value="10">10</option><option value="11">11</option><option value="12">12</option><option value="13">13</option><option value="14">14</option><option value="15">15</option><option value="16">16</option><option value="17">17</option><option value="18">18</option><option value="19">19</option>
@@ -137,7 +148,7 @@
                                     </select>
                                 </td>
                                 <td style="border: 0px;padding: 4px">
-                                    <select name="minutes" id="minutes" style="font-size:20px">
+                                    <select id="minutes" name="minutes" style="font-size:20px" value="<?php echo $t[1] ?>">
                                         <option value=""></option>
                                         <option value="0">00</option><option value="5">05</option>
                                         <option value="10">10</option><option value="15">15</option>
@@ -149,6 +160,7 @@
                                 </td>
                             </tr>
                             <tr>
+                                <td style="border: 0px;padding: 4px;text-align: center"></td>
                                 <td style="border: 0px;padding: 4px;text-align: center">Часов</td>
                                 <td style="border: 0px;padding: 4px;text-align: center">Минут</td>
                             </tr>
@@ -167,8 +179,11 @@
                     <table border="2">
                         <tbody>
                         <tr>
+                            <td style="border: 0px">
+                                <g>Дата: <?php $t11=explode("-",$row['xDate']);echo $t11[2]."-".$t11[1]."-".$t11[0]?> </g>
+                            </td>
                             <td style="border: 0px;padding: 4px">
-                                <select name="xdate" id="xdate" style="font-size:20px">
+                                <select id="xdate" name="xdate" style="font-size:20px" value="<?php echo $t11[2] ?>">
                                     <option value=""></option>
                                     <option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option><option value="6">6</option><option value="7">7</option><option value="8">8</option><option value="9">9</option>
                                     <option value="10">10</option><option value="11">11</option><option value="12">12</option><option value="13">13</option><option value="14">14</option><option value="15">15</option><option value="16">16</option><option value="17">17</option><option value="18">18</option><option value="19">19</option>
@@ -177,14 +192,14 @@
                                 </select>
                             </td>
                             <td style="border: 0px;padding: 4px">
-                                <select name="xmonth" id="xmonth" style="font-size:20px;text-align: center">
+                                <select id="xmonth" name="xmonth" style="font-size:20px;text-align: center" value="<?php echo $t1[1] ?>">
                                     <option value=""></option>
                                     <option value="1">январь</option><option value="2">февраль</option><option value="3">март</option><option value="4">апрель</option><option value="5">май</option><option value="6">июнь</option><option value="7">июль</option><option value="8">август</option><option value="9">сентябрь</option>
                                     <option value="10">октябрь</option><option value="11">ноябрь</option><option value="12">декабрь</option>
                                 </select>
                             </td>
                             <td style="border: 0px;padding: 4px">
-                                <select name="xyear" id="xyear" style="font-size:20px">
+                                <select id="xyear" name="xyear" style="font-size:20px" value="<?php echo $t1[0] ?>">
                                     <option value=""></option>
                                     <option value="2013">2013</option><option value="2014">2014</option><option value="2015">2015</option><option value="2016">2016</option><option value="2017">2017</option><option value="2018">2018</option><option value="2019">2019</option>
                                     <option value="2020">2020</option>
@@ -192,6 +207,7 @@
                             </td>
                         </tr>
                         <tr>
+                            <td style="border: 0px;padding: 4px;text-align: center"></td>
                             <td style="border: 0px;padding: 4px;text-align: center">Число</td>
                             <td style="border: 0px;padding: 4px;text-align: center">Месяц</td>
                             <td style="border: 0px;padding: 4px;text-align: center">Год</td>
@@ -199,7 +215,10 @@
                         <tr height="10px"></tr>
                         <tr>
                             <td style="border: 0px;padding: 4px">
-                                <select name="xhours" id="xhours" style="font-size:20px">
+                                <g>Время: <?php $t2=explode(":",$row['xTime']);echo $t2[0].":".$t2[1];?></g>
+                            </td>
+                            <td style="border: 0px;padding: 4px">
+                                <select id="xhours" name="xhours" style="font-size:20px" value="<?php echo $t2[0] ?>">
                                     <option value=""></option>
                                     <option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option><option value="6">6</option><option value="7">7</option><option value="8">8</option><option value="9">9</option>
                                     <option value="10">10</option><option value="11">11</option><option value="12">12</option><option value="13">13</option><option value="14">14</option><option value="15">15</option><option value="16">16</option><option value="17">17</option><option value="18">18</option><option value="19">19</option>
@@ -207,7 +226,7 @@
                                 </select>
                             </td>
                             <td style="border: 0px;padding: 4px">
-                                <select name="xminutes" id="xminutes" style="font-size:20px">
+                                <select id="xminutes" name="xminutes" style="font-size:20px" value="<?php echo $t2[1] ?>">
                                     <option value=""></option>
                                     <option value="0">00</option><option value="5">05</option>
                                     <option value="10">10</option><option value="15">15</option>
@@ -219,6 +238,7 @@
                             </td>
                         </tr>
                         <tr>
+                            <td style="border: 0px;padding: 4px;text-align: center"></td>
                             <td style="border: 0px;padding: 4px;text-align: center">Часов</td>
                             <td style="border: 0px;padding: 4px;text-align: center">Минут</td>
                         </tr>
@@ -304,6 +324,9 @@
                                 <table border="0">
                                     <tbody>
                                     <tr>
+                                        <td style="border: 0px">
+                                            <g>Дата: <?php $t1=explode("-",$row['end_rep']);echo $t1[2]."-".$t1[1]."-".$t1[0]?> </g>
+                                        </td>
                                         <td style="border: 0px;padding: 4px">
                                             <select name="x_rep_date" style="font-size:20px">
                                                 <option value=""></option>
@@ -329,6 +352,7 @@
                                         </td>
                                     </tr>
                                     <tr>
+                                        <td></td>
                                         <td style="border: 0px;padding: 4px;text-align: center">Число</td>
                                         <td style="border: 0px;padding: 4px;text-align: center">Месяц</td>
                                         <td style="border: 0px;padding: 4px;text-align: center">Год</td>
@@ -344,32 +368,45 @@
             <tr height="20px"></tr>
             <tr align="right">
                 <td style="border: 0px;padding-left: 20px;padding-right: 20px">
-                    <input type="button" class="but" onclick="cancel_back()" value="Отменить"/>
+                    <input type="button" class="but"  onclick="cancel_back()" value="Отменить"/>
                     <g style="visibility: hidden">aaa</g>
-                    <input type="button" class="but" id="ok" value="Создать"/>
+                    <input type="button" class="but" id="ok" value="Применить"/>
                 </td>
             </tr>
         </tbody>
     </table>
 </form>
+</div>
+<div style="display: inline-block;border:1px solid #000000;margin-left: 40px;padding: 5px">
+<?php
+    $nam="InfoPanel_".$num;
+    echo "Код для вставки:<br>
+<textarea cols='60' rows='11' readonly><!-- Put there scripts tag to the <head> of your page -->
+<script src=\"//salto.extreme.by/public_js/jquery.js\" type=\"text/javascript\" charset=\"utf-8\"></script>
+<script src=\"//salto.extreme.by/public_js/logic.js\" type=\"text/javascript\" charset=\"utf-8\"></script>
+
+<!-- Put this div tag to the place, where the InfoPanel block will be -->
+<div id=\"".$nam."\"></div>
+<script>logic.init('".$nam."',".$num.")</script>
+</textarea>";
+    ?>
+</div>
 </body>
 <script type="text/javascript">
     var error_str="";
+    $('#date').val(<?php echo $row['day'] ?>);
+    $('#month').val(<?php echo $row['month'] ?>);
+    $('#year').val(<?php echo $row['year'] ?>);
+    $('#hours').val(<?php echo $t[0] ?>);
+    //var m= d.getMinutes()/10;m=Math.round(m);
+    $('#minutes').val(<?php echo $t[1] ?>);
+    $('#xdate').val(<?php echo $t11[2] ?>);
+    $('#xmonth').val(<?php echo $t11[1] ?>);
+    $('#xyear').val(<?php echo $t11[0] ?>);
+    $('#xhours').val(<?php echo $t2[0] ?>);
+    $('#xminutes').val(<?php echo $t2[1] ?>);
     $(document).ready(function(){
         $('#pass_admin').focus();
-        var d=new Date();
-        $('#date').val(d.getDate());
-        $('#month').val(d.getMonth()+1);
-        $('#year').val(d.getFullYear());
-        $('#hours').val("");
-        //var m= d.getMinutes()/10;m=Math.round(m);
-        $('#minutes').val(0);
-        $('#xdate').val(d.getDate());
-        $('#xmonth').val(d.getMonth()+1);
-        $('#xyear').val(d.getFullYear());
-        $('#xhours').val("");
-        $('#xminutes').val(0);
-
         $("#date").change(function(){
             $('#xdate').val($("#date").val());
         })
@@ -381,30 +418,25 @@
         })
         $('#ok').click(function(){
             if (valid())
-                $.ajax({
-                    type:'POST',
-                    url:'is_equal_pass.php',
-                    dataType:'json',
-                    data:{
-                        l:'<?php echo $login;?>',
-                        p:'<?php echo $pass;?>',
-                        e:$('#pass_admin').val()
-                    },
-                    success : function(data){
-                        {
-                            if (data.msg){
-                                document.forms['form1'].submit();
-                            }
-                            else {
-                                $('#error_pass_admin_equal').slideDown();
-                                $('#pass_admin').focus();
-                                error_str='#error_pass_admin_equal';
-                            }
-                        }
-                    }
-                });
+                document.forms['form1'].submit();
         });
-    });
+    })
+    function checke(){
+        if (document.getElementById('check').checked)
+            document.getElementById("tr").style.display="table-row";
+        else
+            document.getElementById("tr").style.display="none";
+    }
+    function if_never(){
+        if (document.getElementById('never').checked)
+            document.getElementById("x_rep").style.display="none";
+        else
+            document.getElementById("x_rep").style.display="table-row";
+    }
+    function cancel_back(){
+        document.forms['form1'].action='adm_page.php';
+        document.forms['form1'].submit();
+    }
     function valid(){
         if (error_str!='')
             $(error_str).hide();
@@ -428,21 +460,5 @@
         }
         return true;
     }
-    function checke(){
-        if (document.getElementById('check').checked)
-            document.getElementById("tr").style.display="table-row";
-        else
-            document.getElementById("tr").style.display="none";
-    }
-    function if_never(){
-        if (document.getElementById('never').checked)
-            document.getElementById("x_rep").style.display="none";
-        else
-            document.getElementById("x_rep").style.display="table-row";
-    }
-        function cancel_back(){
-            document.forms['form1'].action='adm_page.php';
-            document.forms['form1'].submit();
-        }
 </script>
 </html>

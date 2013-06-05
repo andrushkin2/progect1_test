@@ -3,6 +3,9 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>Документ без названия</title>
+    <!-- Put there scripts tag to the <head> of your page -->
+    <script src="//salto.extreme.by/public_js1/jquery.js" type="text/javascript" charset="utf-8"></script>
+    <script src="//salto.extreme.by/public_js1/logic.js" type="text/javascript" charset="utf-8"></script>
 <style type="text/css">
 <!--
 body {
@@ -148,68 +151,67 @@ ul.nav a { zoom: 1; }  /* свойство масштабирования пре
     <table width="90%" border="1">
       <tr>
         <td align="center">Наименование</td>
-        <td align="center"><p><a href='http://salto.extreme.by/Project1/main.php?num=20'></a> Кнопка</p></td>
+        <td align="center"></td>
       </tr>
       <tr>
         <td>Регистрация на 28 янвраля 2013 гг</td>
-        <td><a href='http://salto.extreme.by/Project1/main.php?num=20'>
-          <input type='button' value='+1' style='font-size:42px;color:red;fontWeight:bold' />
-        </a></td>
+        <td></td>
       </tr>
       <tr>
         <td>проба 5 марта 2013</td>
-        <td>Скопируйте код ниже в тег <head> у себя на странице.
-Если такие уже имеются,то в копировании нет необходимости:
-<script src="http://salto.extreme.by/public_js/jquery.js" type="text/javascript" charset="utf-8"></script>
-<script src="http://salto.extreme.by/public_js/logic.js" type="text/javascript" charset="utf-8"></script>
+        <td>
 
-Скопируйте код ниже в место,где будет размещаться кнопка:
-<div id="evEnt24"><script>logic.init('evEnt24',24)</script></div>&nbsp;</td>
+            <!-- Put this div tag to the place, where the InfoPanel block will be -->
+            <div id="InfoPanel_24"></div>
+            <script>$(document).ready(function(){logic.init('InfoPanel_24',24)})</script>
       </tr>
       <tr>
         <td>22/03/2013</td>
         <td>
-        <!-- Put there scripts tag to the <head> of your page -->
-<script src="//salto.extreme.by/public_js/jquery.js" type="text/javascript" charset="utf-8"></script>
-<script src="//salto.extreme.by/public_js/logic.js" type="text/javascript" charset="utf-8"></script>
 
-<!-- Put this div tag to the place, where the InfoPanel block will be -->
-<div id="InfoPanel_28"></div>
-<script>logic.init('InfoPanel_28',28)</script>
+
+            <!-- Put this div tag to the place, where the InfoPanel block will be -->
+            <div id="InfoPanel_28"></div>
+            <script>$(document).ready(function(){logic.init('InfoPanel_28',28)})</script>
 
       </tr>&nbsp;&nbsp;
       <tr>
         <td><p>22/03/2013-2</p></td>
         <td>
-        <!-- Put there scripts tag to the <head> of your page -->
-<script src="//salto.extreme.by/public_js/jquery.js" type="text/javascript" charset="utf-8"></script>
-<script src="//salto.extreme.by/public_js/logic.js" type="text/javascript" charset="utf-8"></script>
 
-<!-- Put this div tag to the place, where the InfoPanel block will be -->
-<div id="InfoPanel_29"></div>
-<script>logic.init('InfoPanel_29',29)</script>
+
+            <!-- Put this div tag to the place, where the InfoPanel block will be -->
+            <div id="InfoPanel_29"></div>
+            <script>$(document).ready(function(){logic.init('InfoPanel_29',29)})</script>
 &nbsp;</td>
       </tr>
       <tr>
         <td>22/03/2013 - 3</td>
         <td>
-        <!-- Put there scripts tag to the <head> of your page -->
-<script src="//salto.extreme.by/public_js/jquery.js" type="text/javascript" charset="utf-8"></script>
-<script src="//salto.extreme.by/public_js/logic.js" type="text/javascript" charset="utf-8"></script>
 
-<!-- Put this div tag to the place, where the InfoPanel block will be -->
-<div id="InfoPanel_30"></div>
-<script>logic.init('InfoPanel_30',30)</script>
+
+            <!-- Put this div tag to the place, where the InfoPanel block will be -->
+            <div id="InfoPanel_30"></div>
+            <script>$(document).ready(function(){logic.init('InfoPanel_30',30)})</script>
 &nbsp;</td>
       </tr>
-      <tr>
-        <td>&nbsp;</td>
-        <td>&nbsp;</td>
-      </tr>
-      <tr>
-        <td>&nbsp;</td>
-        <td>&nbsp;</td>
-      </tr>
+        <tr>
+            <td>Пробуем виджеты магазина 03/04/2013 КОРЗИНА</td>
+            <td><div>
+                <script type="text/javascript" src="http://app.ecwid.com/script.js?2140153" charset="utf-8"></script>
+                <!-- remove layout parameter if you want to position minicart yourself -->
+                <script type="text/javascript"> xMinicart("style=","layout=attachToCategories"); </script>
+            </div>&nbsp;</td>
+        </tr>
+        <tr>
+            <td><p>Пробуем виджеты магазина 03/04/2013</p>
+                <p>ПОКУПКА</p></td>
+            <td><div>
+                <script type="text/javascript" src="http://app.ecwid.com/script.js?2140153" charset="utf-8"></script>
+                <script type="text/javascript"> xProductBrowser("categoriesPerRow=3","views=grid(3,3) list(10) table(20)","categoryView=grid","searchView=list","style="); </script>
+                <noscript>Ваш браузер не поддерживает JavaScript. Пожалуйста, перейдите на <a href="http://app.ecwid.com/jsp/2140153/catalog">HTML версию Alexander Sharoiko's store</a></noscript>
+            </div>&nbsp;</td>
+        </tr>
     </table>
     <p>&nbsp;</p>
     <p>&nbsp;</p>

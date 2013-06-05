@@ -46,13 +46,13 @@ $url_site=$res['url_site'];
     $num=mysql_insert_id();
 $nam="InfoPanel_".$num;
 echo "Код для вставки:<br>
-<textarea cols='60' rows='11' readonly><!-- Put there scripts tag to the <head> of your page -->
-<script src=\"//salto.extreme.by/public_js/jquery.js\" type=\"text/javascript\" charset=\"utf-8\"></script>
-<script src=\"//salto.extreme.by/public_js/logic.js\" type=\"text/javascript\" charset=\"utf-8\"></script>
+<textarea cols='60' rows='12' readonly><!-- Put there scripts tag to the <head> of your page -->
+<script src=\"//salto.extreme.by/public_js1/jquery.js\" type=\"text/javascript\" charset=\"utf-8\"></script>
+<script src=\"//salto.extreme.by/public_js1/logic.js\" type=\"text/javascript\" charset=\"utf-8\"></script>
 
 <!-- Put this div tag to the place, where the InfoPanel block will be -->
 <div id=\"".$nam."\"></div>
-<script>logic.init('".$nam."',".$num.")</script>
+<script>$(document).ready(function(){logic.init('".$nam."',".$num.")})</script>
 </textarea>";
 
 mysql_query("UPDATE admin set never_rep ='$never' where name='$num'");//tut
@@ -197,7 +197,7 @@ mysql_query("UPDATE admin set end_rep='$end_rep_all[0]-$end_rep_all[1]-$end_rep_
             mysql_query("UPDATE admin set rep='$repeat' where name='$num'");
         } //если окончание повторов...
     }
-echo "<br><br><form method=post action=adm_page.php><input type=hidden name=login value=$login> <input type=hidden name=pass value=$pass>
+echo "<br><br><form method=post action=database.php><input type=hidden name=login value=$login> <input type=hidden name=pass value=$pass><input id='sort' type='hidden' name='sort' value='organization'>
     <input type=submit id=1 onclick='document.getElementById(1).click();' value='Главное меню' style=font-size:22px></form>";
 function equal_date($next,$end){
     $next=explode('-',$next);

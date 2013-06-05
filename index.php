@@ -25,9 +25,10 @@ $num=$_GET['num'];
             <div id="first_window" class="first_vnimanie">
                 <h3 style="color:#F00">Правила регестрации:</h3>
                 <!--<p style="color:#F00;font-size:24px;font-weight:bold">Правила регестрации:</p>-->
-                <p align="left" style="font-size:21px" id="warning">
-                    <b>ВНИМАНИЕ!</b> <b style="color:#F00">Система "АНТИРАЗГВОЗДЯЙ":</b> если Вы зарегистрировались и не пришли на занятие, то регистрация в дальнейшем для Вас будет возможна только по телефону и только при наличии свободных мест.
-                    <br><b>Первая регистрация возможна с 9.00 до 21.00.</b> Время белорусское.
+                <p align="left" style="font-size:20px" id="warning">
+                    <!--<b>ВНИМАНИЕ!</b> <b style="color:#F00">Система "АНТИРАЗГВОЗДЯЙ":</b> если Вы зарегистрировались и не пришли на занятие, то регистрация в дальнейшем для Вас будет возможна только по телефону и только при наличии свободных мест.-->
+                    <b>Первая регистрация возможна с 9.00 до 21.00.</b><br> Время белорусское.<br><g style="color:red;font-size: 0.9em;font-weight: bold">Правила учета Авторитета:</g><br>Зарегистрировался и пришел +1 к авторитету.<br>Зарегистрировался и не пришел -2 к авторитету.<br>
+                    Зарегистрировался и отменил регистрацию* -1 к авторитету.<br><g style="font-size: 14px">*Для отмены регистрации нажмите кнопку «+1» и пройдите регистрацию еще раз.</g>
                 </p>
                 <p align="center"><input class="but" type="button" value="Принять условия" id="vote_first"></p>
             </div>
@@ -71,9 +72,10 @@ $num=$_GET['num'];
             <!-запись уже пройдена ранее-->
             <div id="already_window" class="first_vnimanie" style="display: none">
                 <h3 style="color:#F00">Управление записью</h3>
-                <div><p align="left" style="font-size:22px;padding: 20px;"><span id="already_n_f"></span>,<br> Вы уже записаны на мероприятие (<span id="already_date"></span>).</p></div>
+                <div><p align="left" style="font-size:22px;padding: 20px;"><span id="already_n_f"></span>,<br> Вы уже записаны на мероприятие (<span id="already_date"></span>)</p></div>
                 <div align="center">
-                    <input type="button" value="Отменить запись" id="already_change"/>
+                    <input type="button" value="Отменить запись" id="already_change"/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    <input type="button" value="Выход" onclick="document.location.href='<?php echo $_GET['url'];?>'" id="finally_vote"/>
                 </div>
             </div>
 
@@ -117,7 +119,10 @@ $num=$_GET['num'];
             <!-успешная запись-->
             <div id="finally_window" class="first_vnimanie" style="display: none">
                 <div style="padding: 20px">
-                    <div id="finally_yes_div" style="font-size: 22px;display: none"><span id="finally_yes"></span>успешно записан(а) на мероприятие.</div>
+                    <div id="finally_yes_div" style="font-size: 22px;display: none"><span id="finally_yes"></span>,Вы успешно зарегистрировались на мероприятие.<br>Ваш Авторитет:<span id="finally_avt"></span><br><br>
+                        <g style="font-size: 20px"><g style="color:red;font-size: 0.9em;font-weight: bold">Правила учета Авторитета:</g><br>Зарегистрировался и пришел +1 к авторитету.<br>Зарегистрировался и не пришел -2 к авторитету.<br>
+                        Зарегистрировался и отменил регистрацию* -1 к авторитету.<br><g style="font-size: 14px">*Для отмены регистрации нажмите кнопку «+1» и пройдите регистрацию еще раз.</g></g>
+                    </div>
                     <div id="finally_no_div" style="font-size: 22px;display: none"><span id="finally_no"></span>, приносим Вам свои извинения. Все места на занятие уже заняты.</div>
                 </div>
                 <div align="center">
@@ -148,6 +153,15 @@ $num=$_GET['num'];
     </p>
 </div>
 
+<!--невозможность проведения операции-->
+<div id="error_action" align="center" style="position: fixed; border: dotted rgb(255, 0, 0); background-color: rgb(51, 51, 51);
+                top: 50%; width: 512px; height: auto;margin-top: -70px;display: none;z-index: 5;margin-left: -256px;left: 50%;box-shadow: 0px 0px 14px #888888;">
+    <p id="" align="center" style="font-size:28px;color:#FFF">Данная операция возможна с 9.00 до 21.00</p>
+    <p align="center">
+        <input type="button" value="Выход" onclick="document.location.href='<?php echo $_GET['url'];?>'" id="error_action_vote">
+    </p>
+</div>
+
 <!--admin_window-->
 <div id="admin_window" style="display: none;text-align: center; position: fixed;width: 290px;height: 96px;margin-top: -48px;margin-left: -145px;box-shadow: 0px 0px 14px #888888;
   padding: 15px; background: grey;top: 50%;left: 50%;z-index: 5">
@@ -156,6 +170,8 @@ $num=$_GET['num'];
         <input type="hidden" name="num" value="<?php echo $num; ?>"/>
         <input id="log" type="hidden" name="login"/>
         <input id="pas" type="hidden" name="pass"/>
+        <input type='hidden' name='sort' value='fam'>
+        <input type='hidden' name='fl' value='asc'>
     </form>
     <div style="font-size: 20px;color: wheat;padding: 12px;">Администрирование</div>
     <span>

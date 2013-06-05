@@ -1,10 +1,15 @@
 <?php
+require('config.php');
+
+
 $login=$_POST['login'];
 $pass=$_POST['pass'];
 if ($login=="" || $pass=="")
     echo "<form method='GET' action='1.php' name='f'>
                         <input type='submit' id='1' style='font-size:22px;visibility: hidden'></form>
                         <script>document.getElementById(1).click();</script>";
+
+
 $pass_admin=$_POST['pass_admin'];
 $kol=$_POST['kol'];
 $num=$_POST['num'];
@@ -27,6 +32,17 @@ if ($_POST['never'])
     $never=1;
 else
     $never=0;
+
+$admin=query("SELECT Time,year,month,day FROM admin where name='$num'");
+$adm=fetch_array($admin);
+if (!$adm){
+    die ("Error on load data org");
+    exit;
+}
+$time_old=escape($adm['Time']);
+$dat_old=escape($adm['year']."-".$adm['month']."-".$adm['day']);
+
+
 mysql_connect('localhost','saltoext_salto','5700');
 mysql_select_db('saltoext_salto1') or die(mysql_error());
 
@@ -77,6 +93,16 @@ mysql_query("UPDATE admin set never_rep ='$never' where name='$num'");//tut
     if ($minutes!="")
         $tim[1]=$minutes;
     mysql_query("UPDATE admin set Time ='$tim[0]:$tim[1]',day='$t3[2]',month='$t3[1]',year='$t3[0]' where name='$num'");//tut
+
+$time_new=$tim[0].':'.$tim[1].':00';
+$time_new=escape($time_new);
+$dat_new=escape($row['year']."-".$row['month']."-".$row['day']);
+$q=query("UPDATE records SET records.date_event='$dat_new',records.time_event='$time_new' WHERE records.date_event='$dat_old' and records.time_event='$time_old' and records.id_event='$num'");
+if (!$q){
+    die('Error on query update recorded users');
+    exit;
+}
+
 
     $end_rep_all=explode('-',$row['end_rep']);
 if ($x_rep_date!="")
@@ -179,7 +205,7 @@ mysql_query("UPDATE admin set end_rep='$end_rep_all[0]-$end_rep_all[1]-$end_rep_
         } //если окончание повторов...
     }
 
-echo "<form method=post action=adm_page.php><input type=hidden name=login value=$login> <input type=hidden name=pass value=$pass>
+echo "<form method=post action=database.php><input type=hidden name=login value=$login> <input type=hidden name=pass value=$pass><input id='sort' type='hidden' name='sort' value='organization'>
     <input type=submit id=1 onclick='document.getElementById(1).click();' value=Назад style=font-size:22px></form>";
 function equal_date($next,$end){
     $next=explode('-',$next);

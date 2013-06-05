@@ -39,8 +39,9 @@ $(document).ready(function(){
     });
 
     $('#info_vote').click(function(){
-        document.getElementById('finally_yes').innerHTML=collection.fam+" "+collection.name+" ";
-        document.getElementById('finally_no').innerHTML=collection.fam+" "+collection.name;
+        selector('finally_yes').innerHTML=collection.fam+" "+collection.name+" ";
+        selector('finally_no').innerHTML=collection.fam+" "+collection.name;
+        selector('finally_avt').innerHTML=" "+collection.avt;
         $.ajax({
             type:'POST',
             url:'query.php',
@@ -75,6 +76,7 @@ $(document).ready(function(){
 
     $('#regst_vote').click(function(){
         if (collection.operation=='new'){
+            collection.operation='update'
             $.ajax({
                 type:'POST',
                 url:'query.php',
@@ -90,12 +92,12 @@ $(document).ready(function(){
                 success : function(data){
                     {
                         if (data.msg){
-                            document.getElementById('info_name').innerHTML=" "+$('#regist_name').val();
-                            document.getElementById('info_fam').innerHTML=" "+$('#regist_fam').val();
-                            document.getElementById('info_age').innerHTML=" "+$('#regist_age').val();
+                            selector('info_name').innerHTML=" "+$('#regist_name').val();
+                            selector('info_fam').innerHTML=" "+$('#regist_fam').val();
+                            selector('info_age').innerHTML=" "+$('#regist_age').val();
                             collection.step++;
                             collection.history[collection.step]='#info_window';
-                            $('#kode_window').hide(function(){
+                            $('#regist_window').hide(function(){
                                 $(collection.history[collection.step]).slideDown(function(){
                                     $('#info_vote').focus();
                                     collection.fam=$('#regist_fam').val();
@@ -110,26 +112,34 @@ $(document).ready(function(){
         }
         else
             if (collection.operation=='update'){
-                $.ajax({
-                    type:'POST',
-                    url:'send_pass.php',
-                    dataType:'json',
-                    data:{
-                        p:collection.phone,
-                        i:$num,
-                        c:collection.operation
-                    },
-                    success : function(data){
-                        {
-                            collection.new_rec_pass=data.kod;
-                            $('#regist_window').hide(function(){
-                                $("#kode_window").slideDown(function(){
-                                    $('#kode_text').focus();
+                if (is_error_action()){
+                    $.ajax({
+                        type:'POST',
+                        url:'send_pass.php',
+                        dataType:'json',
+                        data:{
+                            p:collection.phone,
+                            i:$num,
+                            c:collection.operation
+                        },
+                        success : function(data){
+                            {
+                                collection.new_rec_pass=data.kod;
+                                $('#regist_window').hide(function(){
+                                    $("#kode_window").slideDown(function(){
+                                        $('#kode_text').focus();
+                                    })
                                 })
-                            })
+                            }
                         }
-                    }
-                });
+                    });
+                }
+                else{
+                    $('#modal_box').addClass('admin');
+                    $('#error_action').slideDown(function(){
+                        $('#error_action_vote').focus()
+                    })
+                }
             }
             else
                 alert("Opps...");
@@ -151,10 +161,18 @@ $(document).ready(function(){
     });
 
     $('#already_change').click(function(){
-        $('#modal_box').addClass('admin');
-        $('#cancel_record').slideDown(function(){
-            $('#cancel_record_no').focus();
-        });
+        if (is_error_action()){
+            $('#modal_box').addClass('admin');
+            $('#cancel_record').slideDown(function(){
+                $('#cancel_record_no').focus();
+            });
+        }
+        else{
+            $('#modal_box').addClass('admin');
+            $('#error_action').slideDown(function(){
+                $('#error_action_vote').focus()
+            })
+        }
     });
 
     $('#cancel_record_yes').click(function(){
@@ -193,11 +211,49 @@ var collection={
     date:"",
     time:"",
     phone:"",
+    avt:0,
     new_rec_pass:"",
     history:new Array(),
     step:-1
 }
 $adm_win_visib=false;
+
+function is_error_action(){
+    var date=new Date();
+    if (date.getHours()>=9 && date.getHours()<21)
+        return true;
+    else
+        return false;
+}
+
+window.mobileDetection = {
+    Android:function () {
+        return navigator.userAgent.match(/Android/i);
+    },
+    BlackBerry:function () {
+        return navigator.userAgent.match(/BlackBerry/i);
+    },
+    iOS:function () {
+        return navigator.userAgent.match(/iPhone|iPad|iPod/i);
+    },
+    Opera:function () {
+        return navigator.userAgent.match(/Opera Mini/i);
+    },
+    Windows:function () {
+        return navigator.userAgent.match(/IEMobile/i);
+    },
+    any:function () {
+        return (this.Android() || this.BlackBerry() || this.iOS() || this.Opera() || this.Windows());
+    }
+};
+
+function selector(id){
+    if (window.isMobile = mobileDetection.any())
+        return document.getElementById(id);
+    if (!document.querySelector)
+        return document.getElementById(id);
+    return document.querySelector('#'+id);
+}
 
 function action(){
     if (collection.operation=='cancel'){
@@ -245,9 +301,9 @@ function action(){
             success : function(data){
                 {
                     if (data.msg){
-                        document.getElementById('info_name').innerHTML=" "+$('#regist_name').val();
-                        document.getElementById('info_fam').innerHTML=" "+$('#regist_fam').val();
-                        document.getElementById('info_age').innerHTML=" "+$('#regist_age').val();
+                        selector('info_name').innerHTML=" "+$('#regist_name').val();
+                        selector('info_fam').innerHTML=" "+$('#regist_fam').val();
+                        selector('info_age').innerHTML=" "+$('#regist_age').val();
                         $('#kode_window').hide(function(){
                             $(collection.history[collection.step]).slideDown(function(){
                                 $('#info_vote').focus();
@@ -278,7 +334,7 @@ function adm_opt(id){
 function valid(id){
     $('#second_error').hide();
     $('#second_error1').hide();
-    $val=document.getElementById(id).value;
+    $val=selector(id).value;
     $.ajax({
         type:'POST',
         url:'is_trening_admin.php',
@@ -315,7 +371,8 @@ function valid(id){
 }
 
 function cheked_mPhone(id){
-    var e=document.getElementById(id);
+    var e=selector(id);
+    //var e=document.querySelector("#"+id);
     $val=e.value;
     $flag=true;
     if($val[0]==0 || e.value.length<7 || e.value.length>7){
@@ -359,13 +416,21 @@ function send_phone(){
         },
         success : function(data){
             if (data.msg=='new'){
-                collection.new_rec_pass=data.kod;
-                $('#second_window').hide(function(){
-                    $('#kode_window').slideDown(function(){
-                        $('#kode_text').focus();
-                        collection.operation='update';
+                if (is_error_action()){
+                    collection.new_rec_pass=data.kod;
+                    $('#second_window').hide(function(){
+                        $('#kode_window').slideDown(function(){
+                            $('#kode_text').focus();
+                            collection.operation='new';
+                        })
                     })
-                })
+                }
+                else{
+                    $('#modal_box').addClass('admin');
+                    $('#error_action').slideDown(function(){
+                        $('#error_action_vote').focus()
+                    })
+                }
             }   //END if new account
             if (data.msg=='yes'){
                 collection.name=data.name;
@@ -373,8 +438,9 @@ function send_phone(){
                 collection.age=data.age;
                 collection.date=data.date;
                 collection.time=data.time;
-                document.getElementById('already_n_f').innerHTML=collection.fam+" "+collection.name;
-                document.getElementById('already_date').innerHTML=collection.date+" в "+collection.time;
+                collection.avt=data.avt;
+                selector('already_n_f').innerHTML=collection.fam+" "+collection.name;
+                selector('already_date').innerHTML=collection.date+" в "+collection.time;
                 $('#second_window').hide(function(){
                         $('#already_window').slideDown(function(){
                             $('#already_change').focus();
@@ -389,9 +455,10 @@ function send_phone(){
                 collection.age=data.age;
                 collection.date=data.date;
                 collection.time=data.time;
-                document.getElementById('info_name').innerHTML=" "+collection.name;
-                document.getElementById('info_fam').innerHTML=" "+collection.fam;
-                document.getElementById('info_age').innerHTML=" "+collection.age;
+                collection.avt=data.avt;
+                selector('info_name').innerHTML=" "+collection.name;
+                selector('info_fam').innerHTML=" "+collection.fam;
+                selector('info_age').innerHTML=" "+collection.age;
                 $('#second_window').hide(function(){
                     $('#info_window').slideDown(function(){
                         $('#info_vote').focus();

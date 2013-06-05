@@ -1,4 +1,7 @@
-﻿<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd"><html>
+﻿<?php
+require('config.php');
+?>
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd"><html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <title>Тренировка</title>
@@ -13,9 +16,9 @@
             echo "<form method='GET' action='1.php' name='f'>
                         <input type='submit' id='1' style='font-size:22px;visibility: hidden'></form>
                         <script>document.getElementById(1).click();</script>";
-		echo "<input type=hidden name=num value=$num>";
-        echo "<input type=hidden name=login value=$login>";
-        echo "<input type=hidden name=pass value=$pass>";
+		echo "<input type='hidden' name='num' value='$num'>";
+        echo "<input type='hidden' name='login' value=$login'>";
+        echo "<input type='hidden' name='pass' value='$pass'>";
 	?>
 	<table align="left">
     <tbody>
@@ -33,39 +36,35 @@
                                 $year=$row['year'];
                                 $month=$row['month'];
                                 $day=$row['day'];
-                                echo "<input type=hidden id=5551 value=$mest>";
-                                echo "<input type=hidden id=5552 value=$year>";
-                                echo "<input type=hidden id=5553 value=$month>";
-                                echo "<input type=hidden id=5554 value=$day>";
-		$phones=mysql_query("select id from dBase where num='$num' order by $sort $fl");//tut
+                                echo "<input type='hidden' id='5551' value='$mest'>";
+                                echo "<input type='hidden' id='5552' value='$year'>";
+                                echo "<input type='hidden' id='5553' value='$month'>";
+                                echo "<input type='hidden' id='5554' value='$day'>";
+        $dat=$row['year']."-".$row['month']."-".$row['day'];
+        $time=escape($row['Time']);
+		$phones=query("select dBase.* from dBase,records where dBase.id=records.id_user and records.id_event='$num' and records.date_event='$dat' and records.time_event='$time'
+        and records.comment='Record to event' and records.is_true='1' order by $sort $fl");//tut
 		$flag=0;
-		echo "<script>$col=0</script>";
-    	for($i=0;$i<mysql_num_rows($phones);$i++)
-		{
+		//echo "<script>$col=0</script>";
+//    	for($i=0;$i<mysql_num_rows($phones);$i++)
+        while ($row = fetch_array($phones, MYSQL_ASSOC)){
     		//if (mysql_result($phones,$i,0)==$allPhone){
-				{$tmp=mysql_result($phones,$i,0);
-				$avalible="select * from dBase where id='$tmp' and num='$num'";//tut
-				$res=mysql_query($avalible);
-				$row=mysql_fetch_array($res);
-				if ($row['record']==1){
-					$name1 = iconv("WINDOWS-1251","UTF-8", $row[name]);
-					$fam1 = iconv("WINDOWS-1251","UTF-8", $row[fam]);
+					$name1 = iconv("WINDOWS-1251","UTF-8", $row['name']);
+					$fam1 = iconv("WINDOWS-1251","UTF-8", $row['fam']);
 					$flag+=1;
-					echo "<tr><td align=center>$flag</td><td>$fam1</td><td>$name1</td><td align=center>$row[age]</td><td align=center>$row[phone]</td><td align=center>$row[avalible]</td><td align=center>$row[not_avalible]</td><td><input type=checkbox name=formDoor[] value=$row[id] id=$flag/></td></tr>";
-
-				}
-			}
-		
+					echo "<tr><td align='center'>$flag</td><td>$fam1</td><td>$name1</td><td align='center'>$row[age]</td>
+					    <td align='center'>$row[phone]</td><td align='center'>$row[avalible]</td>
+					        <td align='center'>$row[not_avalible]</td><td><input type='checkbox' name='formDoor[]' value='$row[id]' id='$flag'/></td></tr>";
 		}
-		echo "<input type=hidden id=1000 value=$flag>";
+		echo "<input type='hidden' id='1000' value='$flag'>";
 	?>
     </tbody>
     </table>
     </form>
     <?php
-        echo "<form action=admin_trening.php method=post name=form2><input type=hidden name=num value=$num>
-        <input type=hidden name=login value=$login><input type=hidden name=pass value=$pass>
-            <input type=hidden name=sort><input type=hidden name=fl></form>";
+        echo "<form action='admin_trening.php' method='post' name='form2'><input type='hidden' name='num' value='$num'>
+        <input type='hidden' name='login' value='$login'><input type='hidden' name='pass' value='$pass'>
+            <input type='hidden' name='sort'><input type='hidden' name='fl'></form>";
     ?>
     <br><br>
     <script>for ($i=0;$i<document.getElementById(1000).value;$i++) document.write("<br>")  

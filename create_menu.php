@@ -292,14 +292,14 @@
                                             <g>Никогда</g>
                                         </td>
                                         <td style="border: 0px;padding: 4px">
-                                            <input type="checkbox" name="never" id="never" onclick="if_never()" <?php if($row['never_rep']==1) echo "checked" ?>>
+                                            <input type="checkbox" name="never" id="never" onclick="if_never()" checked>
                                         </td>
                                     </tr>
                                     </tbody>
                                 </table>
                             </td>
                         </tr>
-                        <tr id="x_rep" style="display: <?php if($row['never_rep']==1) echo "none"; else echo "table-row"; ?>">
+                        <tr id="x_rep" style="display: none">
                             <td style="border: 0px;">
                                 <table border="0">
                                     <tbody>
@@ -381,7 +381,7 @@
         })
         $('#ok').click(function(){
             if (valid())
-                $.ajax({
+                /*$.ajax({
                     type:'POST',
                     url:'is_equal_pass.php',
                     dataType:'json',
@@ -402,7 +402,8 @@
                             }
                         }
                     }
-                });
+                });*/
+                document.forms['form1'].submit();
         });
     });
     function valid(){
@@ -441,7 +442,7 @@
             document.getElementById("x_rep").style.display="table-row";
     }
         function cancel_back(){
-            document.forms['form1'].action='adm_page.php';
+            document.forms['form1'].action='database.php';
             document.forms['form1'].submit();
         }
 </script>

@@ -1,3 +1,51 @@
+html, body, div, span, applet, object, iframe,
+  h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+  a, abbr, acronym, address, big, cite, code,
+  del, dfn, em, font, img, ins, kbd, q, s, samp,
+  small, strike, strong, sub, sup, tt, var,
+  b, u, i, center,
+  dl, dt, dd, ol, ul, li,
+  fieldset, form, label, legend,
+  table, caption, tbody, tfoot, thead, tr, th, td {
+  margin: 0;
+  padding: 0;
+  /*border: 0px;*/
+  outline: 0;
+  font-size: 100%;
+  font-family: Times New Roman;
+  vertical-align: baseline;
+  background: transparent;
+  }
+  body {
+  line-height: 1;
+  }
+  ol, ul {
+  list-style: none;
+  }
+  blockquote, q {
+  quotes: none;
+  }
+  /* remember to define focus styles! */
+  :focus {
+  outline: 0;
+  }
+  /* remember to highlight inserts somehow! */
+  ins {
+  text-decoration: none;
+  }
+  del {
+  text-decoration: line-through;
+  }
+  /* tables still need 'cellspacing="0"' in the markup */
+  table {
+  border-collapse: collapse;
+  border-spacing: 0;
+  }
+
+
+
+
+
 body, html{
     background-color:white;
     width:100%;
@@ -19,6 +67,48 @@ input[type=text]{
     -khtml-border-radius: 10px;
     -moz-border-radius: 10px;
     border-radius: 10px;
+}
+.conteiner{
+    background-color: rgb(245, 251, 252);
+    display: block;
+    border-left: 2px solid #a0bfc4;
+    border-right: 2px solid #a0bfc4;
+    border-bottom: 2px solid #a0bfc4;
+    margin-left: auto;
+    margin-right: auto;
+    width: 1200px;
+}
+.conteiner .bar{
+    border-radius: 0px;
+    -webkit-border-radius: 0px;
+    -moz-border-radius: 0px;
+    background-color: rgb(21, 105, 133);
+    border-bottom: 2px solid rgb(173, 153, 153);
+    border-top: 2px solid rgb(173, 153, 153);
+}
+
+
+
+
+.autorization{
+background-color:  rgb(237, 245, 247);
+    width: 310px;
+    margin-left: auto;
+    margin-right: auto;
+    border-top: 2px solid #a0bfc4;
+    border-bottom: 2px solid #a0bfc4;
+    padding: 10px;
+    top: 40%;
+    position: relative;
+}
+
+.autorization input[type=text]{
+    border: 1px outset rgb(139, 199, 209);
+    padding: 5px 5px;
+}
+
+.autorization .but_div{
+    margin-top: 10px;
 }
 
 .middleBox{
@@ -58,7 +148,7 @@ div{
     -moz-border-radius: 20px;
 
 }
-input[type=button]{
+input[type=password]{
     font-size: 22px !important;
     -webkit-border-radius:20px !important;
     -khtml-border-radius: 20px !important;
@@ -72,5 +162,109 @@ input[type=button]{
     zoom: 1;
     z-index: 4;
     opacity: 0.2;
+    filter:progid:DXImageTransform.Microsoft.Alpha(opacity=20); /* IE 5.5+*/
+    -moz-opacity: 0.2; /* Mozilla 1.6 и ниже */
+    -khtml-opacity: 0.2;
     cursor: progress;
+}
+.tren_tab{
+    margin-top: 15px;
+    padding-bottom: 15px;
+}
+.tren_tab table{
+    margin-right: auto;
+    margin-left: auto;
+    border: 1px solid rgb(180, 203, 218);
+}
+/*.tren_tab table, .tren_tab table tbody,.tren_tab table tbody tr,.tren_tab table tbody td{
+	border: 2px;
+}*/
+.tren_tab .selected_tr{
+            background: -moz-linear-gradient(top , #DBFFB0 0%, #D0F4A4 100%);
+            background: -webkit-gradient(linear, left top, left bottom, color-stop(0,#DBFFB0), color-stop(1, #D0F4A4));
+            background: -o-linear-gradient(top, #DBFFB0 0% , #D0F4A4 100%);
+            background: -ms-linear-gradient(top, #DBFFB0 0% , #D0F4A4 100%);
+            background: -moz-linear-gradient(top, #DBFFB0 0% , #D0F4A4 100%);
+            background: -webkit-gradient(linear, left top, left bottom, color-stop(0,#DBFFB0), color-stop(1, #D0F4A4));
+            border-bottom: 1px solid rgb(214, 214, 214);
+			border-top: 1px solid rgb(232, 250, 231);
+}
+
+#admin_window .admin_window_text table{
+    border: 1px solid rgb(180, 203, 218);
+    padding: 3px;
+    border-spacing: 0px;
+    display: inline-block;
+    background: white;
+}
+
+.but{
+    background-color: rgb(13, 146, 209); /*hover: rgb(35, 175, 241)   rgb(13, 146, 209)
+
+    orange #f19723
+
+
+    */
+    background-repeat: repeat-x;
+    color: white;
+    font-size: 14px !important;
+    width: 105px;
+    height: 32px;
+    line-height: 25px;
+    text-shadow: none;
+    vertical-align: middle;
+    cursor: pointer;
+    box-shadow: inset 0 1px 0 rgba(255,255,255,.2),0 1px 2px rgba(0,0,0,.05);
+    border: 1px solid #bbb;
+    border-color: #e99d2f #e99d2f #b87513;
+    border-color: rgba(0,0,0,.1) rgba(0,0,0,.1) rgba(0,0,0,.25);
+    -webkit-box-shadow: inset 0 1px 0 rgba(255,255,255,.2),0 1px 2px rgba(0,0,0,.05);
+    -moz-box-shadow: inset 0 1px 0 rgba(255,255,255,.2),0 1px 2px rgba(0,0,0,.05);
+    box-shadow: inset 0 1px 0 rgba(255,255,255,.2),0 1px 2px rgba(0,0,0,.05);
+    -webkit-border-radius:2px;
+    -khtml-border-radius: 2px;
+    -moz-border-radius: 2px;
+    border-radius: 2px;
+}
+.but:hover{
+    background-color:rgb(35, 175, 241);
+}
+table{
+    -webkit-border-radius:10px;
+    -khtml-border-radius: 10px;
+    -moz-border-radius: 10px;
+    border-radius: 10px;
+    cursor: default;
+}
+select{
+    font-size:20px;
+    -webkit-border-radius:10px;
+    -khtml-border-radius: 10px;
+    -moz-border-radius: 10px;
+    border-radius: 10px;
+}
+.td{
+    /*border: 2px;*/
+    border-bottom: 0px;
+    border-bottom-color: white;
+    border-top: 0px;
+    border-top-color: white;
+    padding: 7px 8px 7px 8px;
+    font-size: 13px;
+}
+.td_head{
+    border-bottom: 2px solid;
+    border-bottom-color: rgb(185, 196, 201);
+    padding: 7px 8px 7px 8px;
+    background-color: rgba(63, 101, 160, 0.94);
+    color: white;
+    text-align: center;
+    font-size: 13px;
+}
+.td_first{
+    /*border: 2px;	*/
+    border-bottom: 0px;
+    border-bottom-color: white;
+    padding: 7px 8px 7px 8px;
+    font-size: 13px;
 }

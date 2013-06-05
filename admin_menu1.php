@@ -48,6 +48,7 @@
         echo "<input type=hidden name=num value=$num>";
         echo "<input type=hidden name=login value=$login>";
         echo "<input type=hidden name=pass value=$pass>";
+        echo "<input id='sort' type='hidden' name='sort' value='organization'>";
     ?>
     <table align="left" border="2">
         <tbody>
@@ -381,13 +382,13 @@
 <?php
     $nam="InfoPanel_".$num;
     echo "Код для вставки:<br>
-<textarea cols='60' rows='11' readonly><!-- Put there scripts tag to the <head> of your page -->
-<script src=\"//salto.extreme.by/public_js/jquery.js\" type=\"text/javascript\" charset=\"utf-8\"></script>
-<script src=\"//salto.extreme.by/public_js/logic.js\" type=\"text/javascript\" charset=\"utf-8\"></script>
+<textarea cols='60' rows='12' readonly><!-- Put there scripts tag to the <head> of your page -->
+<script src=\"//salto.extreme.by/public_js1/jquery.js\" type=\"text/javascript\" charset=\"utf-8\"></script>
+<script src=\"//salto.extreme.by/public_js1/logic.js\" type=\"text/javascript\" charset=\"utf-8\"></script>
 
 <!-- Put this div tag to the place, where the InfoPanel block will be -->
 <div id=\"".$nam."\"></div>
-<script>logic.init('".$nam."',".$num.")</script>
+<script>$(document).ready(function(){logic.init('".$nam."',".$num.")})</script>
 </textarea>";
     ?>
 </div>
@@ -427,6 +428,28 @@
         })
         $('#ok').click(function(){
             if (valid())
+                /*$.ajax({
+                    type:'POST',
+                    url:'is_equal_pass.php',
+                    dataType:'json',
+                    data:{
+                        l:'<?php echo $login;?>',
+                        p:'<?php echo $pass;?>',
+                        e:$('#pass_admin').val()
+                    },
+                    success : function(data){
+                        {
+                            if (data.msg){
+                                document.forms['form1'].submit();
+                            }
+                            else {
+                                $('#error_pass_admin_equal').slideDown();
+                                $('#pass_admin').focus();
+                                error_str='#error_pass_admin_equal';
+                            }
+                        }
+                    }
+                });*/
                 document.forms['form1'].submit();
         });
     })
@@ -443,7 +466,7 @@
             document.getElementById("x_rep").style.display="table-row";
     }
     function cancel_back(){
-        document.forms['form1'].action='adm_page.php';
+        document.forms['form1'].action='database.php';
         document.forms['form1'].submit();
     }
     function valid(){

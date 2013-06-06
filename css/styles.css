@@ -190,6 +190,45 @@ input[type=password]{
 			border-top: 1px solid rgb(232, 250, 231);
 }
 
+.change_tab{
+    margin-left: auto;
+    margin-right: auto;
+    width: 500px;
+}
+.change_tab input[type=text]{
+    color: rgb(75, 75, 75);
+}
+
+.change_tab select{
+    color: rgb(75, 75, 75);
+    background-color:rgb(218, 236, 248);
+    border: 1px solid rgb(180, 203, 218);
+}
+.change_tab table td{
+    padding-left: 5px;
+    padding-right: 5px;
+}
+
+.change_tab {
+    color: rgb(65, 65, 65);
+}
+
+.change_tab table{
+    margin-right: auto;
+    margin-left: auto;
+    border: 1px solid rgb(180, 203, 218);
+}
+.change_tab table table{
+    margin-right: 0px;
+    margin-left: 0px;
+    border-top: 2px solid rgb(203, 223, 236);
+}
+.change_tab table table table{
+    margin-right: 0px;
+    margin-left: 5px;
+    border: none;
+}
+
 #admin_window .admin_window_text table{
     border: 1px solid rgb(180, 203, 218);
     padding: 3px;
@@ -228,6 +267,13 @@ input[type=password]{
 }
 .but:hover{
     background-color:rgb(35, 175, 241);
+}
+.cancel{
+    background-color: rgb(220, 243, 245);
+    color: rgb(13, 146, 209);
+}
+.cancel:hover{
+    background-color:rgb(218, 252, 255)
 }
 table{
     -webkit-border-radius:10px;

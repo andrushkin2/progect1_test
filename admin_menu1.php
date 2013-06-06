@@ -1,12 +1,13 @@
 ﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
+    <link rel="stylesheet" href="css/styles.css" type="text/css" media="screen" charset="utf-8">
     <script src="js/jquery.js" type="text/javascript"></script>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>Администрирование</title>
     <style type="text/css">
-        g{font-size: 20px}
-        .but{
+        g{font-size: 18px}
+        /*.but{
             font-size: 22px;
             -webkit-border-radius:35px;
             -khtml-border-radius: 35px;
@@ -24,7 +25,7 @@
             -khtml-border-radius: 10px;
             -moz-border-radius: 10px;
             border-radius: 10px;
-        }
+        }*/
     </style>
 </head>
 <?php
@@ -42,7 +43,7 @@
 ?>
 
 <body>
-
+<div class="change_tab">
 <form name="form1" onsubmit="return false" action="change.php" method="POST">
     <?php
         echo "<input type=hidden name=num value=$num>";
@@ -52,6 +53,7 @@
     ?>
     <table align="left" border="2">
         <tbody>
+        <tr height="10px"><td style="border: 0px">&nbsp;</td></tr>
         <tr>
             <td style="border: 0px;padding-left: 20px;padding-right: 20px">
                 <table border="2">
@@ -61,7 +63,7 @@
                             <g>Пароль администратора:</g>
                         </td>
                         <td align="left"  style="border: 0px;padding: 4px">
-                            <input type="text" id="pass_admin" title="Пример: 1234567" name="pass_admin" style="font-size:20px" size="4" maxlength="7" value="<?php echo $row['trening_code'] ?>"/>
+                            <input type="text" id="pass_admin" title="Пример: 1234567" name="pass_admin" style="font-size:20px" size="6" maxlength="7" value="<?php echo $row['trening_code'] ?>"/>
                             <div><small>Пароль 7 цифр. Пример: 1234567</small></div>
                             <div id="error_pass_admin" style="display: none"><small style="color: red">Длина пароля 7 символов!</small></div>
                             <div id="error_pass_admin_empty" style="display: none"><small style="color: red">Пароль не должен быть пустым!</small></div>
@@ -73,7 +75,7 @@
                 </table>
             </td>
         </tr>
-        <tr height="30px"></tr>
+        <tr height="30px"><td style="border: 0px">&nbsp;</td></tr>
         <tr>
             <tr>
                 <td style="border: 0px;padding-left: 20px;padding-right: 20px">
@@ -91,7 +93,7 @@
                     </table>
                 </td>
             </tr>
-            <tr height="30px"></tr>
+            <tr height="30px"><td style="border: 0px">&nbsp;</td></tr>
             <tr>
                 <td style="border: 0px;padding-left: 20px;padding-right:20px">
                     <g>Начало мероприятия:</g>
@@ -135,7 +137,7 @@
                                 <td style="border: 0px;padding: 4px;text-align: center">Месяц</td>
                                 <td style="border: 0px;padding: 4px;text-align: center">Год</td>
                             </tr>
-                            <tr height="10px"></tr>
+                            <tr height="10px"><td style="border: 0px">&nbsp;</td><td style="border: 0px">&nbsp;</td><td style="border: 0px">&nbsp;</td><td style="border: 0px">&nbsp;</td></tr>
                             <tr>
                                 <td style="border: 0px;padding: 4px">
                                     <g>Время: <?php $t=explode(":",$row['Time']);echo $t[0].":".$t[1];?></g>
@@ -159,17 +161,19 @@
                                         <option value="50">50</option><option value="55">55</option>
                                     </select>
                                 </td>
+                                <td style="border: 0px">&nbsp;</td>
                             </tr>
                             <tr>
                                 <td style="border: 0px;padding: 4px;text-align: center"></td>
                                 <td style="border: 0px;padding: 4px;text-align: center">Часов</td>
                                 <td style="border: 0px;padding: 4px;text-align: center">Минут</td>
+                                <td style="border: 0px">&nbsp;</td>
                             </tr>
                         </tbody>
                     </table>
                 </td>
             </tr>
-            <tr height="30px"></tr>
+            <tr height="30px"><td style="border: 0px">&nbsp;</td></tr>
             <tr>
                 <td style="border: 0px;padding-left: 20px;padding-right:20px">
                     <g>Окончание регистрации:</g>
@@ -213,7 +217,7 @@
                             <td style="border: 0px;padding: 4px;text-align: center">Месяц</td>
                             <td style="border: 0px;padding: 4px;text-align: center">Год</td>
                         </tr>
-                        <tr height="10px"></tr>
+                        <tr height="10px"><td style="border: 0px">&nbsp;</td><td style="border: 0px">&nbsp;</td><td style="border: 0px">&nbsp;</td><td style="border: 0px">&nbsp;</td></tr>
                         <tr>
                             <td style="border: 0px;padding: 4px">
                                 <g>Время: <?php $t2=explode(":",$row['xTime']);echo $t2[0].":".$t2[1];?></g>
@@ -237,17 +241,19 @@
                                     <option value="50">50</option><option value="55">55</option>
                                 </select>
                             </td>
+                            <td style="border: 0px">&nbsp;</td>
                         </tr>
                         <tr>
                             <td style="border: 0px;padding: 4px;text-align: center"></td>
                             <td style="border: 0px;padding: 4px;text-align: center">Часов</td>
                             <td style="border: 0px;padding: 4px;text-align: center">Минут</td>
+                            <td style="border: 0px">&nbsp;</td>
                         </tr>
                         </tbody>
                     </table>
                 </td>
             </tr>
-            <tr height="30px"></tr>
+            <tr height="30px"><td style="border: 0px">&nbsp;</td></tr>
             <tr>
                 <td style="border: 0px;padding-left: 20px;padding-right:20px">
                     <g>Повторить:</g>
@@ -298,7 +304,7 @@
                                 </table>
                             </td>
                         </tr>
-                        <tr height="30px"></tr>
+                        <tr height="30px"><td style="border: 0px">&nbsp;</td></tr>
                         <tr>
                             <td style="border: 0px;padding-left: 8px;padding-right:20px">
                                 <g>Окончание повторов:</g>
@@ -366,14 +372,15 @@
                     </table>
                 </td>
             </tr>
-            <tr height="20px"></tr>
+            <tr height="20px"><td style="border: 0px">&nbsp;</td></tr>
             <tr align="right">
                 <td style="border: 0px;padding-left: 20px;padding-right: 20px">
-                    <input type="button" class="but"  onclick="cancel_back()" value="Отменить"/>
-                    <g style="visibility: hidden">aaa</g>
-                    <input type="button" class="but" id="ok" value="Применить"/>
+                    <input type="button" class="but cancel"  onclick="cancel_back()" value="Отменить"/>
+
+                    <input type="button" class="but" id="ok" style="margin-left: 20px" value="Применить"/>
                 </td>
             </tr>
+        <tr height="10px"><td style="border: 0px">&nbsp;</td></tr>
         </tbody>
     </table>
 </form>

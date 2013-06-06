@@ -51,11 +51,11 @@
         echo "<input type=hidden name=pass value=$pass>";
         echo "<input id='sort' type='hidden' name='sort' value='organization'>";
     ?>
-    <table align="left" border="2">
+    <table align="left" class="main_table" border="2">
         <tbody>
         <tr height="10px"><td style="border: 0px">&nbsp;</td></tr>
         <tr>
-            <td style="border: 0px;padding-left: 20px;padding-right: 20px">
+            <td style="border: 0px;padding-left: 30px;padding-right: 30px">
                 <table border="2">
                     <tbody>
                     <tr>
@@ -78,7 +78,7 @@
         <tr height="30px"><td style="border: 0px">&nbsp;</td></tr>
         <tr>
             <tr>
-                <td style="border: 0px;padding-left: 20px;padding-right: 20px">
+                <td style="border: 0px;padding-left: 30px;padding-right: 30px">
                     <table>
                         <tbody>
                             <tr>
@@ -95,12 +95,12 @@
             </tr>
             <tr height="30px"><td style="border: 0px">&nbsp;</td></tr>
             <tr>
-                <td style="border: 0px;padding-left: 20px;padding-right:20px">
+                <td style="border: 0px;padding-left: 30px;padding-right:30px">
                     <g>Начало мероприятия:</g>
                 </td>
             </tr>
             <tr>
-                <td style="border: 0px;padding-left: 20px;padding-right:20px">
+                <td style="border: 0px;padding-left: 30px;padding-right:30px">
                     <table border="2">
                         <tbody>
                             <tr>
@@ -175,12 +175,12 @@
             </tr>
             <tr height="30px"><td style="border: 0px">&nbsp;</td></tr>
             <tr>
-                <td style="border: 0px;padding-left: 20px;padding-right:20px">
+                <td style="border: 0px;padding-left: 30px;padding-right:30px">
                     <g>Окончание регистрации:</g>
                 </td>
             </tr>
             <tr>
-                <td style="border: 0px;padding-left: 20px;padding-right:20px">
+                <td style="border: 0px;padding-left: 30px;padding-right:30px">
                     <table border="2">
                         <tbody>
                         <tr>
@@ -255,13 +255,13 @@
             </tr>
             <tr height="30px"><td style="border: 0px">&nbsp;</td></tr>
             <tr>
-                <td style="border: 0px;padding-left: 20px;padding-right:20px">
+                <td style="border: 0px;padding-left: 30px;padding-right:30px">
                     <g>Повторить:</g>
                     <input type="checkbox" name='check' id='check' <?php if($row['rep']!=0) echo "checked" ?> onclick="checke()" />
                 </td>
             </tr>
             <tr id="tr" style="display: <?php if($row['rep']!=0) echo "table-row"; else echo "none"?> ">
-                <td style="border: 0px;padding-left: 20px;padding-right: 20px">
+                <td style="border: 0px;padding-left: 30px;padding-right: 30px">
                     <table border="2" style="width: 432px">
                         <tbody>
                         <tr >
@@ -374,7 +374,7 @@
             </tr>
             <tr height="20px"><td style="border: 0px">&nbsp;</td></tr>
             <tr align="right">
-                <td style="border: 0px;padding-left: 20px;padding-right: 20px">
+                <td style="border: 0px;padding-left: 30px;padding-right: 30px">
                     <input type="button" class="but cancel"  onclick="cancel_back()" value="Отменить"/>
 
                     <input type="button" class="but" id="ok" style="margin-left: 20px" value="Применить"/>
@@ -385,7 +385,8 @@
     </table>
 </form>
 </div>
-<div style="display: inline-block;border:1px solid #000000;margin-left: 40px;padding: 5px">
+<div class="kode_div">
+    <div class="exit_X exit_x" title="Close window" onclick="$(this.parentNode).hide()">x</div>
 <?php
     $nam="InfoPanel_".$num;
     echo "Код для вставки:<br>

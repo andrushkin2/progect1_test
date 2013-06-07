@@ -162,6 +162,7 @@ if ($login=="" || $pass=="")
                         <?php
                         echo "<input type=hidden name=login value=$login>";
                         echo "<input type=hidden name=pass value=$pass>";
+                        echo "<input id=sort type=hidden name=sort value=organization>";
                         ?>
                     </form>
                 </td>
@@ -214,10 +215,10 @@ if ($login=="" || $pass=="")
             document.forms['form1'].action='database.php';
             document.forms['form1'].submit();
         });
-        $('#change').click(function(){
+        /*$('#change').click(function(){
             document.forms['form1'].action='admin_menu1.php';
             document.forms['form1'].submit();
-        });
+        });*/
         $('.tren_tab table tr').click(function(){
             if (! /selected_tr/.test(this.className)){
                 $('tr.selected_tr').removeClass('selected_tr');

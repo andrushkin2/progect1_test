@@ -245,8 +245,8 @@ input[type=password]{
 }
 .change_tab .main_table{
     border: none;
-    border-right: 1px solid rgb(248, 250, 252);
-    border-left: 1px solid rgb(248, 250, 252);
+    border-right:3px solid rgb(231, 239, 247);                   /*1px solid rgb(248, 250, 252);*/
+    border-left: 3px solid rgb(231, 239, 247);
 }
 .change_tab table table{
     margin-right: 0px;

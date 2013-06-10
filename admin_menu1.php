@@ -56,13 +56,13 @@
         <tr height="10px"><td style="border: 0px">&nbsp;</td></tr>
         <tr>
             <td style="border: 0px;padding-left: 30px;padding-right: 30px">
-                <table border="2">
+                <table border="2" class="second_table">
                     <tbody>
                     <tr>
                         <td  style="border: 0px;padding: 4px">
                             <g>Пароль администратора:</g>
                         </td>
-                        <td align="left"  style="border: 0px;padding: 4px">
+                        <td align="right"  style="border: 0px;padding: 4px;padding-right: 24px">
                             <input type="text" id="pass_admin" title="Пример: 1234567" name="pass_admin" style="font-size:20px" size="6" maxlength="7" value="<?php echo $row['trening_code'] ?>"/>
                             <div><small>Пароль 7 цифр. Пример: 1234567</small></div>
                             <div id="error_pass_admin" style="display: none"><small style="color: red">Длина пароля 7 символов!</small></div>
@@ -79,14 +79,14 @@
         <tr>
             <tr>
                 <td style="border: 0px;padding-left: 30px;padding-right: 30px">
-                    <table>
+                    <table class="second_table">
                         <tbody>
                             <tr>
                                 <td>
                                     <g>Установить количество мест: <?php echo $row['maxCol']." "?></g>
                                 </td>
                                 <td align="left">
-                                    <input type="text" id="1" size="3" name="kol" style="font-size:20px"/>
+                                    <input type="text" id="1" size="6" name="kol" style="font-size:20px"/>
                                 </td>
                             </tr>
                         </tbody>
@@ -101,7 +101,7 @@
             </tr>
             <tr>
                 <td style="border: 0px;padding-left: 30px;padding-right:30px">
-                    <table border="2">
+                    <table border="2" class="second_table">
                         <tbody>
                             <tr>
                                 <td style="border: 0px">
@@ -181,7 +181,7 @@
             </tr>
             <tr>
                 <td style="border: 0px;padding-left: 30px;padding-right:30px">
-                    <table border="2">
+                    <table border="2" class="second_table">
                         <tbody>
                         <tr>
                             <td style="border: 0px">
@@ -262,7 +262,7 @@
             </tr>
             <tr id="tr" style="display: <?php if($row['rep']!=0) echo "table-row"; else echo "none"?> ">
                 <td style="border: 0px;padding-left: 30px;padding-right: 30px">
-                    <table border="2" style="width: 432px">
+                    <table border="2" class="second_table">
                         <tbody>
                         <tr >
                             <td style="border: 0px;">
@@ -384,7 +384,11 @@
         </tbody>
     </table>
 </form>
+<div class="code_icon">
+    <span>Код для вставки</span>
 </div>
+</div>
+
 <div class="kode_div">
     <div class="exit_X exit_x" title="Close window" onclick="$(this.parentNode).hide()">x</div>
 <?php

@@ -253,6 +253,26 @@ input[type=password]{
     margin-left: 0px;
     border-top: 3px solid rgb(203, 223, 236);
 }
+.change_tab .code_icon{
+    background-color: #6EC3EF;
+    background: url("./../Images/code.png") no-repeat scroll 0 0 transparent;
+    position: fixed;
+    top:20%;
+    left:50%;
+    margin-left: 20px;
+}
+.change_tab .code_icon span{
+    display: block;
+    min-width: 152px;
+    visibility: hidden;
+}
+
+.change_tab .second_table{
+    width: 435px;
+}
+.change_tab .second_table {
+    width: 435px;
+}
 .change_tab table table table{
     margin-right: 0px;
     margin-left: 5px;

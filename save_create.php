@@ -1,5 +1,6 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd"><html>
 <head>
+    <link rel="stylesheet" href="css/styles.css" type="text/css" media="screen" charset="utf-8">
     <script src="js/jquery.js" type="text/javascript"></script>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <title>Новое событие</title>
@@ -45,7 +46,7 @@ $url_site=$res['url_site'];
     $a1=mysql_query("insert into admin (maxCol,login,pass,aboniments,organization,url_site,trening_code) values ('$kol','$login','$pass','0','$org','$url_site','$pass_admin')");//tut
     $num=mysql_insert_id();
 $nam="InfoPanel_".$num;
-echo "Код для вставки:<br>
+/*echo "Код для вставки:<br>
 <textarea cols='60' rows='12' readonly><!-- Put there scripts tag to the <head> of your page -->
 <script src=\"//salto.extreme.by/public_js1/jquery.js\" type=\"text/javascript\" charset=\"utf-8\"></script>
 <script src=\"//salto.extreme.by/public_js1/logic.js\" type=\"text/javascript\" charset=\"utf-8\"></script>
@@ -53,7 +54,7 @@ echo "Код для вставки:<br>
 <!-- Put this div tag to the place, where the InfoPanel block will be -->
 <div id=\"".$nam."\"></div>
 <script>$(document).ready(function(){logic.init('".$nam."',".$num.")})</script>
-</textarea>";
+</textarea>";*/
 
 mysql_query("UPDATE admin set never_rep ='$never' where name='$num'");//tut
 
@@ -197,8 +198,28 @@ mysql_query("UPDATE admin set end_rep='$end_rep_all[0]-$end_rep_all[1]-$end_rep_
             mysql_query("UPDATE admin set rep='$repeat' where name='$num'");
         } //если окончание повторов...
     }
-echo "<br><br><form method=post action=database.php><input type=hidden name=login value=$login> <input type=hidden name=pass value=$pass><input id='sort' type='hidden' name='sort' value='organization'>
-    <input type=submit id=1 onclick='document.getElementById(1).click();' value='Главное меню' style=font-size:22px></form>";
+echo "<br><br><form method=post action=database.php id='form_main_menu'><input type=hidden name=login value=$login> <input type=hidden name=pass value=$pass><input id='sort' type='hidden' name='sort' value='organization'>
+    <!--<input type=submit id=1 onclick='document.getElementById(1).click();' value='Главное меню' style=font-size:22px>--></form>";
+?>
+<div id="kode_div" style="display: block" class="kode_div">
+    <div align="center" style="margin-bottom: 10px;">Занятие успешно создано</div>
+    <?php
+    $nam="InfoPanel_".$num;
+    echo "Код для вставки:<br>
+<textarea cols='60' rows='12' readonly><!-- Put there scripts tag to the <head> of your page -->
+<script src=\"//salto.extreme.by/public_js1/jquery.js\" type=\"text/javascript\" charset=\"utf-8\"></script>
+<script src=\"//salto.extreme.by/public_js1/logic.js\" type=\"text/javascript\" charset=\"utf-8\"></script>
+
+<!-- Put this div tag to the place, where the InfoPanel block will be -->
+<div id=\"".$nam."\"></div>
+<script>$(document).ready(function(){logic.init('".$nam."',".$num.")})</script>
+</textarea>";
+    ?>
+    <div align="center">
+        <input type="button" class="but" style="width: 122px;margin-top: 10px;" value="Главное меню" onclick="$('#form_main_menu').submit()">
+    </div>
+</div>
+<?php
 function equal_date($next,$end){
     $next=explode('-',$next);
     $end=explode('-',$end);

@@ -384,12 +384,12 @@
         </tbody>
     </table>
 </form>
-<div class="code_icon">
-    <span>Код для вставки</span>
+<div class="code_icon" onclick="$('#kode_div').slideDown(10)">
+    <span>&lt;/&gt; &nbsp;Код для вставки</span>
 </div>
 </div>
 
-<div class="kode_div">
+<div id="kode_div" class="kode_div">
     <div class="exit_X exit_x" title="Close window" onclick="$(this.parentNode).hide()">x</div>
 <?php
     $nam="InfoPanel_".$num;

@@ -21,19 +21,19 @@ if ($login=="" || $pass=="")
                         <script>document.getElementById(1).click();</script>";
 ?>
 <div class="conteiner">
-<div style="padding: 5px" class="bar">
+<div style="padding: 5px;text-align: center;" class="bar">
     <!--<input class="but" type='button' onclick="document.forms['form1'].action='adm_page.php';document.forms['form1'].submit();" value='Главное меню'>
     &nbsp;
     &nbsp;
     &nbsp;
     &nbsp;-->
-    <input type="button" class="but" value="Создать" id='new_trening' onclick="document.forms['form2'].action='create_menu.php';
+    <input type="button" class="but" style="width: 134px;" value="Создать занятие" id='new_trening' onclick="document.forms['form2'].action='create_menu.php';
             document.forms['form2'].submit();">
     &nbsp;
     &nbsp;
     &nbsp;
     &nbsp;
-    <input type="button" class="but" value="Изменить" id='open_win' onclick="$('#event').slideDown('fast');">
+    <input type="button" class="but" style="width: 134px;" value="Изменить занятие" id='open_win' onclick="$('#event').slideDown('fast');">
 </div>
   <div class="tren_tab">
 <table border="2" style="padding: 3px;border-spacing: 0px;">
@@ -139,14 +139,14 @@ if ($login=="" || $pass=="")
     </table>
   </div>
 </div>
-<div id="event"  align="center" style="position: absolute;background:gray;top:50%;margin-top: -100px;display: none;left: 50%;margin-left: -180px;width: 365px;height: auto">
-    <div style="cursor:pointer;position: relative;top: 4px;left: 163px;font-size: 26px;color: wheat;font-weight: bold;font-family: arial;" onclick="$('#event').hide()">x</div>
-    <div>
+<div id="event" class="kode_div"  align="center">
+    <div class="exit_X exit_x" title="Close window" onclick="$(this.parentNode).hide()">x</div>
+    <div style="margin-top: 34px;">
         <table border="0">
             <tbody>
             <tr>
                 <td style="border: 0px">
-                    <g style='color: wheat'>Событие:</g>
+                    <g>Событие:</g>
                 </td>
                 <td style="border: 0px;padding: 4px">
                     <form action="" method="post" name='form2' onsubmit="return false">
@@ -183,10 +183,10 @@ if ($login=="" || $pass=="")
     ?>
 </form>
     <div id="modal_box" style="position: fixed;height: 100%;width: 100%;display: none;background: black"></div>
-    <div id="admin_window" align="center" style="display: none;text-align: center; position: absolute;width: 600px;margin-left: -300px;box-shadow: 0px 0px 14px #888888;
-            padding: 15px; background: grey;top: 120px;left: 50%;z-index: 5">
-        <div style="cursor:pointer;position: absolute;top: 4px;left: 603px;float: left;font-size: 26px;color: wheat;font-weight: bold;font-family: arial;" onclick="hide_madal()    ">x</div>
-        <div style="font-size: 20px;color: wheat;padding: 12px;">Список записавшихся</div>
+    <div id="admin_window" align="center" class="kode_div" style="display: none;text-align: center; position: absolute;width: 600px;margin-left: -300px;margin-top: 0px;box-shadow: 0px 0px 14px #888888;
+            padding: 15px;top: 120px;left: 50%;z-index: 5">
+        <div style="cursor:pointer;position: absolute;top: 4px;left: 603px;float: left;font-size: 26px;" class="exit_X exit_message_tab" onclick="hide_madal()">x</div>
+        <div style="font-size: 20px;padding: 12px;">Список записавшихся</div>
         <div class="admin_window_loading">
             <div><b style="color: whitesmoke">Идет загрузка...</b></div>
             <div><img src='Images/ajax-loader-big.gif'/></div>
@@ -196,8 +196,8 @@ if ($login=="" || $pass=="")
             <div style="display: inline-block">
                 <textarea style="resize: none" cols="35" maxlength="160" rows="3"></textarea>
             </div>
-            <div style="display: inline-block;position: relative;top: -21px;">
-                <input type="button" value="Отправить" onclick="send_message()">
+            <div style="display: inline-block;position: relative;top: -25px;left: 13px;">
+                <input type="button" class="but" value="Отправить" onclick="send_message()">
             </div>
         </div>
         <div class="admin_window_message_prog" style="margin-top: 16px;display: none">

@@ -388,7 +388,7 @@
                         <g>Установить количество мест:</g>
                     </td>
                     <td align="left">
-                        <input type="text" id="1" size="6" name="kol" style="font-size:20px"/>
+                        <input type="text" id="1" size="6" name="kol" style="font-size:20px;margin-left: 47px;"/>
                     </td>
                 </tr>
                 </tbody>

@@ -240,7 +240,7 @@ if ($login=="" || $pass=="")
                 success : function(data){
                     $('#admin_window div.admin_window_loading').hide();
                     if (data.empty){
-                        $('#admin_window div.admin_window_text').html("<b style='color: whitesmoke'>Нет записавшихся на занятие</b>");
+                        $('#admin_window div.admin_window_text').html("<b>Нет записавшихся на занятие</b>");
                     }
                     else
                         $('#admin_window div.admin_window_text').html(data.code);

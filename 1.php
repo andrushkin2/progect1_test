@@ -12,9 +12,17 @@
 <div class="autorization">
 <g id='incorrect'>Incorrect login or pass</g>
 <form action="database.php" id='form1' name='form1' onsubmit="return false" method="POST">
-    <div>
-    Логин:&nbsp;&nbsp;<input type="text" name='login' id="1"><br>
-    Пароль:	<input type="text" name='pass' id="2"><br>
+    <div class="">
+        <div class="field">
+            <label for="1">Логин:</label>
+            <input type="text" name='login' id="1">
+        </div>
+        <div class="field">
+            <label for="2">Пароль:</label>
+            <input type="text" name='pass' id="2">
+        </div>
+    <!--Логин:&nbsp;&nbsp;<input type="text" name='login' id="1"><br>
+    Пароль:	<input type="text" name='pass' id="2"><br>-->
     <?php
     echo "<input id='sort' type='hidden' name='sort' value='organization'>";
     ?>

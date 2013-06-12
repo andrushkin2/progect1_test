@@ -29,7 +29,8 @@
     </div>
 </form>
     <div align="center" class="but_div">
-        <input type="button" class="but" value="Вход" id='vote'>
+        <input type="button" class="but" value="Регистрация" id='reg'>
+        <input type="button" class="but" style="margin-left: 50px" value="Вход" id='vote'>
     </div>
 </div>
 </body>
@@ -54,6 +55,10 @@
                     }
                 }
             });
+        });
+        $('#reg').click(function(){
+            document.forms['form1'].action = '2.php';
+            document.forms['form1'].submit();
         });
     });
 </script>

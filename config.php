@@ -5,6 +5,9 @@ mysql_select_db('saltoext_salto1') or die(mysql_error());
 function escape($string){
     return mysql_real_escape_string($string);
 }
+function nextId(){
+    return mysql_insert_id();
+}
 function query($string){
     return mysql_query($string);
 }

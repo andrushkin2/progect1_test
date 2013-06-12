@@ -101,8 +101,9 @@ background-color:  rgb(237, 245, 247);
     margin-right: auto;
     border-top: 2px solid #a0bfc4;
     border-bottom: 2px solid #a0bfc4;
-    padding: 10px;
-    top: 40%;
+    padding: 42px;
+    top: 50%;
+    margin-top: -115px;
     position: relative;
 }
 .autorization label {
@@ -127,7 +128,14 @@ background-color:  rgb(237, 245, 247);
 }
 
 .autorization .but_div{
-    margin-top: 10px;
+    margin-top: 26px;
+    margin-bottom: -13px;
+}
+.autorization .but_div .but#reg{
+    background-color: rgb(238, 133, 36);
+}
+.autorization .but_div .but#reg:hover{
+    background-color: rgb(255, 142, 37);
 }
 
 .middleBox{
@@ -397,6 +405,7 @@ input[type=password]{
 .cancel:hover{
     background-color:rgb(218, 252, 255)
 }
+
 table{
     -webkit-border-radius:10px;
     -khtml-border-radius: 10px;

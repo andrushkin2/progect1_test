@@ -70,14 +70,19 @@ input[type=text]{
 }
 .conteiner{
     background-color: rgb(245, 251, 252);
+    background: -webkit-linear-gradient(top, rgb(245, 251, 252) 0%,rgb(255, 255, 255) 100%);
+    background: -moz-linear-gradient(top, rgb(245, 251, 252) 0%,rgb(255, 255, 255) 100%);
+    background: -o-linear-gradient(top, rgb(245, 251, 252) 0%,rgb(255, 255, 255) 100%);
+    background: -ms-linear-gradient(top, rgb(245, 251, 252) 0%,rgb(255, 255, 255) 100%);
+    background: linear-gradient(top, rgb(245, 251, 252) 0%,rgb(255, 255, 255) 100%);
     display: block;
     border-left: 2px solid #a0bfc4;
     border-right: 2px solid #a0bfc4;
-    border-bottom: 2px solid #a0bfc4;
+    /*border-bottom: 2px solid #a0bfc4;*/
     margin-left: auto;
     margin-right: auto;
     /*width: 1200px;*/
-    height: 100%;
+    /*height: 100%;*/
 }
 .conteiner .bar{
     /*border-radius: 0px;

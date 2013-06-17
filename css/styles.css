@@ -409,6 +409,12 @@ input[type=password]{
 .but:hover{
     background-color:rgb(35, 175, 241);
 }
+.middleBox .but{
+    background-color: rgb(97,83,187);
+}
+.middleBox .but:hover{
+    background-color: rgb(143,127,240);
+}
 .cancel{
     background-color: rgb(220, 243, 245);
     color: rgb(13, 146, 209);

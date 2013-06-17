@@ -340,7 +340,10 @@ var create_body=function(parent,id){
     $(this.button).attr({
         type:'button',
         style:'font-size: 47px;background: rgb(218,37,29);color: white;padding: 0px;margin: 0px;' +
-            '-webkit-border-radius:20px;-khtml-border-radius: 20px;-moz-border-radius: 20px;border-radius: 20px;cursor:pointer;font-family:arial',
+            '-webkit-border-radius:20px;-khtml-border-radius: 20px;-moz-border-radius: 20px;border-radius: 20px;cursor:pointer;font-family:arial;' +
+            'background-repeat: repeat-x;line-height: 25px;text-shadow: none;vertical-align: middle;cursor: pointer;box-shadow: inset 0 1px 0 rgba(255,255,255,.2),0 1px 2px rgba(0,0,0,.05);' +
+            'border: 2px solid #bbb;border-color: #e99d2f #e99d2f #b87513;border-color: rgba(0,0,0,.1) rgba(0,0,0,.1) rgba(0,0,0,.25);-webkit-box-shadow: inset 0 2px 0 rgba(255,255,255,.2),0 1px 2px rgba(0,0,0,.05);' +
+            '-moz-box-shadow: inset 0 2px 0 rgba(255,255,255,.2),0 1px 2px rgba(0,0,0,.05);box-shadow: inset 0 2px 0 rgba(255,255,255,.2),0 1px 2px rgba(0,0,0,.05);',
         value:'+1',
         onclick:"logic.check("+id+")"
     });

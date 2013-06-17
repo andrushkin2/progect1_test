@@ -45,8 +45,8 @@ $row=mysql_fetch_array($tim1);
 <form name="form1" onsubmit="return false" action="save_create.php" method="POST">
 <?php
 echo "<input type=hidden name=num value=$num>";
-echo "<input type=hidden name=login value=$login>";
-echo "<input type=hidden name=pass value=$pass>";
+echo "<input type=hidden name=login value='log'>";
+echo "<input type=hidden name=pass value='pas'>";
 ?>
 <table align="left" class="main_table" border="2">
 <tbody>
@@ -60,7 +60,7 @@ echo "<input type=hidden name=pass value=$pass>";
                     <g>Логин:</g>
                 </td>
                 <td align="right"  style="border: 0px;padding: 4px;padding-right: 24px">
-                    <input type="text" id="login_admin" title="Пример: login_mister" name="login_admin" style="font-size:20px" size="6" maxlength="7"/>
+                    <input type="text" id="login_admin" title="Пример: login_mister" name="login_admin" style="font-size:20px" size="6" />
                     <div id="error_login_admin_empty" style="display: none"><small style="color: red">Логин не должен быть пустым!</small></div>
                     <div id="error_login_admin_exsist" style="display: none"><small style="color: red">Логин занят,попробуйте другой!</small></div>
                 </td>
@@ -70,7 +70,7 @@ echo "<input type=hidden name=pass value=$pass>";
                     <g>Пароль:</g>
                 </td>
                 <td align="right"  style="border: 0px;padding: 4px;padding-right: 24px">
-                    <input type="text" id="password_admin" title="Пример: pas3s51word_mi452ster" name="login_admin" style="font-size:20px" size="6" maxlength="7"/>
+                    <input type="text" id="password_admin" title="Пример: pas3s51word_mi452ster" name="password_admin" style="font-size:20px" size="6" />
                     <div id="error_password_admin_empty" style="display: none"><small style="color: red">Пароль не должен быть пустым!</small></div>
                 </td>
             </tr>
@@ -79,7 +79,7 @@ echo "<input type=hidden name=pass value=$pass>";
                     <g>Ссылка на сайт:</g>
                 </td>
                 <td align="right"  style="border: 0px;padding: 4px;padding-right: 24px">
-                    <input type="text" id="site_admin" title="Пример: site.com" name="login_admin" style="font-size:20px" size="6" maxlength="7"/>
+                    <input type="text" id="site_admin" title="Пример: site.com" name="site_admin" style="font-size:20px" size="6" />
                     <div id="error_site_admin_empty" style="display: none"><small style="color: red">Поле не должно быть пустым!</small></div>
                 </td>
             </tr>
@@ -88,7 +88,7 @@ echo "<input type=hidden name=pass value=$pass>";
                     <g>Организация:</g>
                 </td>
                 <td align="right"  style="border: 0px;padding: 4px;padding-right: 24px">
-                    <input type="text" id="org_admin" title="Пример: name_club" name="login_admin" style="font-size:20px" size="6" maxlength="7"/>
+                    <input type="text" id="org_admin" title="Пример: name_club" name="org_admin" style="font-size:20px" size="6" />
                     <div id="error_org_admin_empty" style="display: none"><small style="color: red">Поле не должно быть пустым!</small></div>
                     <div id="error_org_admin_exsist" style="display: none"><small style="color: red">Уже есть такая организация!</small></div>
                 </td>

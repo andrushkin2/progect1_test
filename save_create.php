@@ -39,10 +39,18 @@ else
     $never=0;
 mysql_connect('localhost','saltoext_salto','5700');
 mysql_select_db('saltoext_salto1') or die(mysql_error());
- $re=mysql_query("select * from admin where login='$login' and pass='$pass'");
-$res=mysql_fetch_array($re,MYSQL_ASSOC);
-$org=$res['organization'];
-$url_site=$res['url_site'];
+if ( isset($_POST['login_admin'])){
+    $login = $_POST['login_admin'];
+    $pass = $_POST['password_admin'];
+    $url_site = $_POST['site_admin'];
+    $org = $_POST['org_admin'];
+}
+else{
+    $re=mysql_query("select * from admin where login='$login' and pass='$pass'");
+    $res=mysql_fetch_array($re,MYSQL_ASSOC);
+    $org=$res['organization'];
+    $url_site=$res['url_site'];
+}
     $a1=mysql_query("insert into admin (maxCol,login,pass,aboniments,organization,url_site,trening_code) values ('$kol','$login','$pass','0','$org','$url_site','$pass_admin')");//tut
     $num=mysql_insert_id();
 $nam="InfoPanel_".$num;

@@ -30,7 +30,7 @@ $num=$_GET['num'];
                     <b>Первая регистрация возможна с 9.00 до 21.00.</b><br> Время белорусское.<br><g style="color:red;font-size: 0.9em;font-weight: bold">Правила учета Авторитета:</g><br>Зарегистрировался и пришел +1 к авторитету.<br>Зарегистрировался и не пришел -2 к авторитету.<br>
                     Зарегистрировался и отменил регистрацию* -1 к авторитету.<br><g style="font-size: 14px">*Для отмены регистрации нажмите кнопку «+1» и пройдите регистрацию еще раз.</g>
                 </p>
-                <p align="center"><input class="but" type="button" value="Принять условия" id="vote_first"></p>
+                <p align="center"><input class="but" type="button" style="width: 140px;margin-top: 15px;" value="Принять условия" id="vote_first"></p>
             </div>
 
             <!--шаг второй:ввод номера-->
@@ -51,7 +51,7 @@ $num=$_GET['num'];
                     <p align="center" id="second_error" style="display: none;font-size:18px">Неверно введен номер.Проверьте правильность ввода!</p>
                     <p align="center" id="second_error1" style="display: none;font-size:18px">Укажите код оператора!</p>
                     <p align="center">
-                        <input type="button" id="vote_second" value="Далее" style="font-size:22px;">
+                        <input type="button" id="vote_second" style="margin-top: 15px;" class="but" value="Далее" ">
                     </p>
             </div>
 
@@ -65,7 +65,7 @@ $num=$_GET['num'];
                         <input type="text" border="2" id="kode_text" maxlength="3" size="2" style="font-size:20px"/>
                     </div>
                     <p align="center" id="kode_error" style="display: none;font-size:18px">Неверный код активации!</p>
-                    <div style="padding: 10px"><input type="button" id="kode_vote" value="Далее"/></div>
+                    <div style="padding: 10px"><input type="button" id="kode_vote" class="but" value="Далее"/></div>
                 </div>
             </div>
 
@@ -74,8 +74,8 @@ $num=$_GET['num'];
                 <h3 style="color:#F00">Управление записью</h3>
                 <div><p align="left" style="font-size:22px;padding: 20px;"><span id="already_n_f"></span>,<br> Вы уже записаны на мероприятие (<span id="already_date"></span>)</p></div>
                 <div align="center">
-                    <input type="button" value="Отменить запись" id="already_change"/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                    <input type="button" value="Выход" onclick="document.location.href='<?php echo $_GET['url'];?>'" id="finally_vote"/>
+                    <input type="button" value="Отменить запись" class="but" style="width: 140px" id="already_change"/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    <input type="button" value="Выход" class="but" style="width: 140px" onclick="document.location.href='<?php echo $_GET['url'];?>'" id="finally_vote"/>
                 </div>
             </div>
 
@@ -88,8 +88,8 @@ $num=$_GET['num'];
                     <div style="font-size: 22px"> Год рождения:<span id="info_age"></span></div>
                 </div>
                 <div align="center">
-                    <input type="button" value="Изменить" id="info_change">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                    <input type="button" value="Далее" id="info_vote">
+                    <input type="button" value="Изменить" class="but" id="info_change">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    <input type="button" value="Далее" class="but" id="info_vote">
                 </div>
             </div>
 
@@ -112,7 +112,7 @@ $num=$_GET['num'];
                 </div>
                 </form>
                 <div align="center">
-                    <input type="button" value="Применить" id="regst_vote"/>
+                    <input type="button" value="Применить" class="but" id="regst_vote"/>
                 </div>
             </div>
 
@@ -126,7 +126,7 @@ $num=$_GET['num'];
                     <div id="finally_no_div" style="font-size: 22px;display: none"><span id="finally_no"></span>, приносим Вам свои извинения. Все места на занятие уже заняты.</div>
                 </div>
                 <div align="center">
-                    <input type="button" value="Выход" onclick="document.location.href='<?php echo $_GET['url'];?>'" id="finally_vote"/>
+                    <input type="button" value="Выход" class="but" onclick="document.location.href='<?php echo $_GET['url'];?>'" id="finally_vote"/>
                 </div>
             </div>
         </div>

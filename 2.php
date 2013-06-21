@@ -457,7 +457,9 @@ echo "<input type=hidden name=pass value='pas'>";
             $('#xyear').val($("#year").val());
         })
         $('#ok').click(function(){
-            if (valid())
+            if (valig_log_data())
+                if (valid())
+                    document.forms['form1'].submit();
             /*$.ajax({
              type:'POST',
              url:'is_equal_pass.php',
@@ -480,9 +482,76 @@ echo "<input type=hidden name=pass value='pas'>";
              }
              }
              });*/
-                document.forms['form1'].submit();
         });
     });
+    function valig_log_data(){
+        var flag = true;
+        $('#error_login_admin_empty').hide();
+        $('#error_login_admin_exsist').hide();
+        $('#error_password_admin_empty').hide();
+        $('#error_site_admin_empty').hide();
+        $('#error_org_admin_empty').hide();
+        $('#error_org_admin_exsist').hide();
+
+        if ($('#org_admin').val() == ""){
+            flag = false;
+            $('#error_org_admin_empty').slideDown(10,function(){
+                $(this).focus();
+            });
+        }
+        if ($('#site_admin').val() == ""){
+            flag = false;
+            $('#error_site_admin_empty').slideDown(10,function(){
+                $(this).focus();
+            });
+        }
+        if ($('#password_admin').val() == ""){
+            flag = false;
+            $('#error_password_admin_empty').slideDown(10,function(){
+                $(this).focus();
+            });
+        }
+        if ($('#login_admin').val() == ""){
+            flag = false;
+            $('#error_login_admin_empty').slideDown(10,function(){
+                $(this).focus();
+            });
+        }
+        //if not empty values
+        if (flag){
+            return true
+            /*$.ajax({
+                type:'POST',
+                url:'is_exist_log.php',
+                dataType:'json',
+                data:{
+                    l:$('#login_admin').val(),
+                    o:$('#org_admin').val()
+                },
+                success : function(data){
+                    if (data){
+                        if (data.o){
+                            flag = false;
+                            $('#error_org_admin_exsist').slideDown(10,function(){
+                                $(this).focus();
+                            });
+                        }
+                        if (data.l){
+                            flag = false;
+                            $('#error_login_admin_exsist').slideDown(10,function(){
+                                $(this).focus();
+                            });
+                        }
+
+                    }
+                    else
+                        alert("Unknown error =(");
+                }
+            });*/
+        }
+        else
+            return false;
+    }
     function valid(){
         if (error_str!='')
             $(error_str).hide();

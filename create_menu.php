@@ -29,8 +29,7 @@
     </style>
 </head>
 <?php
-    mysql_connect('localhost','saltoext_salto','5700');
-    mysql_select_db('saltoext_salto1') or die(mysql_error());
+require("config.php");
     $login=$_POST['login'];
     $pass=$_POST['pass'];
     if ($login=="" || $pass=="")

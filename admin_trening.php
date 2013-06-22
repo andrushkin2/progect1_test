@@ -27,8 +27,6 @@ require('config.php');
 		$num=$_POST['num'];
 		$sort=$_POST['sort'];
 		$fl=$_POST['fl'];
-		mysql_connect('localhost','saltoext_salto','5700');
-    	mysql_select_db('saltoext_salto1') or die(mysql_error());
 		$avalible="select * from admin where name='$num'";//tut
 								$res=mysql_query($avalible);
 								$row=mysql_fetch_array($res);

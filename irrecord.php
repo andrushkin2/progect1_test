@@ -157,6 +157,8 @@ textarea{resize:none};
                           <td width="19" nowrap=""></td>
                           <td width="569" valign="top" nowrap>
 							  <?php
+                              require("config.php");
+
 								$key=$_GET['key'];
 								echo "<input type=hidden id=1000 value=$key>";
 							  ?>
@@ -169,8 +171,6 @@ textarea{resize:none};
                             <?php
 								$phone=$_GET['mPhone'];
 								$allPhone=$phone;
-								mysql_connect('localhost','saltoext_salto','5700');
-								mysql_select_db('saltoext_salto1') or die(mysql_error());
 								$phones=mysql_query("select phone from dBase");
 								$flag=true;
 								for($i=0;$i<mysql_num_rows($phones);$i++)

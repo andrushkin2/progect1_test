@@ -173,6 +173,7 @@ textarea{resize:none};
 								</div>
 								</div>
                                 <?php
+                                require("config.php");
 									//$allPhone="+375000000000";
 									$phone=$_GET['mPhone'];
 									//$kode=$_GET['kode']*10000000;
@@ -183,8 +184,6 @@ textarea{resize:none};
 									echo "<input type=hidden name=num value=$num>";
 									echo "<input type=hidden name=mPhone value=$allPhone>";
 									echo "<input type=hidden name=tmp value=1></form>";
-    								mysql_connect('localhost','saltoext_salto','5700');
-    								mysql_select_db('saltoext_salto1') or die(mysql_error());
     								$phones=mysql_query("select phone from dBase");//tut
 									$flag=true;
     								for($i=0;$i<mysql_num_rows($phones);$i++)

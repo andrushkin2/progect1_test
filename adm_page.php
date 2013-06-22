@@ -30,6 +30,8 @@
 </head>
 <body>
 <?php
+require("config.php");
+
 $login=$_POST['login'];
 $pass=$_POST['pass'];
 if ($login=="" || $pass=="")
@@ -74,8 +76,6 @@ if ($login=="" || $pass=="")
                     <form action="" method="post" name='form1' onsubmit="return false">
                         <select name='num'>
                             <?php
-                            mysql_connect('localhost','saltoext_salto','5700');
-                            mysql_select_db('saltoext_salto1') or die(mysql_error());
                             $date=mysql_query("select * from admin where login='$login' and pass='$pass'");//tut
                             while ($row = mysql_fetch_array($date, MYSQL_ASSOC)){
                                 $t=explode(':',$row['Time']);

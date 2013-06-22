@@ -5,12 +5,11 @@
 <title>Изменение времени</title>
 </head>
 <?php
+require("config.php");
 	$hours=$_POST['hours'];
 	$minutes=$_POST['minutes'];
 	$num=$_POST['num'];
 	$times=$hours.":".$minutes;
-	mysql_connect('localhost','saltoext_salto','5700');
-	mysql_select_db('saltoext_salto1') or die(mysql_error());
 	mysql_query("UPDATE admin set time='$times' where name='$num'");//tut
 	$tim1=mysql_query("select time from admin where name='$num'");//tut
 	$row=mysql_fetch_array($tim1);

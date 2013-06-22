@@ -2,13 +2,12 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <title>Разблокировка номера</title>
 <?php
+require("config.php");
 	$all="375";
 	$kd=$_POST['kode'];
 	$phone=$_POST['mPhone'];
 	$num=$_POST['num'];
 	$allPhone=$all.$kd.$phone;
-	mysql_connect('localhost','saltoext_salto','5700');
-	mysql_select_db('saltoext_salto1') or die(mysql_error());
 	$phones=mysql_query("select phone from dBase where num='$num'");//tut
 	$flag=true;
 	for($i=0;$i<mysql_num_rows($phones);$i++)

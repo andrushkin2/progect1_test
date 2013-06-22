@@ -43,8 +43,6 @@ $time_old=escape($adm['Time']);
 $dat_old=escape($adm['year']."-".$adm['month']."-".$adm['day']);
 
 
-mysql_connect('localhost','saltoext_salto','5700');
-mysql_select_db('saltoext_salto1') or die(mysql_error());
 
 mysql_query("UPDATE admin set trening_code ='$pass_admin' where name='$num'");//tut
 

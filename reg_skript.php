@@ -164,14 +164,14 @@ textarea{resize:none};
                                 <h3 style="color:#F00">Шаг 4/5</h3>
    							<p style="color:#F00;font-size:20px">Регистрация:</p>
 								<?php
+                                require("config.php");
+
 									$phone=$_GET['phone'];
 									$name=$_GET['name'];
 									$fam=$_GET['fam'];
 									$age=$_GET['age'];
 									$num=$_GET['num'];
 									$t=$_GET['t'];
-									mysql_connect('localhost','saltoext_salto','5700');
-    								mysql_select_db('saltoext_salto1') or die(mysql_error());
     								$avalible="select * from admin where name='$num'";
     								$res=mysql_query($avalible);
 									$row=mysql_fetch_array($res);
@@ -285,8 +285,6 @@ function writ(){
 	$fam=($_GET['fam']);
 	$age=($_GET['age']);
 	$date=date("Y-m-d");
-	mysql_connect('localhost','saltoext_salto','5700');
-	mysql_select_db('saltoext_salto') or die(mysql_error());
 	mysql_query("insert into dBase (name,fam,phone,age,acces,avalible) values ('$name','$fam','$phone','$age','0','0')");
 	mysql_close();
 	?><?php */?>

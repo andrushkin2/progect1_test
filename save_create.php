@@ -10,6 +10,8 @@
 </head>
 <body>
 <?php
+require("config.php");
+
 $login=$_POST['login'];
 $pass=$_POST['pass'];
 if ($login=="" || $pass=="")
@@ -37,8 +39,6 @@ if ($_POST['never'])
     $never=1;
 else
     $never=0;
-mysql_connect('localhost','saltoext_salto','5700');
-mysql_select_db('saltoext_salto1') or die(mysql_error());
 if ( isset($_POST['login_admin'])){
     $login = $_POST['login_admin'];
     $pass = $_POST['password_admin'];

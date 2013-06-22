@@ -29,6 +29,7 @@
     </style>
 </head>
 <?php
+require("config.php");
     $num=$_POST['num'];
     $login=$_POST['login'];
     $pass=$_POST['pass'];
@@ -36,8 +37,6 @@
         echo "<form method='GET' action='1.php' name='f'>
                         <input type='submit' id='1' style='font-size:22px;visibility: hidden'></form>
                         <script>document.getElementById(1).click();</script>";
-    mysql_connect('localhost','saltoext_salto','5700');
-    mysql_select_db('saltoext_salto1') or die(mysql_error());
     $tim1=mysql_query("select * from admin where name='$num'");
     $row=mysql_fetch_array($tim1);
 ?>

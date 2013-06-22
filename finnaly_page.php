@@ -164,14 +164,14 @@ textarea{resize:none};
                                 <h3 style="color:#F00"></h3>
    							<p style="color:#F00;font-size:30px" align="center">Поздравляем!!!</p><br>
                             <?php
+                            require("config.php");
+
 								$name=$_GET['first'];
 								$fam=$_GET['fam'];
 								$age=$_GET['age'];
 								$phone=$_GET['phone'];
 								$date=date("Y-m-d");
 								$num=$_GET['num'];
-								mysql_connect('localhost','saltoext_salto','5700');
-								mysql_select_db('saltoext_salto1') or die(mysql_error());
 								$phones=mysql_query("select id from dBase where record='1' and num='$num'");//tut
                                 $val=mysql_num_rows($phones);
                                 mysql_query("UPDATE admin set records ='$val' where name='$num'");//tut

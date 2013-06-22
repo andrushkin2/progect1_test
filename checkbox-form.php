@@ -8,14 +8,14 @@ require('config.php');
 </head>
 <body>
 <?php
+require("config.php");
+
 $login=$_POST['login'];
 $pass=$_POST['pass'];
 if ($login=="" || $pass=="")
     echo "<form method='GET' action='1.php' name='f'>
                         <input type='submit' id='1' style='font-size:22px;visibility: hidden'></form>
                         <script>document.getElementById(1).click();</script>";
-	//mysql_connect('localhost','saltoext_salto','5700');
-    //mysql_select_db('saltoext_salto1') or die(mysql_error());
     $num=$_POST['num'];
   $aDoor = $_POST['formDoor'];
   //if(!empty($aDoor))

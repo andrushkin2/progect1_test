@@ -163,6 +163,8 @@ textarea{resize:none};
                             </p>
                                 <h3 style="color:#F00"></h3>
                                 <?php
+                                require("config.php");
+
 									$key=$_GET['key'];
 									$tmp=$_GET['tmp'];
 									echo "<input type=hidden id=98 value=$key>";
@@ -176,8 +178,6 @@ textarea{resize:none};
 									echo "<input type=hidden name=tmp value=2>";
 									//echo "<input type=submit id=3 value=Регистрация style=visibility:hidden>";
 									echo "</form>";
-    								mysql_connect('localhost','saltoext_salto','5700');
-									mysql_select_db('saltoext_salto1') or die(mysql_error());
     								$phones=mysql_query("select phone from dBase where num='$num'");//tut
     							if ($tmp==1)
     							{	

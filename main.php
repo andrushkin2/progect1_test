@@ -61,9 +61,9 @@ textarea{resize:none};
             	<tr>
                      <td align="right">
                         <div style="position:relative;visibility:hidden">
-                        <?php	
-								mysql_connect('localhost','saltoext_salto','5700');
-								mysql_select_db('saltoext_salto1') or die(mysql_error());
+                        <?php
+                        require("config.php");
+
 								$avalible="select * from admin where name='1'";//tut
 								$res=mysql_query($avalible);
 								$row=mysql_fetch_array($res);

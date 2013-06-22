@@ -5,12 +5,11 @@
 <title>Изменение даты</title>
 </head>
 <?php
+require("config.php");
 	$dat=$_POST['date'];
 	$month=$_POST['month'];
 	$year=$_POST['year'];
 	$num=$_POST['num'];
-	mysql_connect('localhost','saltoext_salto','5700');
-	mysql_select_db('saltoext_salto1') or die(mysql_error());
 	mysql_query("UPDATE admin set day ='$dat',month='$month',year='$year' where name='$num'");//tut
 	$tim=mysql_query("select rep from admin where name='$num'");
 	$row=mysql_fetch_array($tim);

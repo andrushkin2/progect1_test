@@ -163,6 +163,7 @@ textarea{resize:none};
                             </p>
                                 <h3 style="color:#F00"></h3>
                                 <?php
+                                require("config.php");
 									$key=$_GET['key'];
 									echo "<input type=hidden id=98 value=$key>";
 									$allPhone="+375000000000";
@@ -178,8 +179,6 @@ textarea{resize:none};
 									echo "<input type=hidden name=kode value=$kd>";
 									//echo "<input type=submit id=3 value=Регистрация style=visibility:hidden>";
 									echo "</form>";
-    								mysql_connect('localhost','saltoext_salto','5700');
-									mysql_select_db('saltoext_salto1') or die(mysql_error());
     								$phones=mysql_query("select phone from dBase");//tut
 									$flag=true;
     								for($i=0;$i<mysql_num_rows($phones);$i++)

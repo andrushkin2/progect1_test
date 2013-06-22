@@ -5,10 +5,9 @@
 <title>Изменение времени</title>
 </head>
 <?php
+require("config.php");
 	$val=$_POST['val'];
 	$num=$_POST['num'];
-	mysql_connect('localhost','saltoext_salto','5700');
-	mysql_select_db('saltoext_salto1') or die(mysql_error());
 	//mysql_query("UPDATE admin set time='$times' where name='$num'");//tut
 	$date=mysql_query("select year,month,day from admin where name='$num'");//tut
 	$row=mysql_fetch_array($date);

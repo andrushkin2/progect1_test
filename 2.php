@@ -60,7 +60,7 @@ echo "<input type=hidden name=pass value='pas'>";
                     <g>Логин:</g>
                 </td>
                 <td align="right"  style="border: 0px;padding: 4px;padding-right: 24px">
-                    <input type="text" id="login_admin" title="Пример: login_mister" name="login_admin" style="font-size:20px" size="6" />
+                    <input type="text" id="login_admin" title="Пример: login_mister" name="login_admin" style="font-size:20px" size="15" />
                     <div id="error_login_admin_empty" style="display: none"><small style="color: red">Логин не должен быть пустым!</small></div>
                     <div id="error_login_admin_exsist" style="display: none"><small style="color: red">Логин занят,попробуйте другой!</small></div>
                 </td>
@@ -70,7 +70,7 @@ echo "<input type=hidden name=pass value='pas'>";
                     <g>Пароль:</g>
                 </td>
                 <td align="right"  style="border: 0px;padding: 4px;padding-right: 24px">
-                    <input type="text" id="password_admin" title="Пример: pas3s51word_mi452ster" name="password_admin" style="font-size:20px" size="6" />
+                    <input type="text" id="password_admin" title="Пример: pas3s51word_mi452ster" name="password_admin" style="font-size:20px" size="15" />
                     <div id="error_password_admin_empty" style="display: none"><small style="color: red">Пароль не должен быть пустым!</small></div>
                 </td>
             </tr>
@@ -79,7 +79,7 @@ echo "<input type=hidden name=pass value='pas'>";
                     <g>Ссылка на сайт:</g>
                 </td>
                 <td align="right"  style="border: 0px;padding: 4px;padding-right: 24px">
-                    <input type="text" id="site_admin" title="Пример: site.com" name="site_admin" style="font-size:20px" size="6" />
+                    <input type="text" id="site_admin" title="Пример: site.com" name="site_admin" style="font-size:20px" size="15" />
                     <div id="error_site_admin_empty" style="display: none"><small style="color: red">Поле не должно быть пустым!</small></div>
                 </td>
             </tr>
@@ -88,7 +88,7 @@ echo "<input type=hidden name=pass value='pas'>";
                     <g>Организация:</g>
                 </td>
                 <td align="right"  style="border: 0px;padding: 4px;padding-right: 24px">
-                    <input type="text" id="org_admin" title="Пример: name_club" name="org_admin" style="font-size:20px" size="6" />
+                    <input type="text" id="org_admin" title="Пример: name_club" name="org_admin" style="font-size:20px" size="15" />
                     <div id="error_org_admin_empty" style="display: none"><small style="color: red">Поле не должно быть пустым!</small></div>
                     <div id="error_org_admin_exsist" style="display: none"><small style="color: red">Уже есть такая организация!</small></div>
                 </td>
@@ -496,31 +496,31 @@ echo "<input type=hidden name=pass value='pas'>";
         if ($('#org_admin').val() == ""){
             flag = false;
             $('#error_org_admin_empty').slideDown(10,function(){
-                $(this).focus();
+                $('#org_admin').focus();
             });
         }
         if ($('#site_admin').val() == ""){
             flag = false;
             $('#error_site_admin_empty').slideDown(10,function(){
-                $(this).focus();
+                $('#site_admin').focus();
             });
         }
         if ($('#password_admin').val() == ""){
             flag = false;
             $('#error_password_admin_empty').slideDown(10,function(){
-                $(this).focus();
+                $('#password_admin').focus();
             });
         }
         if ($('#login_admin').val() == ""){
             flag = false;
             $('#error_login_admin_empty').slideDown(10,function(){
-                $(this).focus();
+                $('#login_admin').focus();
             });
         }
         //if not empty values
         if (flag){
-            return true
-            /*$.ajax({
+            //return true;
+            $.ajax({
                 type:'POST',
                 url:'is_exist_log.php',
                 dataType:'json',
@@ -528,26 +528,30 @@ echo "<input type=hidden name=pass value='pas'>";
                     l:$('#login_admin').val(),
                     o:$('#org_admin').val()
                 },
-                success : function(data){
+                success:function(data){
                     if (data){
                         if (data.o){
                             flag = false;
                             $('#error_org_admin_exsist').slideDown(10,function(){
-                                $(this).focus();
+                                $('#org_admin').focus();
                             });
                         }
                         if (data.l){
                             flag = false;
                             $('#error_login_admin_exsist').slideDown(10,function(){
-                                $(this).focus();
+                                $('#login_admin').focus();
                             });
                         }
-
+                        if(flag){
+                            return true
+                        }
+                        else
+                        return false;
                     }
                     else
                         alert("Unknown error =(");
                 }
-            });*/
+            });
         }
         else
             return false;

@@ -8,7 +8,6 @@ require('config.php');
 </head>
 <body>
 <?php
-require("config.php");
 
 $login=$_POST['login'];
 $pass=$_POST['pass'];

@@ -17,7 +17,7 @@ require('config.php');
                         <input type='submit' id='1' style='font-size:22px;visibility: hidden'></form>
                         <script>document.getElementById(1).click();</script>";
 		echo "<input type='hidden' name='num' value='$num'>";
-        echo "<input type='hidden' name='login' value=$login'>";
+        echo "<input type='hidden' name='login' value='$login'>";
         echo "<input type='hidden' name='pass' value='$pass'>";
 	?>
 	<table align="left">
